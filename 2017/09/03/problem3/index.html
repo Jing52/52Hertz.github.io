@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello hexo, Null指针的博客">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="freemarker判断对象是否为空, Null指针的博客">
+    <meta name="description" content="一、freemarker中显示某对象使用${object}
+例：
+&amp;lt;input class=&amp;quot;easyui-textbox&amp;quot; id=&amp;quot;&amp;quot; value=&amp;quot;${TOPIC_NAME}&amp;qu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello hexo | Null指针的博客</title>
+    <title>freemarker判断对象是否为空 | Null指针的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -191,13 +193,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello hexo
+                        freemarker判断对象是否为空
                     </div>
                 </div>
             </div>
@@ -234,15 +236,19 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p>一、freemarker中显示某对象使用${object}</p>
+<p>例：</p>
+<p><code>&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=&quot;${TOPIC_NAME}&quot;&gt;</code></p>
+<p>二、如果对象出现null值，freemarker就会报错，可以通过判断来对象是否为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;#if object??&gt;</span><br><span class="line">2 </span><br><span class="line">3    ......</span><br><span class="line">4 </span><br><span class="line">5     &lt;#else&gt;</span><br><span class="line">6 </span><br><span class="line">7    ......</span><br><span class="line">8 </span><br><span class="line">9 &lt;/#if&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以通过设置默认值${object!””}，如果object为null，页面就会显示”“</p>
+<p><code>&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=${TOPIC_NAME!&quot;如果TOPIC_NAME为null，显示&quot;}&gt;</code></p>
+<p>三、如果对象导航为null，可以通过${(map.name)!”如果map为null或者name为null，显示”}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;#--加上括号，感叹号解决对象导航为空的问题--&gt;</span><br><span class="line">&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=$&#123;(map.name)!&quot;map为null或者name为null&quot;&#125;&gt;</span><br></pre></td></tr></table></figure>
+<p>四、总结</p>
+<p>！可以解决null</p>
+<p>！可以解决未定义的问题</p>
+<p>！和（）可以解决对象导航的问题</p>
 
             </div>
             <hr>
@@ -381,7 +387,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://yoursite.com" class="b-link-green">Null指针的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/09/03/hello-world/" class="b-link-green">Hello hexo</a>
+                    <a href="/2017/09/03/problem3/" class="b-link-green">freemarker判断对象是否为空</a>
                 </p>
             </div>
         </div>
@@ -421,23 +427,25 @@
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2017/09/03/hello-world/">
+                <a href="/2017/09/03/study0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hello hexo">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="学习笔记——Java技术体系">
                         
-                        <span class="card-title">Hello hexo</span>
+                        <span class="card-title">学习笔记——Java技术体系</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">从广义上讲，Clojure，JRuby，Groovy等运行于java虚拟机上的语言及其相关的程序都属于java技术体系的一员。如果仅从传统意义上来看，Sun官方所定义的java技术体系包括以下几个组成部分：
+　　·java程序设计语言
+　　</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -446,7 +454,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -463,19 +470,20 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2017/09/03/problem1/">
+                <a href="/2017/09/03/study1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="为什么Java中1000==1000为false而100==100为true">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="学习笔记——浏览器对象模型（Window）">
                         
-                        <span class="card-title">为什么Java中1000==1000为false而100==100为true</span>
+                        <span class="card-title">学习笔记——浏览器对象模型（Window）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">我们首先看下面一段代码
-1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);
-运行结果如</div>
+                    <div class="summary">Window 对象所有浏览器都支持 window 对象。它表示浏览器窗口。
+所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。
+全局变量是 window 对象的属性。
+全局函数是 window 对象的方</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-03

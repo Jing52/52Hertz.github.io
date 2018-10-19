@@ -5,8 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello hexo, Null指针的博客">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="为什么Java中1000==1000为false而100==100为true, Null指针的博客">
+    <meta name="description" content="我们首先看下面一段代码
+1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);
+运行结果如">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello hexo | Null指针的博客</title>
+    <title>为什么Java中1000==1000为false而100==100为true | Null指针的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -191,13 +193,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello hexo
+                        为什么Java中1000==1000为false而100==100为true
                     </div>
                 </div>
             </div>
@@ -234,15 +236,23 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p>我们首先看下面一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer a = 1000,b=1000;</span><br><span class="line">System.out.println(a==b);</span><br><span class="line">Integer c = 100,d = 100;</span><br><span class="line">System.out.println(c==d);</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。</p>
+<p>因此，后面一条语句应该也是false。</p>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>我们看下Integer.java类，我们会发现有一个内部私有类，IntegerCache.java，它缓存了从-128~127之间的所有的整数对象。</p>
+<p>所以我们在声明类似——</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer c = 100;</span><br></pre></td></tr></table></figure>
+<p>的时候，它实际上在内部做的是——</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer i = Integer.valueOf(100);</span><br></pre></td></tr></table></figure>
+<p>我们看下valueOf()方法，可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> 1     /**</span><br><span class="line"> 2      * Returns an &#123;@code Integer&#125; instance representing the specified </span><br><span class="line"> 3      * &#123;@code int&#125; value.  If a new &#123;@code Integer&#125; instance is not </span><br><span class="line"> 4      * required, this method should generally be used in preference to</span><br><span class="line"> 5      * the constructor &#123;@link #Integer(int)&#125;, as this method is likely </span><br><span class="line"> 6      * to yield significantly better space and time performance by</span><br><span class="line"> 7      * caching frequently requested values.</span><br><span class="line"> 8      *</span><br><span class="line"> 9 * This method will always cache values in the range -128 to 127, </span><br><span class="line">10 * inclusive, and may cache other values outside of this range. </span><br><span class="line">11 * </span><br><span class="line">12 * @param i an &#123;@code int&#125; value. </span><br><span class="line">13 * @return an &#123;@code Integer&#125; instance representing &#123;@code i&#125;. </span><br><span class="line">14 * @since 1.5 </span><br><span class="line">15      */</span><br><span class="line">16     public static Integer valueOf(int i) &#123; </span><br><span class="line">17         if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high) </span><br><span class="line">18             return IntegerCache.cache[i + (-IntegerCache.low)]; </span><br><span class="line">19         return new Integer(i); </span><br><span class="line">20     &#125;</span><br></pre></td></tr></table></figure>
+<p>如果值的范围在-128~127之间，它就从高速缓存返回实例。</p>
+<p>所以——</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer c = 100,d = 100;</span><br></pre></td></tr></table></figure>
+<p>指向同一个对象，所以输出才会是true。</p>
 
             </div>
             <hr>
@@ -381,7 +391,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://yoursite.com" class="b-link-green">Null指针的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/09/03/hello-world/" class="b-link-green">Hello hexo</a>
+                    <a href="/2017/09/03/problem1/" class="b-link-green">为什么Java中1000==1000为false而100==100为true</a>
                 </p>
             </div>
         </div>
@@ -421,7 +431,7 @@
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
                 <a href="/2017/09/03/hello-world/">
                     <div class="card-image">
@@ -435,9 +445,9 @@
                 <div class="card-content article-content">
                     <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -446,7 +456,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -463,19 +472,24 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2017/09/03/problem1/">
+                <a href="/2017/09/03/problem0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="为什么Java中1000==1000为false而100==100为true">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Method breakpoints may dramatically slow down debugging情况解决">
                         
-                        <span class="card-title">为什么Java中1000==1000为false而100==100为true</span>
+                        <span class="card-title">Method breakpoints may dramatically slow down debugging情况解决</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">我们首先看下面一段代码
-1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);
-运行结果如</div>
+                    <div class="summary">首先给大家看张图
+
+这是我最近degubber启动项目时遇到的问题。
+原因：根据语义，断点打在了方法上面。
+引起的问题：导致项目启动变慢，IDEA调试会越来越慢。
+解决方法：Ctrl+shift+F8打开Breakpoints面板，如图
+
+</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-09-03
