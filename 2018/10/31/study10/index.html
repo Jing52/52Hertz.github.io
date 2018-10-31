@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Null指针的博客">
 <meta property="og:description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[];">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T03:29:54.957Z">
+<meta property="og:updated_time" content="2018-10-31T06:28:52.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String，StringBuilder，StringBuffer的区别">
 <meta name="twitter:description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[];">
@@ -74,7 +74,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: 
+        search: true
     }
 </script>
 
@@ -108,6 +108,13 @@
         <p class="header-subtitle">Null指针</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
         
 
 
@@ -164,6 +171,8 @@
                             <li><a href="/archives/">所有文章</a></li>
                         
                             <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
                         
                             <li><a href="/about/">关于我</a></li>
                         
@@ -242,6 +251,8 @@
                 
                     <li><a href="/tags/">标签云</a></li>
                 
+                    <li><a href="/photos/">相册</a></li>
+                
                     <li><a href="/about/">关于我</a></li>
                 
                 <div class="clearfix"></div>
@@ -285,10 +296,34 @@
     </h1>
   
 
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">780字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分钟</span>
+      </span>
+    </span>
+</div>
+        
       </header>
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
@@ -340,7 +375,7 @@
         <p><span>本文标题:</span><a href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-10-31, 01:15:34</p>
-        <p><span>最后更新:</span>2018-10-31, 11:29:54</p>
+        <p><span>最后更新:</span>2018-10-31, 14:28:52</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/10/31/study10/" title="String，StringBuilder，StringBuffer的区别">http://yoursite.com/2018/10/31/study10/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/10/31/study10/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -419,6 +454,25 @@
 
 
 
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
     
 
 

@@ -15,18 +15,17 @@
 
 
 
-<meta name="description" content="一、freemarker中显示某对象使用${object} 例： &amp;lt;input class=&amp;quot;easyui-textbox&amp;quot; id=&amp;quot;&amp;quot; value=&amp;quot;${TOPIC_NAME}&amp;quot;&amp;gt; 二、如果对象出现null值，freemarker就会报错，可以通过判断来对象是否为空 1234567891 &amp;lt;#if object??&amp;g">
-<meta name="keywords" content="Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="freemarker判断对象是否为空">
-<meta property="og:url" content="http://yoursite.com/2018/10/01/problem3/index.html">
+<meta name="description" content="This is my home!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="一、freemarker中显示某对象使用${object} 例： &amp;lt;input class=&amp;quot;easyui-textbox&amp;quot; id=&amp;quot;&amp;quot; value=&amp;quot;${TOPIC_NAME}&amp;quot;&amp;gt; 二、如果对象出现null值，freemarker就会报错，可以通过判断来对象是否为空 1234567891 &amp;lt;#if object??&amp;g">
+<meta property="og:description" content="This is my home!">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T02:22:09.074Z">
+<meta property="og:updated_time" content="2018-10-31T06:23:54.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="freemarker判断对象是否为空">
-<meta name="twitter:description" content="一、freemarker中显示某对象使用${object} 例： &amp;lt;input class=&amp;quot;easyui-textbox&amp;quot; id=&amp;quot;&amp;quot; value=&amp;quot;${TOPIC_NAME}&amp;quot;&amp;gt; 二、如果对象出现null值，freemarker就会报错，可以通过判断来对象是否为空 1234567891 &amp;lt;#if object??&amp;g">
+<meta name="twitter:title" content="tags">
+<meta name="twitter:description" content="This is my home!">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>freemarker判断对象是否为空 | Null指针的博客</title>
+<title>tags | Null指针的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -68,7 +67,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -273,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-problem3" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/01/problem3/" class="article-date">
-      <time datetime="2018-10-01T04:24:30.000Z" itemprop="datePublished">2018-10-01</time>
+      <a href="/tags/index.html" class="article-date">
+      <time datetime="2018-10-31T06:23:54.000Z" itemprop="datePublished">2018-10-31</time>
 </a>
 
 
@@ -292,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      freemarker判断对象是否为空
+      tags
     </h1>
   
 
@@ -302,7 +301,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  博文字数： </span>
-        <span class="post-count">213字</span>
+        <span class="post-count">0字</span>
       </span>
     </span>
 
@@ -322,10 +321,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -333,85 +328,96 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>一、freemarker中显示某对象使用${object}</p>
-<p>例：</p>
-<p><code>&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=&quot;${TOPIC_NAME}&quot;&gt;</code></p>
-<p>二、如果对象出现null值，freemarker就会报错，可以通过判断来对象是否为空</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;#if object??&gt;</span><br><span class="line">2 </span><br><span class="line">3    ......</span><br><span class="line">4 </span><br><span class="line">5     &lt;#else&gt;</span><br><span class="line">6 </span><br><span class="line">7    ......</span><br><span class="line">8 </span><br><span class="line">9 &lt;/#if&gt;</span><br></pre></td></tr></table></figure>
-<p>也可以通过设置默认值${object!””}，如果object为null，页面就会显示”“</p>
-<p><code>&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=${TOPIC_NAME!&quot;如果TOPIC_NAME为null，显示&quot;}&gt;</code></p>
-<p>三、如果对象导航为null，可以通过${(map.name)!”如果map为null或者name为null，显示”}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;#--加上括号，感叹号解决对象导航为空的问题--&gt;</span><br><span class="line">&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=$&#123;(map.name)!&quot;map为null或者name为null&quot;&#125;&gt;</span><br></pre></td></tr></table></figure>
-<p>四、总结</p>
-<p>！可以解决null</p>
-<p>！可以解决未定义的问题</p>
-<p>！和（）可以解决对象导航的问题</p>
+              <style>
+    .article-meta { display: none; }
+    #container .article .article-title { padding-right: 0; }
+    .article-header {
+        padding: 0;
+        padding-top: 26px;
+        border-left: none;
+        text-align: center;
+    }
+    .article-header:hover { border-left: none; }
+    .article-title { font-size: 1.6em }
+    .article-entry hr { margin: 0;}
+    .article-meta,
+    #container .article-info-post.article-info { display: none;}
+    #container .article .article-title { padding: 0; }
+</style>
 
+
+    <!-- Tag Cloud Page -->
+    <hr>
+<br>
+<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">1</span></li></ul>
+
+<p class="count"></p>
+
+<div class="tags">
+    <a href="/tags/EDAS/" style="font-size: 16px; color: #808080">EDAS</a> <a href="/tags/Java/" style="font-size: 35px; color: #000">Java</a> <a href="/tags/MYSQL/" style="font-size: 16px; color: #808080">MYSQL</a> <a href="/tags/MarkDown/" style="font-size: 16px; color: #808080">MarkDown</a> <a href="/tags/Maven/" style="font-size: 25.5px; color: #404040">Maven</a> <a href="/tags/MyBatis/" style="font-size: 16px; color: #808080">MyBatis</a> <a href="/tags/Spring-MVC/" style="font-size: 16px; color: #808080">Spring MVC</a> <a href="/tags/设计模式/" style="font-size: 16px; color: #808080">设计模式</a>
+</div>
+<style>
+    .category-list li{
+        display: inline-block;
+        margin: 0 1em .5em 0;
+        padding: 4px;
+        border: 1px solid lightgray;
+        font-size: 1.2rem;
+    }
+    .category-list a { color: gray; }
+    .category-list-item:hover a {
+        color: gray;
+        text-decoration: none;
+    }
+    .category-list-count {
+        margin-left: 2px;
+        font-size: .9rem;
+    }
+    .article-entry ul li:before{ display: none; }
+    .article-inner { text-align: center; }
+    .tags {
+        max-width: 42em;
+        margin: 2em auto;
+        margin-top: 0em;
+    }
+    .tags a {
+        margin-right: 1em;
+        line-height: 65px;
+        border-bottom: 1px solid gray;
+        white-space: nowrap;
+        transition: border-bottom .5s;
+    }
+    .tags a:hover {
+        border-bottom: 3px dotted gray;
+        text-decoration: none;
+    }
+    #count > span {
+        margin: auto .2em;
+        font-weight: bold;
+    }
+</style>
+
+<!-- Count tags and categories -->
+<p id="count">
+        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
+        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
+</p>
+<script>
+    $('#count').appendTo('.count');
+</script>
+
+          
+        
       
     </div>
     
   </div>
   
     
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
-        <p><span>发布时间:</span>2018-10-01, 12:24:30</p>
-        <p><span>最后更新:</span>2018-10-31, 10:22:09</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/10/01/problem3/" title="freemarker判断对象是否为空">http://yoursite.com/2018/10/01/problem3/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/10/01/problem3/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
 
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/10/04/study4/">
-                    MYSQL limit,offset 区别
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/09/28/study3/">
-                    IDEA搭建和部署Maven项目
-                </a>
-            </div>
-        
-    </nav>
 
   
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
 
 
 
@@ -429,7 +435,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"freemarker判断对象是否为空　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"tags　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -463,26 +469,6 @@
 <!-- City�氲װ��������� -->
     
 
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2018/10/04/study4/" title="上一篇: MYSQL limit,offset 区别">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2018/09/28/study3/" title="下一篇: IDEA搭建和部署Maven项目">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
 
 
 
