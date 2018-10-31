@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/9 | Null指针的博客</title>
+  <title>为什么Java中1000==1000为false而100==100为true | Null指针的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my home!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Null指针的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/09/index.html">
+  <meta name="description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d); 运行结果如下  按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。 因此，后面一条语句">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么Java中1000==1000为false而100==100为true">
+<meta property="og:url" content="http://yoursite.com/2017/09/14/problem1/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="This is my home!">
+<meta property="og:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d); 运行结果如下  按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。 因此，后面一条语句">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-31T02:11:50.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Null指针的博客">
-<meta name="twitter:description" content="This is my home!">
+<meta name="twitter:title" content="为什么Java中1000==1000为false而100==100为true">
+<meta name="twitter:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d); 运行结果如下  按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。 因此，后面一条语句">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
   
@@ -157,36 +161,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-problem1" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      为什么Java中1000==1000为false而100==100为true
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/14/problem1/" class="archive-article-date">
+
+        
+        <a href="/2017/09/14/problem1/" class="archive-article-date">
   	<time datetime="2017-09-14T05:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-14</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/14/problem1/">为什么Java中1000==1000为false而100==100为true</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+		  	
+		  	
+		  	  <p>我们首先看下面一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer a = 1000,b=1000;</span><br><span class="line">System.out.println(a==b);</span><br><span class="line">Integer c = 100,d = 100;</span><br><span class="line">System.out.println(c==d);</span><br></pre></td></tr></table></figure>
+<p>运行结果如下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。</p>
+<p>因此，后面一条语句应该也是false。</p>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>我们看下Integer.java类，我们会发现有一个内部私有类，IntegerCache.java，它缓存了从-128~127之间的所有的整数对象。</p>
+<p>所以我们在声明类似——</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer c = 100;</span><br></pre></td></tr></table></figure>
+<p>的时候，它实际上在内部做的是——</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer i = Integer.valueOf(100);</span><br></pre></td></tr></table></figure>
+<p>我们看下valueOf()方法，可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> 1     /**</span><br><span class="line"> 2      * Returns an &#123;@code Integer&#125; instance representing the specified </span><br><span class="line"> 3      * &#123;@code int&#125; value.  If a new &#123;@code Integer&#125; instance is not </span><br><span class="line"> 4      * required, this method should generally be used in preference to</span><br><span class="line"> 5      * the constructor &#123;@link #Integer(int)&#125;, as this method is likely </span><br><span class="line"> 6      * to yield significantly better space and time performance by</span><br><span class="line"> 7      * caching frequently requested values.</span><br><span class="line"> 8      *</span><br><span class="line"> 9 * This method will always cache values in the range -128 to 127, </span><br><span class="line">10 * inclusive, and may cache other values outside of this range. </span><br><span class="line">11 * </span><br><span class="line">12 * @param i an &#123;@code int&#125; value. </span><br><span class="line">13 * @return an &#123;@code Integer&#125; instance representing &#123;@code i&#125;. </span><br><span class="line">14 * @since 1.5 </span><br><span class="line">15      */</span><br><span class="line">16     public static Integer valueOf(int i) &#123; </span><br><span class="line">17         if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high) </span><br><span class="line">18             return IntegerCache.cache[i + (-IntegerCache.low)]; </span><br><span class="line">19         return new Integer(i); </span><br><span class="line">20     &#125;</span><br></pre></td></tr></table></figure>
+<p>如果值的范围在-128~127之间，它就从高速缓存返回实例。</p>
+<p>所以——</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer c = 100,d = 100;</span><br></pre></td></tr></table></figure>
+<p>指向同一个对象，所以输出才会是true。</p>
 
-        <div class="article-info info-on-right">
-          
+		  	
+		  
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,57 +243,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/09/14/problem1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-02T16:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/09/01/study10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          String，StringBuilder，StringBuffer的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello hexo</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/hello-world/">Hello hexo</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -271,8 +374,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/9 | Null指针的博客</title>
+  <title>学习笔记——设计模式：MVC模式 | Null指针的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is my home!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Null指针的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/09/index.html">
+  <meta name="description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。 Model（模型）：指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记——设计模式：MVC模式">
+<meta property="og:url" content="http://yoursite.com/2018/10/01/study6/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="This is my home!">
+<meta property="og:description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。 Model（模型）：指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-31T02:02:45.115Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Null指针的博客">
-<meta name="twitter:description" content="This is my home!">
+<meta name="twitter:title" content="学习笔记——设计模式：MVC模式">
+<meta name="twitter:description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。 Model（模型）：指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
   
@@ -157,98 +161,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-study6" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/14/problem1/" class="archive-article-date">
-  	<time datetime="2017-09-14T05:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/14/problem1/">为什么Java中1000==1000为false而100==100为true</a>
+    <h1 class="article-title" itemprop="name">
+      学习笔记——设计模式：MVC模式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/10/01/study6/" class="archive-article-date">
+  	<time datetime="2018-09-30T17:11:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+		  	
+		  	
+		  	  <p>MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。</p>
+<p>MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。</p>
+<h4 id="Model（模型）："><a href="#Model（模型）：" class="headerlink" title="Model（模型）："></a>Model（模型）：</h4><p>指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型能为多个视图提供数据，由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。</p>
+<h4 id="View（视角）："><a href="#View（视角）：" class="headerlink" title="View（视角）："></a>View（视角）：</h4><p>指用户看到并与之交互的界面。比如由html元素组成的网页界面，或者软件的客户端界面。MVC的好处之一在于它能为应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，它只是作为一种输出数据并允许用户操纵的方式。</p>
+<h4 id="Controller（控制器）："><a href="#Controller（控制器）：" class="headerlink" title="Controller（控制器）："></a>Controller（控制器）：</h4><p>指控制器接受用户的输入并调用模型和视图去完成用户的需求，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后再确定用哪个视图来显示返回的数据。</p>
+<p>例子：</p>
+<p>步骤一：创建模型StaffModel.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> 1 package com.cxy.model;</span><br><span class="line"> 2 </span><br><span class="line"> 3 /**</span><br><span class="line"> 4  * @author cxy</span><br><span class="line"> 5  * @Description</span><br><span class="line"> 6  * @Date 2018/9/28 下午2:47</span><br><span class="line"> 7  */</span><br><span class="line"> 8 public class StaffModel &#123;</span><br><span class="line"> 9     private String name;</span><br><span class="line">10     private String sex;</span><br><span class="line">11     private int age;</span><br><span class="line">12 </span><br><span class="line">13     public String getName() &#123;</span><br><span class="line">14         return name;</span><br><span class="line">15     &#125;</span><br><span class="line">16 </span><br><span class="line">17     public void setName(String name) &#123;</span><br><span class="line">18         this.name = name;</span><br><span class="line">19     &#125;</span><br><span class="line">20 </span><br><span class="line">21     public String getSex() &#123;</span><br><span class="line">22         return sex;</span><br><span class="line">23     &#125;</span><br><span class="line">24 </span><br><span class="line">25     public void setSex(String sex) &#123;</span><br><span class="line">26         this.sex = sex;</span><br><span class="line">27     &#125;</span><br><span class="line">28 </span><br><span class="line">29     public int getAge() &#123;</span><br><span class="line">30         return age;</span><br><span class="line">31     &#125;</span><br><span class="line">32 </span><br><span class="line">33     public void setAge(int age) &#123;</span><br><span class="line">34         this.age = age;</span><br><span class="line">35     &#125;</span><br><span class="line">36 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤二：创建视图StaffView.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> 1 package com.cxy.view;</span><br><span class="line"> 2 </span><br><span class="line"> 3 import java.util.logging.Logger;</span><br><span class="line"> 4 </span><br><span class="line"> 5 /**</span><br><span class="line"> 6  * @author cxy</span><br><span class="line"> 7  * @Description</span><br><span class="line"> 8  * @Date 2018/9/28 下午2:52</span><br><span class="line"> 9  */</span><br><span class="line">10 public class StaffView &#123;</span><br><span class="line">11     public void printStaffInfo(String name,String sex,int age)&#123;</span><br><span class="line">12         System.out.println(&quot;Name:&quot;+name);</span><br><span class="line">13         System.out.println(&quot;sex:&quot;+sex);</span><br><span class="line">14         System.out.println(&quot;age:&quot;+age);</span><br><span class="line">15     &#125;</span><br><span class="line">16 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤三：创建控制器StaffController.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"> 1 package com.cxy.controller;</span><br><span class="line"> 2 </span><br><span class="line"> 3 import com.cxy.model.StaffModel;</span><br><span class="line"> 4 import com.cxy.view.StaffView;</span><br><span class="line"> 5 import jdk.nashorn.internal.objects.annotations.Constructor;</span><br><span class="line"> 6 </span><br><span class="line"> 7 /**</span><br><span class="line"> 8  * @author cxy</span><br><span class="line"> 9  * @Description</span><br><span class="line">10  * @Date 2018/9/28 下午2:58</span><br><span class="line">11  */</span><br><span class="line">12 public class StaffController &#123;</span><br><span class="line">13     private StaffModel staffModel;</span><br><span class="line">14     private StaffView staffView;</span><br><span class="line">15 </span><br><span class="line">16     public StaffController(StaffModel staffModel,StaffView staffView)&#123;</span><br><span class="line">17         this.staffModel = staffModel;</span><br><span class="line">18         this.staffView = staffView;</span><br><span class="line">19     &#125;</span><br><span class="line">20 </span><br><span class="line">21     public String getStaffName() &#123;</span><br><span class="line">22         return staffModel.getName();</span><br><span class="line">23     &#125;</span><br><span class="line">24 </span><br><span class="line">25     public void setStaffName(String name) &#123;</span><br><span class="line">26         staffModel.setName(name);</span><br><span class="line">27     &#125;</span><br><span class="line">28 </span><br><span class="line">29     public String getStaffSex() &#123;</span><br><span class="line">30         return staffModel.getSex();</span><br><span class="line">31     &#125;</span><br><span class="line">32     </span><br><span class="line">33     public void setStaffSex(String sex) &#123;</span><br><span class="line">34         staffModel.setSex(sex);</span><br><span class="line">35     &#125;</span><br><span class="line">36 </span><br><span class="line">37     public void setStaffAge(int age) &#123;</span><br><span class="line">38         staffModel.setAge(age);</span><br><span class="line">39     &#125;</span><br><span class="line">40 </span><br><span class="line">41     public int getStaffAge() &#123;</span><br><span class="line">42         return staffModel.getAge();</span><br><span class="line">43     &#125;</span><br><span class="line">44 </span><br><span class="line">45     public void printInfo()&#123;</span><br><span class="line">46         staffView.printStaffInfo(staffModel.getName(),staffModel.getSex(), 47        staffModel.getAge());</span><br><span class="line">48     &#125;</span><br><span class="line">49 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤四：创建测试类来演示MVC模式的用法StaffTest.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"> 1 package com.cxy.test;</span><br><span class="line"> 2 </span><br><span class="line"> 3 import com.cxy.controller.StaffController;</span><br><span class="line"> 4 import com.cxy.model.StaffModel;</span><br><span class="line"> 5 import com.cxy.view.StaffView;</span><br><span class="line"> 6 </span><br><span class="line"> 7 /**</span><br><span class="line"> 8  * @author cxy</span><br><span class="line"> 9  * @Description</span><br><span class="line">10  * @Date 2018/9/28 下午3:03</span><br><span class="line">11  */</span><br><span class="line">12 public class StaffTest &#123;</span><br><span class="line">13     public static void main(String[] argc)&#123;</span><br><span class="line">14         //获取角色数据</span><br><span class="line">15         StaffModel staffModel = createRole();</span><br><span class="line">16         //创建视图，展示角色信息到控制台</span><br><span class="line">17         StaffView staffView = new StaffView();</span><br><span class="line">18 </span><br><span class="line">19         StaffController staffController = new StaffController(staffModel,staffView);</span><br><span class="line">20 </span><br><span class="line">21         staffController.printInfo();</span><br><span class="line">22         </span><br><span class="line">23         //修改角色</span><br><span class="line">24         staffController.setStaffName(&quot;lyj&quot;);</span><br><span class="line">25         staffController.setStaffSex(&quot;女&quot;);</span><br><span class="line">26         staffController.setStaffAge(18);</span><br><span class="line">27         staffController.printInfo();</span><br><span class="line">28     &#125;</span><br><span class="line">29 </span><br><span class="line">30     public static StaffModel createRole()&#123;</span><br><span class="line">31         StaffModel staffModel = new StaffModel();</span><br><span class="line">32 </span><br><span class="line">33         staffModel.setName(&quot;cxy&quot;);</span><br><span class="line">34         staffModel.setSex(&quot;男&quot;);</span><br><span class="line">35         staffModel.setAge(25);</span><br><span class="line">36         return staffModel;</span><br><span class="line">37     &#125;</span><br><span class="line">38 &#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+
+		  	
+		  
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/01/study6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/hello-world/" class="archive-article-date">
-  	<time datetime="2017-09-02T16:08:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/10/11/study5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          在Windows上安装Maven
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/27/problem3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">freemarker判断对象是否为空</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/hello-world/">Hello hexo</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -271,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
