@@ -179,10 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式：</p>
+        <p>Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式：</p>
 <h4 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h4><p>普通方式接收</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/index&quot;)</span><br><span class="line">public String getUserName(String username) &#123;</span><br><span class="line">    System.out.println(&quot;username is:&quot;+username);</span><br><span class="line">    return &quot;index&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参数写在Controller的方法的形参中，适用于get, post方式提交。参数名必须和前台的一致。</p>
@@ -196,8 +193,6 @@ user.setName(request.getParameter(&quot;name&quot;));
 return user;
 </code></pre><p>  }<br><code>`</code></p>
 <h1 id="未完待续……"><a href="#未完待续……" class="headerlink" title="未完待续……"></a>未完待续……</h1>
-		  	
-		  
       
 
       

@@ -179,19 +179,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>首先我们看下String的源码</p>
-		  	  
-		         <a class="article-more-a" href="/2018/10/31/study10/#more">more</a>
-		      
-		  	
-		  
+        <h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>+
+        
+          <a class="article-more-a" href="/2018/10/31/study10/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -260,15 +255,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <h3 id="HSF："><a href="#HSF：" class="headerlink" title="HSF："></a>HSF：</h3><p>HSF为EDAS应用开发提供了一套分布式服务框架的解决方案，从应用层面提供统一的服务发布/调用支持，让开发者很容易的开发分布式的应用，不用考虑分布领域中的各种技术细节（远程通讯、性能消耗、调用的透明化、同步/异步调用方式的实现等等问题）</p>
-		  	  
-		         <a class="article-more-a" href="/2018/10/27/study7/#more">more</a>
-		      
-		  	
-		  
+        <h3 id="HSF："><a href="#HSF：" class="headerlink" title="HSF："></a>HSF：</h3><p>HSF为EDAS应用开发提供了一套分布式服务框架的解决方案，从应用层面提供统一的服务发布/调用支持，让开发者很容易的开发分布式的应用，不用考虑分布领域中的各种技术细节（远程通讯、性能消耗、调用的透明化、同步/异步调用方式的实现等等问题）</p>
+<h3 id="容器："><a href="#容器：" class="headerlink" title="容器："></a>容器：</h3><p>　　Ali-tomcat:</p>
+<p>　　　　与Apache Tomcat完全兼容的WebApp容器</p>
+<p>　　　　引入Pandora容器的类隔离机制解决EDAS依赖包与应用包冲突的问题</p>
+<p>　　Pandora: </p>
+<p>　　　　能够隔离EADS与应用之间的jar包依赖，保证两者互不受影响</p>
+<h3 id="配置中心："><a href="#配置中心：" class="headerlink" title="配置中心："></a>配置中心：</h3><p>　　Address-Server：地址中心，寻址Config-Server和Diamond-Server</p>
+<p>　　Diamond-Server：动态配置变更推送</p>
+<p>　　优势特性：</p>
+<ul>
+<li>高效性</li>
+</ul>
+<p>　　　　　　基于推拉结合的方式，实现配置动态变更实时推送</p>
+<ul>
+<li>可靠性</li>
+</ul>
+<p>　　　　　　通过客户端、服务端多级容灾，实现系统的高可用</p>
+<ul>
+<li>易扩展</li>
+</ul>
+<p>　　　　　　配置数据在集群单节点上全量分布，实现节点无状态</p>
+<h4 id="Config-Server"><a href="#Config-Server" class="headerlink" title="　Config-Server:　　"></a>　Config-Server:　　</h4><p>　　　用于HSF服务数据的发布订阅　　　</p>
+<p>　　　优势特性：</p>
+<h5 id="1、无Master"><a href="#1、无Master" class="headerlink" title="　　  1、无Master"></a>　　  1、无Master</h5><p>　　　　　　ConfigServer基于无Master架构不存在单点问题</p>
+<h5 id="2、自动聚合"><a href="#2、自动聚合" class="headerlink" title="　　　2、自动聚合"></a>　　　2、自动聚合</h5><p>　　　　　　ConfigServer支持数据的自动聚合</p>
+<h5 id="3、实时"><a href="#3、实时" class="headerlink" title="　　　3、实时"></a>　　　3、实时</h5><p>　　　　　　服务端在订阅关系变化时，会主动推送配置数据到客户端</p>
+
       
 
       
@@ -341,15 +354,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>首先给大家看张图</p>
-		  	  
-		         <a class="article-more-a" href="/2018/10/10/problem0/#more">more</a>
-		      
-		  	
-		  
+        <p>首先给大家看张图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-e771d3e140a7f072.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>这是我最近degubber启动项目时遇到的问题。</p>
+<h3 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h3><p>根据语义，断点打在了方法上面。</p>
+<h3 id="引起的问题："><a href="#引起的问题：" class="headerlink" title="引起的问题："></a>引起的问题：</h3><p>导致项目启动变慢，IDEA调试会越来越慢。</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>Ctrl+shift+F8打开Breakpoints面板，如图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-94c98d7cd1c962a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>由此，我们可以清晰看到有一个断点在方法上，我们只要将方法前面的勾去掉就行了</p>
+
       
 
       
@@ -422,15 +435,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <h5 id="首先看下表"><a href="#首先看下表" class="headerlink" title="首先看下表"></a>首先看下表</h5><p><img src="https://upload-images.jianshu.io/upload_images/14481291-7330db7d31a2d3ea.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="user表"></p>
-		  	  
-		         <a class="article-more-a" href="/2018/10/04/study4/#more">more</a>
-		      
-		  	
-		  
+        <h5 id="首先看下表"><a href="#首先看下表" class="headerlink" title="首先看下表"></a>首先看下表</h5><p><img src="https://upload-images.jianshu.io/upload_images/14481291-7330db7d31a2d3ea.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="user表"></p>
+<p>执行下面SQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*</span><br><span class="line">FROM</span><br><span class="line">	`user`</span><br><span class="line">WHERE</span><br><span class="line">	sex = 1</span><br></pre></td></tr></table></figure></p>
+<p>结果<br><img src="https://upload-images.jianshu.io/upload_images/14481291-b602b5ec694254f3.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果0"><br>再来看下下面的SQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*</span><br><span class="line">FROM</span><br><span class="line">	`user`</span><br><span class="line">WHERE</span><br><span class="line">	sex = 1</span><br><span class="line">LIMIT 2,</span><br><span class="line"> 2</span><br></pre></td></tr></table></figure></p>
+<p>结果<br><img src="https://upload-images.jianshu.io/upload_images/14481291-b8fa2b408cff271a.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果1"><br>由此可以看出，limit后面是从第2条开始读，读取2条信息。<br>最后看下下面的SQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">	*</span><br><span class="line">FROM</span><br><span class="line">	`user`</span><br><span class="line">WHERE</span><br><span class="line">	sex = 1</span><br><span class="line">LIMIT 2</span><br><span class="line"> OFFSET 1</span><br></pre></td></tr></table></figure></p>
+<p>结果<br><img src="https://upload-images.jianshu.io/upload_images/14481291-981149e14541943a.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结果2"><br>由此可知，limit后面跟的是2条数据，offset后面是从第1条开始读取</p>
+
       
 
       
@@ -503,15 +513,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>一、freemarker中显示某对象使用${object}</p>
-		  	  
-		         <a class="article-more-a" href="/2018/10/01/problem3/#more">more</a>
-		      
-		  	
-		  
+        <p>一、freemarker中显示某对象使用${object}</p>
+<p>例：</p>
+<p><code>&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=&quot;${TOPIC_NAME}&quot;&gt;</code></p>
+<p>二、如果对象出现null值，freemarker就会报错，可以通过判断来对象是否为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;#if object??&gt;</span><br><span class="line">2 </span><br><span class="line">3    ......</span><br><span class="line">4 </span><br><span class="line">5     &lt;#else&gt;</span><br><span class="line">6 </span><br><span class="line">7    ......</span><br><span class="line">8 </span><br><span class="line">9 &lt;/#if&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以通过设置默认值${object!””}，如果object为null，页面就会显示”“</p>
+<p><code>&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=${TOPIC_NAME!&quot;如果TOPIC_NAME为null，显示&quot;}&gt;</code></p>
+<p>三、如果对象导航为null，可以通过${(map.name)!”如果map为null或者name为null，显示”}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;#--加上括号，感叹号解决对象导航为空的问题--&gt;</span><br><span class="line">&lt;input class=&quot;easyui-textbox&quot; id=&quot;&quot; value=$&#123;(map.name)!&quot;map为null或者name为null&quot;&#125;&gt;</span><br></pre></td></tr></table></figure>
+<p>四、总结</p>
+<p>！可以解决null</p>
+<p>！可以解决未定义的问题</p>
+<p>！和（）可以解决对象导航的问题</p>
+
       
 
       
@@ -584,19 +599,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <h4 id="创建Maven项目"><a href="#创建Maven项目" class="headerlink" title="创建Maven项目"></a>创建Maven项目</h4><ol>
-		  	  
-		         <a class="article-more-a" href="/2018/09/28/study3/#more">more</a>
-		      
-		  	
-		  
+        <h4 id="创建Maven项目"><a href="#创建Maven项目" class="headerlink" title="创建Maven项目"></a>创建Maven项目</h4><ol>
+<li>File-&gt;New-&gt;Project<br><img src="https://upload-images.jianshu.io/upload_images/14481291-b2ce9755f06fe2d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第1步"></li>
+<li>点击Maven项目，并选择archetype-webapp，然后next<br><img src="https://upload-images.jianshu.io/upload_images/14481291-63f3cd1a32be845e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第2步"></li>
+<li>输入 groupId 和 ArtifactId ，一个是组，一个是项目名称 ，version默认就行，然后next<br><img src="https://upload-images.jianshu.io/upload_images/14481291-f6cfeea4dcfdd197.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第3步"></li>
+<li>选择maven的根目录、settings.xml文件和本地仓库的位置，根据个人路径配置。添加一个archetypeCatalog=internal的属性。这个参数的意义是让这个maven项目的骨架不要到远程下载而是本地获取。如果你没加这个参数，那么项目创建可能在卡在downloading maven plugins…点击Next<br><img src="https://upload-images.jianshu.io/upload_images/14481291-446ff8ba88bbf4e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第4步"></li>
+<li>项目名，finish<br><img src="https://upload-images.jianshu.io/upload_images/14481291-f7f40ec8d4858cdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第5步"></li>
+<li>查看项目的结构<br><img src="https://upload-images.jianshu.io/upload_images/14481291-97a1b5c207e676b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="项目目录结构"><br>PS:新创建的Maven项目是没有resources文件夹的，可以通过以下方式添加</li>
+</ol>
+<ul>
+<li>File-&gt;Project Structure<br><img src="https://upload-images.jianshu.io/upload_images/14481291-b37c9272b19b162f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="one"></li>
+<li>打开Project Structure，选择Modules<br><img src="https://upload-images.jianshu.io/upload_images/14481291-dcf227b7f1f93b5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="two"></li>
+<li>选择New Folder<br><img src="https://upload-images.jianshu.io/upload_images/14481291-3e0dad9cccc2e625.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="three"></li>
+<li>输入folder name<br><img src="https://upload-images.jianshu.io/upload_images/14481291-1f3a15873d4fd5af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="four"></li>
+<li>选择Resources文件资源类型,然后apply<br><img src="https://upload-images.jianshu.io/upload_images/14481291-fc673dd94f2c121a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="five"></li>
+</ul>
+<ol start="7">
+<li>Terminal终端输入mvn clean install，编译打包成功，显示BUILD SUCCESS字样<br><img src="https://upload-images.jianshu.io/upload_images/14481291-1f22318ff1f6b82b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="打包"></li>
+<li>打包后根目录下出现target目录<br><img src="https://upload-images.jianshu.io/upload_images/14481291-668a39b024664581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="target"></li>
+<li>部署到Tomcat<br><img src="https://upload-images.jianshu.io/upload_images/14481291-ed361eb5e169b42c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="给项目添加Tomcat 服务器"></li>
+<li>选择local<br><img src="https://upload-images.jianshu.io/upload_images/14481291-006e2f85e730efed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择Tomcat"></li>
+<li>修改Name，可以不修改，选择Tomcat、jdk，以及端口。将打包好的war包部署到Tomcat，点击apply<br><img src="https://upload-images.jianshu.io/upload_images/14481291-4a087f08e541b67b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Server"><br><img src="https://upload-images.jianshu.io/upload_images/14481291-bbdea2ac31dd6db5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Deployment"></li>
+<li>Run运行，浏览器跳出页面，输出Hello World，项目发布成功<br><img src="https://upload-images.jianshu.io/upload_images/14481291-0e9396c8e15c7209.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Hello World"></li>
+</ol>
+
       
 
       
-    </ol></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -665,15 +695,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>一、检查JDK 安装</p>
-		  	  
-		         <a class="article-more-a" href="/2018/09/15/study5/#more">more</a>
-		      
-		  	
-		  
+        <p>一、检查JDK 安装</p>
+<p>在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：</p>
+<p>打开cmd窗口，运行以下命令可以查看Java安装。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-15e5b1d22730f2a7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>二、下载Maven<br>Maven官网下载地址：<a href="http://maven.apache.org/download.html" target="_blank" rel="noopener">http://maven.apache.org/download.html</a></p>
+<p>三、本地安装<br>将下载的zip包解压到指定目录，我的是D:\apache-maven-3.5.2</p>
+<p>接着设置环境变量：</p>
+<p>1、右击“我的电脑”-&gt;“属性”，单机高级系统设置，选择“坏境变量”，在系统变量中新建一个变量M2_HOME，变量值为Maven的安装目录：D:\apache-maven-3.5.2</p>
+<p>2、在系统变量中path变量后面添加%M2_HOME%\bin;注意：多个变量之间用英文分号隔开</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-1d3b0835caa3389c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>3、查看Maven安装情况</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-268e01bfa162c4ab?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image">     </p>
+
       
 
       
@@ -746,15 +780,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式：</p>
-		  	  
-		         <a class="article-more-a" href="/2018/08/31/study9/#more">more</a>
-		      
-		  	
-		  
+        <p>Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式：</p>
+<h4 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h4><p>普通方式接收</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/index&quot;)</span><br><span class="line">public String getUserName(String username) &#123;</span><br><span class="line">    System.out.println(&quot;username is:&quot;+username);</span><br><span class="line">    return &quot;index&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参数写在Controller的方法的形参中，适用于get, post方式提交。参数名必须和前台的一致。</p>
+<h4 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h4><p>接收HttpServletRequest<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/index&quot;)</span><br><span class="line">@ResponseBody</span><br><span class="line">public String getUserName(HttpServletRequest request) &#123;</span><br><span class="line">     String username = request.getParameter(&quot;username&quot;);</span><br><span class="line">     return username;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以通过getParameter()获取POST/GET传递的参数值；它用于客户端重定向时，即点击了链接或提交按扭时传值用，即用于在用表单或url重定向传值时接收数据。getParameter只是应用服务器在分析你送上来的request页面的文本时，取得你设在表单或url重定向时的值。</p>
+<h4 id="方式三："><a href="#方式三：" class="headerlink" title="方式三："></a>方式三：</h4><p>通过@RequestParam注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  @RequestMapping(value=&quot;/index&quot;)</span><br><span class="line">  public String getUserName(@RequestParam(value=&quot;name&quot;,required=false)String username, Model model)&#123;</span><br><span class="line">       System.out.println(username);</span><br><span class="line">       model.addAttribute(&quot;hello&quot;, &quot;这是用action传过来的值：&quot;+ username);</span><br><span class="line">       return &quot;index&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">#### 方式四：</span><br><span class="line">通过bean来接收json</span><br></pre></td></tr></table></figure></p>
+<p>  @RequestMapping(“/index”)<br>  public @ResponseBody User getUserName(@RequestBody User u) {<br>      System.out.pringln(“name: “ + u.getName());</p>
+<pre><code>User user = new User();
+user.setName(request.getParameter(&quot;name&quot;));
+
+return user;
+</code></pre><p>  }<br><code>`</code></p>
+<h1 id="未完待续……"><a href="#未完待续……" class="headerlink" title="未完待续……"></a>未完待续……</h1>
       
 
       
@@ -827,15 +866,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>打开Navicat for mysql有时候会显示下图情况</p>
-		  	  
-		         <a class="article-more-a" href="/2018/08/15/problem2/#more">more</a>
-		      
-		  	
-		  
+        <p>打开Navicat for mysql有时候会显示下图情况</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-93c81bc2348788a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>根据字义：显示libmysql_e.dll这个文件没有找到</p>
+<p>下载：链接:<a href="https://pan.baidu.com/s/1w_Od50wEoIZUM8q2X37MMQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1w_Od50wEoIZUM8q2X37MMQ</a>  密码:vfnj</p>
+<p>将下载的libmysql_e.dll文件复制粘贴到Navicat for MySQL文件夹下</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-d9d930bb506d7240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+
       
 
       
@@ -908,15 +945,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-      
-		  	
-		  	
-		  	  <p>MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。</p>
-		  	  
-		         <a class="article-more-a" href="/2018/08/04/study6/#more">more</a>
-		      
-		  	
-		  
+        <p>MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。</p>
+<p>MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。</p>
+<h4 id="Model（模型）："><a href="#Model（模型）：" class="headerlink" title="Model（模型）："></a>Model（模型）：</h4><p>指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型能为多个视图提供数据，由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。</p>
+<h4 id="View（视角）："><a href="#View（视角）：" class="headerlink" title="View（视角）："></a>View（视角）：</h4><p>指用户看到并与之交互的界面。比如由html元素组成的网页界面，或者软件的客户端界面。MVC的好处之一在于它能为应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，它只是作为一种输出数据并允许用户操纵的方式。</p>
+<h4 id="Controller（控制器）："><a href="#Controller（控制器）：" class="headerlink" title="Controller（控制器）："></a>Controller（控制器）：</h4><p>指控制器接受用户的输入并调用模型和视图去完成用户的需求，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后再确定用哪个视图来显示返回的数据。</p>
+<p>例子：</p>
+<p>步骤一：创建模型StaffModel.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.model;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午2:47</span><br><span class="line"> */</span><br><span class="line">public class StaffModel &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String sex;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getSex() &#123;</span><br><span class="line">        return sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSex(String sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤二：创建视图StaffView.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.view;</span><br><span class="line"></span><br><span class="line">import java.util.logging.Logger;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午2:52</span><br><span class="line"> */</span><br><span class="line">public class StaffView &#123;</span><br><span class="line">    public void printStaffInfo(String name,String sex,int age)&#123;</span><br><span class="line">        System.out.println(&quot;Name:&quot;+name);</span><br><span class="line">        System.out.println(&quot;sex:&quot;+sex);</span><br><span class="line">        System.out.println(&quot;age:&quot;+age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤三：创建控制器StaffController.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.controller;</span><br><span class="line"></span><br><span class="line">import com.cxy.model.StaffModel;</span><br><span class="line">import com.cxy.view.StaffView;</span><br><span class="line">import jdk.nashorn.internal.objects.annotations.Constructor;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午2:58</span><br><span class="line"> */</span><br><span class="line">public class StaffController &#123;</span><br><span class="line">    private StaffModel staffModel;</span><br><span class="line">    private StaffView staffView;</span><br><span class="line"></span><br><span class="line">    public StaffController(StaffModel staffModel,StaffView staffView)&#123;</span><br><span class="line">        this.staffModel = staffModel;</span><br><span class="line">        this.staffView = staffView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStaffName() &#123;</span><br><span class="line">        return staffModel.getName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStaffName(String name) &#123;</span><br><span class="line">        staffModel.setName(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStaffSex() &#123;</span><br><span class="line">        return staffModel.getSex();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void setStaffSex(String sex) &#123;</span><br><span class="line">        staffModel.setSex(sex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStaffAge(int age) &#123;</span><br><span class="line">        staffModel.setAge(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getStaffAge() &#123;</span><br><span class="line">        return staffModel.getAge();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void printInfo()&#123;</span><br><span class="line">        staffView.printStaffInfo(staffModel.getName(),staffModel.getSex(), 47        staffModel.getAge());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>步骤四：创建测试类来演示MVC模式的用法StaffTest.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.test;</span><br><span class="line"></span><br><span class="line">import com.cxy.controller.StaffController;</span><br><span class="line">import com.cxy.model.StaffModel;</span><br><span class="line">import com.cxy.view.StaffView;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午3:03</span><br><span class="line"> */</span><br><span class="line">public class StaffTest &#123;</span><br><span class="line">    public static void main(String[] argc)&#123;</span><br><span class="line">        //获取角色数据</span><br><span class="line">        StaffModel staffModel = createRole();</span><br><span class="line">        //创建视图，展示角色信息到控制台</span><br><span class="line">        StaffView staffView = new StaffView();</span><br><span class="line"></span><br><span class="line">        StaffController staffController = new StaffController(staffModel,staffView);</span><br><span class="line"></span><br><span class="line">        staffController.printInfo();</span><br><span class="line">        </span><br><span class="line">        //修改角色</span><br><span class="line">        staffController.setStaffName(&quot;lyj&quot;);</span><br><span class="line">        staffController.setStaffSex(&quot;女&quot;);</span><br><span class="line">        staffController.setStaffAge(18);</span><br><span class="line">        staffController.printInfo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static StaffModel createRole()&#123;</span><br><span class="line">        StaffModel staffModel = new StaffModel();</span><br><span class="line"></span><br><span class="line">        staffModel.setName(&quot;cxy&quot;);</span><br><span class="line">        staffModel.setSex(&quot;男&quot;);</span><br><span class="line">        staffModel.setAge(25);</span><br><span class="line">        return staffModel;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+
       
 
       
