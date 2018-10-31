@@ -179,14 +179,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>+
+        <h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>首先我们看下String的源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/** The value is used for character storage. */ </span><br><span class="line">private final char value[];</span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2018/10/31/study10/#more">more >></a>
         
       
 
       
-    </p></div>
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -256,32 +257,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="HSF："><a href="#HSF：" class="headerlink" title="HSF："></a>HSF：</h3><p>HSF为EDAS应用开发提供了一套分布式服务框架的解决方案，从应用层面提供统一的服务发布/调用支持，让开发者很容易的开发分布式的应用，不用考虑分布领域中的各种技术细节（远程通讯、性能消耗、调用的透明化、同步/异步调用方式的实现等等问题）</p>
-<h3 id="容器："><a href="#容器：" class="headerlink" title="容器："></a>容器：</h3><p>　　Ali-tomcat:</p>
-<p>　　　　与Apache Tomcat完全兼容的WebApp容器</p>
-<p>　　　　引入Pandora容器的类隔离机制解决EDAS依赖包与应用包冲突的问题</p>
-<p>　　Pandora: </p>
-<p>　　　　能够隔离EADS与应用之间的jar包依赖，保证两者互不受影响</p>
-<h3 id="配置中心："><a href="#配置中心：" class="headerlink" title="配置中心："></a>配置中心：</h3><p>　　Address-Server：地址中心，寻址Config-Server和Diamond-Server</p>
-<p>　　Diamond-Server：动态配置变更推送</p>
-<p>　　优势特性：</p>
-<ul>
-<li>高效性</li>
-</ul>
-<p>　　　　　　基于推拉结合的方式，实现配置动态变更实时推送</p>
-<ul>
-<li>可靠性</li>
-</ul>
-<p>　　　　　　通过客户端、服务端多级容灾，实现系统的高可用</p>
-<ul>
-<li>易扩展</li>
-</ul>
-<p>　　　　　　配置数据在集群单节点上全量分布，实现节点无状态</p>
-<h4 id="Config-Server"><a href="#Config-Server" class="headerlink" title="　Config-Server:　　"></a>　Config-Server:　　</h4><p>　　　用于HSF服务数据的发布订阅　　　</p>
-<p>　　　优势特性：</p>
-<h5 id="1、无Master"><a href="#1、无Master" class="headerlink" title="　　  1、无Master"></a>　　  1、无Master</h5><p>　　　　　　ConfigServer基于无Master架构不存在单点问题</p>
-<h5 id="2、自动聚合"><a href="#2、自动聚合" class="headerlink" title="　　　2、自动聚合"></a>　　　2、自动聚合</h5><p>　　　　　　ConfigServer支持数据的自动聚合</p>
-<h5 id="3、实时"><a href="#3、实时" class="headerlink" title="　　　3、实时"></a>　　　3、实时</h5><p>　　　　　　服务端在订阅关系变化时，会主动推送配置数据到客户端</p>
-
+        
+          <a class="article-more-a" href="/2018/10/27/study7/#more">more >></a>
+        
       
 
       
@@ -1111,11 +1089,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
