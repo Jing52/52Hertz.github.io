@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>学习笔记——Spring MVC接收前端入参数据的方式 | Null指针的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式： 方式一：普通方式接收 123451 @RequestMapping(&amp;quot;/index&amp;quot;)2 public String getUserName(String username) &amp;#123;3     System.out.println(&amp;quot;username is:&amp;quot;">
+  <meta name="description" content="Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式： 方式一：普通方式接收 12345@RequestMapping(&amp;quot;/index&amp;quot;)public String getUserName(String username) &amp;#123;    System.out.println(&amp;quot;username is:&amp;quot;+usern">
 <meta name="keywords" content="Spring MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习笔记——Spring MVC接收前端入参数据的方式">
 <meta property="og:url" content="http://yoursite.com/2018/08/31/study9/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式： 方式一：普通方式接收 123451 @RequestMapping(&amp;quot;/index&amp;quot;)2 public String getUserName(String username) &amp;#123;3     System.out.println(&amp;quot;username is:&amp;quot;">
+<meta property="og:description" content="Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式： 方式一：普通方式接收 12345@RequestMapping(&amp;quot;/index&amp;quot;)public String getUserName(String username) &amp;#123;    System.out.println(&amp;quot;username is:&amp;quot;+usern">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T02:26:55.942Z">
+<meta property="og:updated_time" content="2018-10-31T02:52:07.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习笔记——Spring MVC接收前端入参数据的方式">
-<meta name="twitter:description" content="Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式： 方式一：普通方式接收 123451 @RequestMapping(&amp;quot;/index&amp;quot;)2 public String getUserName(String username) &amp;#123;3     System.out.println(&amp;quot;username is:&amp;quot;">
+<meta name="twitter:description" content="Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式： 方式一：普通方式接收 12345@RequestMapping(&amp;quot;/index&amp;quot;)public String getUserName(String username) &amp;#123;    System.out.println(&amp;quot;username is:&amp;quot;+usern">
   
     <link rel="alternative" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
   
@@ -184,12 +184,17 @@
 		  	
 		  	  <p>Spring MVC开发中，接收前端参数并解析参数是非常重要的，我总结了如下接收参数的方式：</p>
 <h4 id="方式一："><a href="#方式一：" class="headerlink" title="方式一："></a>方式一：</h4><p>普通方式接收</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 @RequestMapping(&quot;/index&quot;)</span><br><span class="line">2 public String getUserName(String username) &#123;</span><br><span class="line">3     System.out.println(&quot;username is:&quot;+username);</span><br><span class="line">4     return &quot;index&quot;;</span><br><span class="line">5 &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/index&quot;)</span><br><span class="line">public String getUserName(String username) &#123;</span><br><span class="line">    System.out.println(&quot;username is:&quot;+username);</span><br><span class="line">    return &quot;index&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参数写在Controller的方法的形参中，适用于get, post方式提交。参数名必须和前台的一致。</p>
-<h4 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h4><p>接收HttpServletRequest<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 @RequestMapping(&quot;/index&quot;)</span><br><span class="line">2 @ResponseBody</span><br><span class="line">3 public String getUserName(HttpServletRequest request) &#123;</span><br><span class="line">4      String username = request.getParameter(&quot;username&quot;);</span><br><span class="line">5      return username;</span><br><span class="line">6 &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h4><p>接收HttpServletRequest<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/index&quot;)</span><br><span class="line">@ResponseBody</span><br><span class="line">public String getUserName(HttpServletRequest request) &#123;</span><br><span class="line">     String username = request.getParameter(&quot;username&quot;);</span><br><span class="line">     return username;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可以通过getParameter()获取POST/GET传递的参数值；它用于客户端重定向时，即点击了链接或提交按扭时传值用，即用于在用表单或url重定向传值时接收数据。getParameter只是应用服务器在分析你送上来的request页面的文本时，取得你设在表单或url重定向时的值。</p>
-<h4 id="方式三："><a href="#方式三：" class="headerlink" title="方式三："></a>方式三：</h4><p>通过@RequestParam注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1 @RequestMapping(value=&quot;/index&quot;)</span><br><span class="line">2 public String getUserName(@RequestParam(value=&quot;name&quot;,required=false)String username, Model model)&#123;</span><br><span class="line">3      System.out.println(username);</span><br><span class="line">4      model.addAttribute(&quot;hello&quot;, &quot;这是用action传过来的值：&quot;+ username);</span><br><span class="line">5      return &quot;index&quot;;</span><br><span class="line">6 &#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">#### 方式四：</span><br><span class="line">通过bean来接收json</span><br></pre></td></tr></table></figure></p>
-<p>1 @RequestMapping(“/index”)<br>2 public @ResponseBody User getUserName(@RequestBody User u) {<br>3     System.out.pringln(“name: “ + u.getName());<br>4<br>5     User user = new User();<br>6     user.setName(request.getParameter(“name”));<br>7<br>8     return user;<br>9 }<br><code>`</code></p>
+<h4 id="方式三："><a href="#方式三：" class="headerlink" title="方式三："></a>方式三：</h4><p>通过@RequestParam注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  @RequestMapping(value=&quot;/index&quot;)</span><br><span class="line">  public String getUserName(@RequestParam(value=&quot;name&quot;,required=false)String username, Model model)&#123;</span><br><span class="line">       System.out.println(username);</span><br><span class="line">       model.addAttribute(&quot;hello&quot;, &quot;这是用action传过来的值：&quot;+ username);</span><br><span class="line">       return &quot;index&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">#### 方式四：</span><br><span class="line">通过bean来接收json</span><br></pre></td></tr></table></figure></p>
+<p>  @RequestMapping(“/index”)<br>  public @ResponseBody User getUserName(@RequestBody User u) {<br>      System.out.pringln(“name: “ + u.getName());</p>
+<pre><code>User user = new User();
+user.setName(request.getParameter(&quot;name&quot;));
+
+return user;
+</code></pre><p>  }<br><code>`</code></p>
 <h1 id="未完待续……"><a href="#未完待续……" class="headerlink" title="未完待续……"></a>未完待续……</h1>
 		  	
 		  
