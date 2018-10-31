@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>String，StringBuilder，StringBuffer的区别 | Null指针的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="可变性首先我们看下String的源码 123456789101112131415/** The value is used for character storage. */ private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和变量（包">
+  <meta name="description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[]; 由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。   注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量） 　　1、当用final修">
 <meta name="keywords" content="Spring MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="String，StringBuilder，StringBuffer的区别">
 <meta property="og:url" content="http://yoursite.com/2018/10/31/study10/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="可变性首先我们看下String的源码 123456789101112131415/** The value is used for character storage. */ private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和变量（包">
+<meta property="og:description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[]; 由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。   注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量） 　　1、当用final修">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T02:55:43.421Z">
+<meta property="og:updated_time" content="2018-10-31T02:58:05.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String，StringBuilder，StringBuffer的区别">
-<meta name="twitter:description" content="可变性首先我们看下String的源码 123456789101112131415/** The value is used for character storage. */ private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和变量（包">
+<meta name="twitter:description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[]; 由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。   注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量） 　　1、当用final修">
   
     <link rel="alternative" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
   
@@ -183,66 +183,24 @@
 		  	
 		  	
 		  	  <h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>首先我们看下String的源码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/** The value is used for character storage. */ </span><br><span class="line">private final char value[];  </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  </span><br><span class="line"></span><br><span class="line">注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）</span><br><span class="line"></span><br><span class="line">　　1、当用final修饰一个类时，表明这个类不能被继承。也就是说，如果一个类你永远不会让他被继承，就可以用final进行修饰。</span><br><span class="line"></span><br><span class="line">　　2、final修饰的方法不能被重写。</span><br><span class="line"></span><br><span class="line">　　3、当final修饰一个基本数据类型时，表示该基本数据类型的值一旦在初始化后便不能发生变化；如果final修饰一个引用类型时，则在对其初始化之后便不能再让其指向其他对象了，但该引用所指向的对象的内容是可以发生变化的。</span><br><span class="line"></span><br><span class="line">再来看下StringBuilder，StringBuffer的源码</span><br></pre></td></tr></table></figure>
-<p>   public final class StringBuilder<br>             extends AbstractStringBuilder<br>             implements java.io.Serializable, CharSequence<br>   {<br>       …<br>   }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>  public final class StringBuffer<br>            extends AbstractStringBuilder<br>            implements java.io.Serializable, CharSequence<br>  {<br>        …<br>   }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">由源码可以看出，StringBuilder、StringBuffer都继承自AbstractStringBuilder类，我们接下来再看下AbstractStringBuilder类的源码</span><br></pre></td></tr></table></figure></p>
-<p>  /**</p>
-<pre><code> * The value is used for character storage. 
- */
-char[] value;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">由源码可以看出，StringBuilder、StringBuffer在AbstractStringBuilder中也是使用字符数组保存字符串的，但是这两种都是可变的。</span><br><span class="line"></span><br><span class="line">## 线程安全性</span><br><span class="line"></span><br><span class="line">String中的对象是不可变的，也可以理解为常量，线程安全的。</span><br><span class="line"></span><br><span class="line">接下来我们继续看下StringBuffer源码，我在这随机截取了源码中的一些方法</span><br></pre></td></tr></table></figure>
-<p>   /**</p>
-<pre><code>  * @throws StringIndexOutOfBoundsException {@inheritDoc}
-  * @since      1.2
-  */
- @Override
- public synchronized String substring(int start, int end) {
-     return super.substring(start, end);
- }
-
-/**     
-   * @throws StringIndexOutOfBoundsException {@inheritDoc}      
-   */     
-  @Override     
-  public synchronized StringBuffer insert(int offset, Object obj) {                             
-      toStringCache = null; 
-      super.insert(offset, String.valueOf(obj));         
-      return this;     
-   }      
-
-/**      
-  * @since      1.4      
-  */     
-  @Override     
-  public int indexOf(String str) {         
-      // Note, synchronization achieved via invocations of other                          
-      StringBuffer methods   
-      return super.indexOf(str);     
-  }
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">由源代码可以看出StringBuffer对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。</span><br><span class="line"></span><br><span class="line">再来看下StringBuilder源码中的一些方法</span><br></pre></td></tr></table></figure>
-<pre><code>@Override
-public StringBuilder append(Object obj) {
-    return append(String.valueOf(obj));    
- }
-
-/**
- * @throws StringIndexOutOfBoundsException {@inheritDoc}
- */
-@Override      
- public StringBuilder insert(int index, char[] str, int offset, int len)  { 
-     super.insert(index, str, offset, len); 
-     return this; 
- } 
-
-/** 
-  * @throws StringIndexOutOfBoundsException {@inheritDoc} 
-  */
-  @Override 
-  public StringBuilder replace(int start, int end, String str) { 
-      super.replace(start, end, str); 
-      return this; 
-  }
-</code></pre><p><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/** The value is used for character storage. */ </span><br><span class="line">private final char value[];</span><br></pre></td></tr></table></figure>
+<p>由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  </p>
+<p>注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）</p>
+<p>　　1、当用final修饰一个类时，表明这个类不能被继承。也就是说，如果一个类你永远不会让他被继承，就可以用final进行修饰。</p>
+<p>　　2、final修饰的方法不能被重写。</p>
+<p>　　3、当final修饰一个基本数据类型时，表示该基本数据类型的值一旦在初始化后便不能发生变化；如果final修饰一个引用类型时，则在对其初始化之后便不能再让其指向其他对象了，但该引用所指向的对象的内容是可以发生变化的。</p>
+<p>再来看下StringBuilder，StringBuffer的源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public final class StringBuilder </span><br><span class="line">          extends AbstractStringBuilder </span><br><span class="line">          implements java.io.Serializable, CharSequence </span><br><span class="line">&#123; </span><br><span class="line">    ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public final class StringBuffer </span><br><span class="line">          extends AbstractStringBuilder </span><br><span class="line">          implements java.io.Serializable, CharSequence </span><br><span class="line">&#123; </span><br><span class="line">      ... </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>由源码可以看出，StringBuilder、StringBuffer都继承自AbstractStringBuilder类，我们接下来再看下AbstractStringBuilder类的源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * The value is used for character storage. </span><br><span class="line">   */</span><br><span class="line">  char[] value;</span><br></pre></td></tr></table></figure>
+<p>由源码可以看出，StringBuilder、StringBuffer在AbstractStringBuilder中也是使用字符数组保存字符串的，但是这两种都是可变的。</p>
+<h2 id="线程安全性"><a href="#线程安全性" class="headerlink" title="线程安全性"></a>线程安全性</h2><p>String中的对象是不可变的，也可以理解为常量，线程安全的。</p>
+<p>接下来我们继续看下StringBuffer源码，我在这随机截取了源码中的一些方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * @throws StringIndexOutOfBoundsException &#123;@inheritDoc&#125;</span><br><span class="line">   * @since      1.2</span><br><span class="line">   */</span><br><span class="line">  @Override</span><br><span class="line">  public synchronized String substring(int start, int end) &#123;</span><br><span class="line">      return super.substring(start, end);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> /**     </span><br><span class="line">    * @throws StringIndexOutOfBoundsException &#123;@inheritDoc&#125;      </span><br><span class="line">    */     </span><br><span class="line">   @Override     </span><br><span class="line">   public synchronized StringBuffer insert(int offset, Object obj) &#123;                             </span><br><span class="line">       toStringCache = null; </span><br><span class="line">       super.insert(offset, String.valueOf(obj));         </span><br><span class="line">       return this;     </span><br><span class="line">    &#125;      </span><br><span class="line"></span><br><span class="line"> /**      </span><br><span class="line">   * @since      1.4      </span><br><span class="line">   */     </span><br><span class="line">   @Override     </span><br><span class="line">   public int indexOf(String str) &#123;         </span><br><span class="line">       // Note, synchronization achieved via invocations of other                          </span><br><span class="line">       StringBuffer methods   </span><br><span class="line">       return super.indexOf(str);     </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>由源代码可以看出StringBuffer对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。</p>
+<p>再来看下StringBuilder源码中的一些方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public StringBuilder append(Object obj) &#123;</span><br><span class="line">    return append(String.valueOf(obj));    </span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * @throws StringIndexOutOfBoundsException &#123;@inheritDoc&#125;</span><br><span class="line"> */</span><br><span class="line">@Override      </span><br><span class="line"> public StringBuilder insert(int index, char[] str, int offset, int len)  &#123; </span><br><span class="line">     super.insert(index, str, offset, len); </span><br><span class="line">     return this; </span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line">/** </span><br><span class="line">  * @throws StringIndexOutOfBoundsException &#123;@inheritDoc&#125; </span><br><span class="line">  */</span><br><span class="line">  @Override </span><br><span class="line">  public StringBuilder replace(int start, int end, String str) &#123; </span><br><span class="line">      super.replace(start, end, str); </span><br><span class="line">      return this; </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>由源码可以看出，StringBuilder并没有对方法进行加同步锁，所以是非线程安全的。</p>
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象。</p>
 <p>StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象引用。</p>
