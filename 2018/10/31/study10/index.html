@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>String，StringBuilder，StringBuffer的区别 | Null指针的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="可变性首先我们看下String的源码 123456789101112131415/** The value is used for character storage. */ private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和变量（包">
+  <meta name="description" content="可变性首先我们看下String的源码 12345678910111213141516/** The value is used for character storage. */ 		private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和">
 <meta name="keywords" content="Spring MVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="String，StringBuilder，StringBuffer的区别">
 <meta property="og:url" content="http://yoursite.com/2018/10/31/study10/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="可变性首先我们看下String的源码 123456789101112131415/** The value is used for character storage. */ private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和变量（包">
+<meta property="og:description" content="可变性首先我们看下String的源码 12345678910111213141516/** The value is used for character storage. */ 		private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T02:27:16.438Z">
+<meta property="og:updated_time" content="2018-10-31T02:35:14.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String，StringBuilder，StringBuffer的区别">
-<meta name="twitter:description" content="可变性首先我们看下String的源码 123456789101112131415/** The value is used for character storage. */ private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和变量（包">
+<meta name="twitter:description" content="可变性首先我们看下String的源码 12345678910111213141516/** The value is used for character storage. */ 		private final char value[];  ```  由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  注：在Java中，final关键字可以用来修饰类、方法和">
   
     <link rel="alternative" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
   
@@ -183,9 +183,11 @@
 		  	
 		  	
 		  	  <h2 id="可变性"><a href="#可变性" class="headerlink" title="可变性"></a>可变性</h2><p>首先我们看下String的源码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/** The value is used for character storage. */ </span><br><span class="line">private final char value[];  </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  </span><br><span class="line"></span><br><span class="line">注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）</span><br><span class="line"></span><br><span class="line">　　1、当用final修饰一个类时，表明这个类不能被继承。也就是说，如果一个类你永远不会让他被继承，就可以用final进行修饰。</span><br><span class="line"></span><br><span class="line">　　2、final修饰的方法不能被重写。</span><br><span class="line"></span><br><span class="line">　　3、当final修饰一个基本数据类型时，表示该基本数据类型的值一旦在初始化后便不能发生变化；如果final修饰一个引用类型时，则在对其初始化之后便不能再让其指向其他对象了，但该引用所指向的对象的内容是可以发生变化的。</span><br><span class="line"></span><br><span class="line">再来看下StringBuilder，StringBuffer的源码</span><br></pre></td></tr></table></figure>
-<p>   public final class StringBuilder<br>             extends AbstractStringBuilder<br>             implements java.io.Serializable, CharSequence<br>   {<br>       …<br>   }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>  public final class StringBuffer<br>            extends AbstractStringBuilder<br>            implements java.io.Serializable, CharSequence<br>  {<br>        …<br>   }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">由源码可以看出，StringBuilder、StringBuffer都继承自AbstractStringBuilder类，我们接下来再看下AbstractStringBuilder类的源码</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/** The value is used for character storage. */ </span><br><span class="line">		private final char value[]; </span><br><span class="line"> </span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">由此可以看出，String类中使用final关键字字符数组来保存字符串，所以是不可变的。  </span><br><span class="line"></span><br><span class="line">注：在Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）</span><br><span class="line"></span><br><span class="line">　　1、当用final修饰一个类时，表明这个类不能被继承。也就是说，如果一个类你永远不会让他被继承，就可以用final进行修饰。</span><br><span class="line"></span><br><span class="line">　　2、final修饰的方法不能被重写。</span><br><span class="line"></span><br><span class="line">　　3、当final修饰一个基本数据类型时，表示该基本数据类型的值一旦在初始化后便不能发生变化；如果final修饰一个引用类型时，则在对其初始化之后便不能再让其指向其他对象了，但该引用所指向的对象的内容是可以发生变化的。</span><br><span class="line"></span><br><span class="line">再来看下StringBuilder，StringBuffer的源码</span><br></pre></td></tr></table></figure>
+<p>   public final class StringBuilder<br>             extends AbstractStringBuilder<br>             implements java.io.Serializable, CharSequence<br>   {<br>       …<br>   }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  public final class StringBuffer<br>            extends AbstractStringBuilder<br>            implements java.io.Serializable, CharSequence<br>  {<br>        …<br>   }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">由源码可以看出，StringBuilder、StringBuffer都继承自AbstractStringBuilder类，我们接下来再看下AbstractStringBuilder类的源码</span><br></pre></td></tr></table></figure>
 <p>  /**</p>
 <pre><code> * The value is used for character storage. 
  */
