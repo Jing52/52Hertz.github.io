@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d); 运行结果如下  按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。 因此，后面一条语句">
+<meta name="description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为什么Java中1000==1000为false而100==100为true">
 <meta property="og:url" content="http://yoursite.com/2018/07/02/problem1/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d); 运行结果如下  按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。 因此，后面一条语句">
+<meta property="og:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-31T02:53:41.149Z">
+<meta property="og:updated_time" content="2018-10-31T08:54:13.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么Java中1000==1000为false而100==100为true">
-<meta name="twitter:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d); 运行结果如下  按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。 因此，后面一条语句">
+<meta name="twitter:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -37,7 +37,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="img/head/favicon.png">
 
 
 
@@ -81,7 +81,9 @@
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -183,11 +185,13 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
                             
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa 微信" href="/cxy524425" title="微信"></a>
                             
                         </ul>
                     </nav>
@@ -196,7 +200,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
                     </div>
                 </section>
                 
@@ -219,7 +223,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
                 </section>
                 
             </div>
@@ -263,11 +267,13 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/cxy524425" title="微信"></a>
                             
                         </ul>
             </nav>
@@ -322,6 +328,10 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
@@ -337,6 +347,7 @@
           
         <p>我们首先看下面一段代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer a = 1000,b=1000;</span><br><span class="line">System.out.println(a==b);</span><br><span class="line">Integer c = 100,d = 100;</span><br><span class="line">System.out.println(c==d);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>运行结果如下</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。</p>
@@ -363,7 +374,7 @@
         <p><span>本文标题:</span><a href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-07-02, 13:18:30</p>
-        <p><span>最后更新:</span>2018-10-31, 10:53:41</p>
+        <p><span>最后更新:</span>2018-10-31, 16:54:13</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/02/problem1/" title="为什么Java中1000==1000为false而100==100为true">http://yoursite.com/2018/07/02/problem1/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/02/problem1/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -502,12 +513,44 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2018 Null指针
+                2018 Null指针
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
+        
+        
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				
+				
         
             <div class="visit">
                 
@@ -580,8 +623,28 @@
     
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

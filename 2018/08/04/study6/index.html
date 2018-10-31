@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。 Model（模型）：指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。">
+<meta name="keywords" content="Java,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习笔记——设计模式：MVC模式">
 <meta property="og:url" content="http://yoursite.com/2018/08/04/study6/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。 Model（模型）：指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型">
+<meta property="og:description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-31T02:43:54.205Z">
+<meta property="og:updated_time" content="2018-10-31T08:58:48.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习笔记——设计模式：MVC模式">
-<meta name="twitter:description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。 Model（模型）：指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型">
+<meta name="twitter:description" content="MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -37,7 +37,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="img/head/favicon.png">
 
 
 
@@ -81,7 +81,9 @@
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
 
 
 
@@ -183,11 +185,13 @@
                     <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
                             
-                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa 微信" href="/cxy524425" title="微信"></a>
                             
                         </ul>
                     </nav>
@@ -196,7 +200,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
                     </div>
                 </section>
                 
@@ -219,7 +223,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">专注于前端</div>
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
                 </section>
                 
             </div>
@@ -263,11 +267,13 @@
             <nav class="header-nav">
                         <ul class="social">
                             
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
                             
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="/cxy524425" title="微信"></a>
                             
                         </ul>
             </nav>
@@ -322,10 +328,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -337,6 +347,7 @@
           
         <p>MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。</p>
 <p>MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。</p>
+<a id="more"></a>
 <h4 id="Model（模型）："><a href="#Model（模型）：" class="headerlink" title="Model（模型）："></a>Model（模型）：</h4><p>指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型能为多个视图提供数据，由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。</p>
 <h4 id="View（视角）："><a href="#View（视角）：" class="headerlink" title="View（视角）："></a>View（视角）：</h4><p>指用户看到并与之交互的界面。比如由html元素组成的网页界面，或者软件的客户端界面。MVC的好处之一在于它能为应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，它只是作为一种输出数据并允许用户操纵的方式。</p>
 <h4 id="Controller（控制器）："><a href="#Controller（控制器）：" class="headerlink" title="Controller（控制器）："></a>Controller（控制器）：</h4><p>指控制器接受用户的输入并调用模型和视图去完成用户的需求，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后再确定用哪个视图来显示返回的数据。</p>
@@ -358,7 +369,7 @@
         <p><span>本文标题:</span><a href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-08-04, 01:14:43</p>
-        <p><span>最后更新:</span>2018-10-31, 10:43:54</p>
+        <p><span>最后更新:</span>2018-10-31, 16:58:48</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/08/04/study6/" title="学习笔记——设计模式：MVC模式">http://yoursite.com/2018/08/04/study6/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/04/study6/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -497,12 +508,44 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2018 Null指针
+                2018 Null指针
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
+        
+        
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				
+				
         
             <div class="visit">
                 
@@ -575,8 +618,28 @@
     
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
