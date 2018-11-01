@@ -61,9 +61,23 @@
     <title><![CDATA[IDEA搭建和部署Maven项目]]></title>
     <url>%2F2018%2F09%2F28%2Fstudy3%2F</url>
     <content type="text"><![CDATA[创建Maven项目 File-&gt;New-&gt;Project 点击Maven项目，并选择archetype-webapp，然后next 输入 groupId 和 ArtifactId ，一个是组，一个是项目名称 ，version默认就行，然后next 选择maven的根目录、settings.xml文件和本地仓库的位置，根据个人路径配置。添加一个archetypeCatalog=internal的属性。这个参数的意义是让这个maven项目的骨架不要到远程下载而是本地获取。如果你没加这个参数，那么项目创建可能在卡在downloading maven plugins…点击Next 项目名，finish 查看项目的结构PS:新创建的Maven项目是没有resources文件夹的，可以通过以下方式添加 File-&gt;Project Structure 打开Project Structure，选择Modules 选择New Folder 输入folder name 选择Resources文件资源类型,然后apply Terminal终端输入mvn clean install，编译打包成功，显示BUILD SUCCESS字样 打包后根目录下出现target目录 部署到Tomcat 选择local 修改Name，可以不修改，选择Tomcat、jdk，以及端口。将打包好的war包部署到Tomcat，点击apply Run运行，浏览器跳出页面，输出Hello World，项目发布成功]]></content>
+      <categories>
+        <category>Java基础</category>
+      </categories>
       <tags>
         <tag>Java</tag>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[上传文件至GitHub]]></title>
+    <url>%2F2018%2F09%2F22%2Fstudy12%2F</url>
+    <content type="text"><![CDATA[Git安装可查看我之前写过的博文 设置SSH key查看ssh key可以先查看一下是否已经生成过ssh key我这边显示已经生成过了，如果没有显示这三个文件，说明没有生成 生成ssh key1$ ssh-keygen -t rsa -C &quot;youremail@xxx.com&quot; 生成过程中点击Enter键三次，此时在默认路径会生成.ssh文件夹，里面有如图三个文件 查看id_rsa.pub 为GitHub账号配置ssh keySettings点击头像，下拉框中有个Settings设置选项 Personal settings在Personal settings选择 SSH and GPG keys New SSH key点击New SSH key SSH keys/Add new Add后 创建本地仓库创建123mkdir testcd f:test 初始化本地仓库1git init 初始化后会出现.git文件夹，如图如果没有，是被隐藏了，工具-&gt;文件夹选项-&gt;查看，选择“显示隐藏的文件、文件夹和驱动器” 添加将所有文件添加到仓库1git add . 提交提交，双引号内是提交注释1git commit -m &apos;first&apos; 显示已经提交一个文件 连接GitHub创建一个新的仓库 登录GitHub账号，没有可以申请一个。点击右上角“+”，选择创建一个仓库 定义Repository name，点击创建 创建完之后的仓库 连接GitHub1git remote add origin https://github.com/nullcxy/First-Repository.git 将文件推送到远程仓库1$ git push -u origin master 刚开始的时候远程仓库是空的，所以需要加上“-u”这个参数，下次再push就不需要了，如下即可1$ git push origin master 推送到远程仓库成功看一下远程仓库]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -157,9 +171,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Git安装]]></title>
+    <url>%2F2018%2F06%2F21%2Fstudy11%2F</url>
+    <content type="text"><![CDATA[下载 Git工具选择对应的版本下载 安装的过程中，可以选择桌面快捷方式 安装后的文件夹 打开git-bash.exe 绑定用户12$ git config --global user.name &quot;yourname&quot;$ git config --global user.email &quot;youremail@xxx.com&quot;]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MarkDown]]></title>
     <url>%2F2018%2F03%2F01%2Fstudy2%2F</url>
-    <content type="text"><![CDATA[标题Markdown支持两种标题的语法，类Setext和类atx形式。 类Setext：12这是 H1============= 这是 H1 12这是 H2------------- 这是 H2 类atx：首行加入一个#对应H1，六个#对应H6，一共6个阶级12# 这是H1###### 这是H6 这是H1这是H6 区块引用123&gt; ## 这是一个标题。&gt; &gt; This is nested blockquote.&gt; 1. 这是第一行列表项。 这是一个标题。 This is nested blockquote. 这是第一行列表项。 列表无序列表：123* 第一行* 第二行* 第三行 第一行 第二行 第三行 等同于123+ 第一行+ 第二行+ 第三行 第一行 第二行 第三行 也等同于123- 第一行- 第二行- 第三行 第一行 第二行 第三行 有序列表1231. 第一行2. 第二行3. 第三行 第一行 第二行 第三行 代码块缩进4个空格或是1个制表符就可以建立代码区块12 code areacode area code area code area 分隔线你可以在一行中用三个以上的星号，减号，底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：123456789* * *********- - ---------------------------------------- 链接123This is [an example](http://example.com/ &quot;Title&quot;) inline link.[This link](http://example.net/) has no title attribute. 这是 链接 . 强调1234*强调*_强调_**强调**__强调__ 强调_强调_强调强调 代码标记一小段行内代码，你可以用反引号把它包起来（`） 使用 printf() 方法. 如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：There is a literal backtick (`) here. 图片1![图片](http://upload-images.jianshu.io/upload_images/14481291-93c81bc2348788a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;Optional title&quot;) 反斜杠Markdown支持以下这些符号前面加上反斜杠来帮助插入普通的符号：123456789101112\ 反斜线` 反引号* 星号_ 底线&#123;&#125; 花括号[] 方括号() 括弧# 井字号+ 加号- 减号. 英文句点! 惊叹号 自动链接Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来，Markdown就会自动把它转成链接。一般网址的链接文字就和链接地址一样1&lt;http://www.example.com/&gt; http://www.baidu.com/ 1&lt;address@example.com&gt; 我的邮箱：&#x31;&#50;&#56;&#55;&#53;&#x33;&#x30;&#x39;&#57;&#53;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;，有问题欢迎询问。]]></content>
+    <content type="text"><![CDATA[标题Markdown支持两种标题的语法，类Setext和类atx形式。 类Setext：12这是 H1============= 这是 H1 12这是 H2------------- 这是 H2 类atx：首行加入一个#对应H1，六个#对应H6，一共6个阶级12# 这是H1###### 这是H6 这是H1这是H6 区块引用123&gt; ## 这是一个标题。&gt; &gt; This is nested blockquote.&gt; 1. 这是第一行列表项。 这是一个标题。 This is nested blockquote. 这是第一行列表项。 列表无序列表：123* 第一行* 第二行* 第三行 第一行 第二行 第三行 等同于123+ 第一行+ 第二行+ 第三行 第一行 第二行 第三行 也等同于123- 第一行- 第二行- 第三行 第一行 第二行 第三行 有序列表1231. 第一行2. 第二行3. 第三行 第一行 第二行 第三行 代码块缩进4个空格或是1个制表符就可以建立代码区块12 code areacode area code area code area 分隔线你可以在一行中用三个以上的星号，减号，底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：123456789* * *********- - ---------------------------------------- 链接123This is [an example](http://example.com/ &quot;Title&quot;) inline link.[This link](http://example.net/) has no title attribute. 这是 链接 . 强调1234*强调*_强调_**强调**__强调__ 强调_强调_强调强调 代码标记一小段行内代码，你可以用反引号把它包起来（`） 使用 printf() 方法. 如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：There is a literal backtick (`) here. 图片1![图片](http://upload-images.jianshu.io/upload_images/14481291-93c81bc2348788a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot;Optional title&quot;) 反斜杠Markdown支持以下这些符号前面加上反斜杠来帮助插入普通的符号：123456789101112\ 反斜线` 反引号* 星号_ 底线&#123;&#125; 花括号[] 方括号() 括弧# 井字号+ 加号- 减号. 英文句点! 惊叹号 自动链接Markdown支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来，Markdown就会自动把它转成链接。一般网址的链接文字就和链接地址一样1&lt;http://www.example.com/&gt; http://www.baidu.com/ 1&lt;address@example.com&gt; 我的邮箱：&#49;&#50;&#x38;&#55;&#x35;&#51;&#48;&#x39;&#57;&#53;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#x6d;，有问题欢迎询问。]]></content>
       <categories>
         <category>其他</category>
       </categories>
@@ -172,7 +197,7 @@
     <url>%2F2017%2F09%2F03%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
       <categories>
-        <category>����</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>Java</tag>
