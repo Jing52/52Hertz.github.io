@@ -24,7 +24,7 @@
 <meta property="og:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-31T08:54:13.176Z">
+<meta property="og:updated_time" content="2018-11-06T06:50:46.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么Java中1000==1000为false而100==100为true">
 <meta name="twitter:description" content="我们首先看下面一段代码 1234Integer a = 1000,b=1000;System.out.println(a==b);Integer c = 100,d = 100;System.out.println(c==d);">
@@ -352,7 +352,8 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/14481291-108844abf4e09bee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p>按照我们的理解，如果两个引用指向同一个对象，用==表示它们是相等的。如果两个引用指向不同的对象，==代表不相等的，即使它们的内容相同。</p>
 <p>因此，后面一条语句应该也是false。</p>
-<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>我们看下Integer.java类，我们会发现有一个内部私有类，IntegerCache.java，它缓存了从-128~127之间的所有的整数对象。</p>
+<p>分析：</p>
+<p>我们看下Integer.java类，我们会发现有一个内部私有类，IntegerCache.java，它缓存了从-128~127之间的所有的整数对象。</p>
 <p>所以我们在声明类似——</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer c = 100;</span><br></pre></td></tr></table></figure>
 <p>的时候，它实际上在内部做的是——</p>
@@ -374,7 +375,7 @@
         <p><span>本文标题:</span><a href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-07-02, 13:18:30</p>
-        <p><span>最后更新:</span>2018-10-31, 16:54:13</p>
+        <p><span>最后更新:</span>2018-11-06, 14:50:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/02/problem1/" title="为什么Java中1000==1000为false而100==100为true">http://yoursite.com/2018/07/02/problem1/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/07/02/problem1/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -422,7 +423,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#分析："><span class="toc-number">1.</span> <span class="toc-text">分析：</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -511,7 +512,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
 
 
 

@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Null指针的博客">
 <meta property="og:description" content="HSF：HSF为EDAS应用开发提供了一套分布式服务框架的解决方案，从应用层面提供统一的服务发布/调用支持，让开发者很容易的开发分布式的应用，不用考虑分布领域中的各种技术细节（远程通讯、性能消耗、调用的透明化、同步/异步调用方式的实现等等问题）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T09:06:03.926Z">
+<meta property="og:updated_time" content="2018-11-06T06:50:46.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习笔记-EDAS介绍">
 <meta name="twitter:description" content="HSF：HSF为EDAS应用开发提供了一套分布式服务框架的解决方案，从应用层面提供统一的服务发布/调用支持，让开发者很容易的开发分布式的应用，不用考虑分布领域中的各种技术细节（远程通讯、性能消耗、调用的透明化、同步/异步调用方式的实现等等问题）">
@@ -308,7 +308,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  博文字数： </span>
-        <span class="post-count">344字</span>
+        <span class="post-count">340字</span>
       </span>
     </span>
 
@@ -350,26 +350,24 @@
 <p>　　　　引入Pandora容器的类隔离机制解决EDAS依赖包与应用包冲突的问题</p>
 <p>　　Pandora: </p>
 <p>　　　　能够隔离EADS与应用之间的jar包依赖，保证两者互不受影响</p>
-<h3 id="配置中心："><a href="#配置中心：" class="headerlink" title="配置中心："></a>配置中心：</h3><p>　　Address-Server：地址中心，寻址Config-Server和Diamond-Server</p>
-<p>　　Diamond-Server：动态配置变更推送</p>
-<p>　　优势特性：</p>
-<ul>
-<li>高效性</li>
+<h3 id="配置中心："><a href="#配置中心：" class="headerlink" title="配置中心："></a>配置中心：</h3><h4 id="Address-Server："><a href="#Address-Server：" class="headerlink" title="Address-Server："></a>Address-Server：</h4><p>地址中心，寻址Config-Server和Diamond-Server</p>
+<h4 id="Diamond-Server："><a href="#Diamond-Server：" class="headerlink" title="Diamond-Server："></a>Diamond-Server：</h4><p>动态配置变更推送</p>
+<h5 id="优势特性："><a href="#优势特性：" class="headerlink" title="优势特性："></a>优势特性：</h5><ul>
+<li><p>高效性</p>
+<p>基于推拉结合的方式，实现配置动态变更实时推送</p>
+</li>
+<li><p>可靠性</p>
+<p>通过客户端、服务端多级容灾，实现系统的高可用</p>
+</li>
+<li><p>易扩展</p>
+<p>配置数据在集群单节点上全量分布，实现节点无状态</p>
+</li>
 </ul>
-<p>　　　　　　基于推拉结合的方式，实现配置动态变更实时推送</p>
-<ul>
-<li>可靠性</li>
-</ul>
-<p>　　　　　　通过客户端、服务端多级容灾，实现系统的高可用</p>
-<ul>
-<li>易扩展</li>
-</ul>
-<p>　　　　　　配置数据在集群单节点上全量分布，实现节点无状态</p>
 <h4 id="Config-Server"><a href="#Config-Server" class="headerlink" title="　Config-Server:　　"></a>　Config-Server:　　</h4><p>　　　用于HSF服务数据的发布订阅　　　</p>
 <p>　　　优势特性：</p>
-<h5 id="1、无Master"><a href="#1、无Master" class="headerlink" title="　　  1、无Master"></a>　　  1、无Master</h5><p>　　　　　　ConfigServer基于无Master架构不存在单点问题</p>
-<h5 id="2、自动聚合"><a href="#2、自动聚合" class="headerlink" title="　　　2、自动聚合"></a>　　　2、自动聚合</h5><p>　　　　　　ConfigServer支持数据的自动聚合</p>
-<h5 id="3、实时"><a href="#3、实时" class="headerlink" title="　　　3、实时"></a>　　　3、实时</h5><p>　　　　　　服务端在订阅关系变化时，会主动推送配置数据到客户端</p>
+<h5 id="无Master"><a href="#无Master" class="headerlink" title="　　  无Master"></a>　　  无Master</h5><p>ConfigServer基于无Master架构不存在单点问题</p>
+<h5 id="自动聚合"><a href="#自动聚合" class="headerlink" title="　　　自动聚合"></a>　　　自动聚合</h5><p>ConfigServer支持数据的自动聚合</p>
+<h5 id="实时"><a href="#实时" class="headerlink" title="　　　实时"></a>　　　实时</h5><p>服务端在订阅关系变化时，会主动推送配置数据到客户端</p>
 
       
     </div>
@@ -381,7 +379,7 @@
         <p><span>本文标题:</span><a href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-10-27, 21:22:44</p>
-        <p><span>最后更新:</span>2018-10-31, 17:06:03</p>
+        <p><span>最后更新:</span>2018-11-06, 14:50:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/10/27/study7/" title="学习笔记-EDAS介绍">http://yoursite.com/2018/10/27/study7/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/10/27/study7/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -429,7 +427,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HSF："><span class="toc-number">1.</span> <span class="toc-text">HSF：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器："><span class="toc-number">2.</span> <span class="toc-text">容器：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置中心："><span class="toc-number">3.</span> <span class="toc-text">配置中心：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Config-Server"><span class="toc-number">3.1.</span> <span class="toc-text">　Config-Server:　　</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、无Master"><span class="toc-number">3.1.1.</span> <span class="toc-text">　　  1、无Master</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2、自动聚合"><span class="toc-number">3.1.2.</span> <span class="toc-text">　　　2、自动聚合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3、实时"><span class="toc-number">3.1.3.</span> <span class="toc-text">　　　3、实时</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HSF："><span class="toc-number">1.</span> <span class="toc-text">HSF：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器："><span class="toc-number">2.</span> <span class="toc-text">容器：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置中心："><span class="toc-number">3.</span> <span class="toc-text">配置中心：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Address-Server："><span class="toc-number">3.1.</span> <span class="toc-text">Address-Server：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Diamond-Server："><span class="toc-number">3.2.</span> <span class="toc-text">Diamond-Server：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#优势特性："><span class="toc-number">3.2.1.</span> <span class="toc-text">优势特性：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Config-Server"><span class="toc-number">3.3.</span> <span class="toc-text">　Config-Server:　　</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#无Master"><span class="toc-number">3.3.1.</span> <span class="toc-text">　　  无Master</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自动聚合"><span class="toc-number">3.3.2.</span> <span class="toc-text">　　　自动聚合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实时"><span class="toc-number">3.3.3.</span> <span class="toc-text">　　　实时</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -518,7 +516,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
 
 
 

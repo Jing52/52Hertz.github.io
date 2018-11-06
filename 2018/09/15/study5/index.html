@@ -15,21 +15,21 @@
 
 
 
-<meta name="description" content="一、检查JDK 安装 在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：">
+<meta name="description" content="检查JDK 安装在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：">
 <meta name="keywords" content="Java,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Windows上安装Maven">
 <meta property="og:url" content="http://yoursite.com/2018/09/15/study5/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="一、检查JDK 安装 在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：">
+<meta property="og:description" content="检查JDK 安装在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-15e5b1d22730f2a7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-1d3b0835caa3389c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-268e01bfa162c4ab?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-31T08:58:14.490Z">
+<meta property="og:updated_time" content="2018-11-06T06:50:46.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Windows上安装Maven">
-<meta name="twitter:description" content="一、检查JDK 安装 在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：">
+<meta name="twitter:description" content="检查JDK 安装在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14481291-15e5b1d22730f2a7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -312,7 +312,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  博文字数： </span>
-        <span class="post-count">203字</span>
+        <span class="post-count">197字</span>
       </span>
     </span>
 
@@ -347,18 +347,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>一、检查JDK 安装</p>
-<p>在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：</p>
+        <h1 id="检查JDK-安装"><a href="#检查JDK-安装" class="headerlink" title="检查JDK 安装"></a>检查JDK 安装</h1><p>在安装Maven之前首先要确认JDK是否安装。Maven可以运行在JDK1.4及以上的版本。检查JDK版本的方式：</p>
 <a id="more"></a>
 <p>打开cmd窗口，运行以下命令可以查看Java安装。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/14481291-15e5b1d22730f2a7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>二、下载Maven<br>Maven官网下载地址：<a href="http://maven.apache.org/download.html" target="_blank" rel="noopener">http://maven.apache.org/download.html</a></p>
-<p>三、本地安装<br>将下载的zip包解压到指定目录，我的是D:\apache-maven-3.5.2</p>
+<h1 id="下载Maven"><a href="#下载Maven" class="headerlink" title="下载Maven"></a>下载Maven</h1><p>Maven官网下载地址：<a href="http://maven.apache.org/download.html" target="_blank" rel="noopener">http://maven.apache.org/download.html</a></p>
+<h1 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h1><p>将下载的zip包解压到指定目录，我的是D:\apache-maven-3.5.2</p>
 <p>接着设置环境变量：</p>
-<p>1、右击“我的电脑”-&gt;“属性”，单机高级系统设置，选择“坏境变量”，在系统变量中新建一个变量M2_HOME，变量值为Maven的安装目录：D:\apache-maven-3.5.2</p>
-<p>2、在系统变量中path变量后面添加%M2_HOME%\bin;注意：多个变量之间用英文分号隔开</p>
+<ol>
+<li><p>右击“我的电脑”-&gt;“属性”，单机高级系统设置，选择“坏境变量”，在系统变量中新建一个变量M2_HOME，变量值为Maven的安装目录：D:\apache-maven-3.5.2</p>
+</li>
+<li><p>在系统变量中path变量后面添加%M2_HOME%\bin;注意：多个变量之间用英文分号隔开</p>
+</li>
+</ol>
 <p><img src="http://upload-images.jianshu.io/upload_images/14481291-1d3b0835caa3389c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<p>3、查看Maven安装情况</p>
+<ol start="3">
+<li>查看Maven安装情况</li>
+</ol>
 <p><img src="http://upload-images.jianshu.io/upload_images/14481291-268e01bfa162c4ab?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image">     </p>
 
       
@@ -371,7 +376,7 @@
         <p><span>本文标题:</span><a href="/2018/09/15/study5/">在Windows上安装Maven</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-09-15, 00:21:33</p>
-        <p><span>最后更新:</span>2018-10-31, 16:58:14</p>
+        <p><span>最后更新:</span>2018-11-06, 14:50:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/09/15/study5/" title="在Windows上安装Maven">http://yoursite.com/2018/09/15/study5/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/09/15/study5/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -419,7 +424,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#检查JDK-安装"><span class="toc-number">1.</span> <span class="toc-text">检查JDK 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#下载Maven"><span class="toc-number">2.</span> <span class="toc-text">下载Maven</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#本地安装"><span class="toc-number">3.</span> <span class="toc-text">本地安装</span></a></li></ol>
         
     </div>
     <style>
@@ -508,7 +513,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
 
 
 

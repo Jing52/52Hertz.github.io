@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Null指针的博客">
 <meta property="og:description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[];">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T06:28:52.091Z">
+<meta property="og:updated_time" content="2018-11-06T06:50:46.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String，StringBuilder，StringBuffer的区别">
 <meta name="twitter:description" content="可变性首先我们看下String的源码 12/** The value is used for character storage. */ private final char value[];">
@@ -308,7 +308,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  博文字数： </span>
-        <span class="post-count">780字</span>
+        <span class="post-count">777字</span>
       </span>
     </span>
 
@@ -367,9 +367,14 @@
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象。</p>
 <p>StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象引用。</p>
 <p>相同情况下使用 StirngBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。</p>
-<p>1、操作少量的数据 ： String</p>
-<p>2、单线程操作字符串缓冲区下操作大量数据 ： StringBuilder</p>
-<p>3、多线程操作字符串缓冲区下操作大量数据 ： StringBuffer</p>
+<ol>
+<li><p>操作少量的数据 ： String</p>
+</li>
+<li><p>单线程操作字符串缓冲区下操作大量数据 ： StringBuilder</p>
+</li>
+<li><p>多线程操作字符串缓冲区下操作大量数据 ： StringBuffer</p>
+</li>
+</ol>
 
       
     </div>
@@ -381,7 +386,7 @@
         <p><span>本文标题:</span><a href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-10-31, 01:15:34</p>
-        <p><span>最后更新:</span>2018-10-31, 14:28:52</p>
+        <p><span>最后更新:</span>2018-11-06, 14:50:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/10/31/study10/" title="String，StringBuilder，StringBuffer的区别">http://yoursite.com/2018/10/31/study10/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/10/31/study10/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -397,8 +402,8 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/11/05/study14/">
-                    Hexo主题更改以及小功能的添加
+                <a href="/2018/11/01/study13/">
+                    hexo+github搭建博客
                 </a>
             </div>
         
@@ -504,7 +509,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/11/05/study14/" title="上一篇: Hexo主题更改以及小功能的添加">
+            <a href="/2018/11/01/study13/" title="上一篇: hexo+github搭建博客">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -518,7 +523,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
 
 
 

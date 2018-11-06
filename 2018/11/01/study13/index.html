@@ -15,20 +15,32 @@
 
 
 
-<meta name="description" content="前言MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。">
-<meta name="keywords" content="Java,设计模式">
+<meta name="description" content="前言不管简书、掘金或者其他网站，总会感觉不是自己的地盘，所以我就想自己搭建个博客，可以在自己的一亩三分地上耕耘收获。不仅如此，以往我写的博客都会到处乱放，比如一会放到掘金，一会放到简书等等，不利于管理，搭建一个自己的博客也更方便了个人的整理分类。目前来说，hexo还是挺主流的一种搭建博客的方式，主题也很多，可以供各位选择。先给大家看下我的博客吧">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习笔记——设计模式：MVC模式">
-<meta property="og:url" content="http://yoursite.com/2018/08/04/study6/index.html">
+<meta property="og:title" content="hexo+github搭建博客">
+<meta property="og:url" content="http://yoursite.com/2018/11/01/study13/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="前言MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。">
+<meta property="og:description" content="前言不管简书、掘金或者其他网站，总会感觉不是自己的地盘，所以我就想自己搭建个博客，可以在自己的一亩三分地上耕耘收获。不仅如此，以往我写的博客都会到处乱放，比如一会放到掘金，一会放到简书等等，不利于管理，搭建一个自己的博客也更方便了个人的整理分类。目前来说，hexo还是挺主流的一种搭建博客的方式，主题也很多，可以供各位选择。先给大家看下我的博客吧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-06T06:50:46.435Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-798f11882f452a8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-9514dc84d5a4d5f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-437de310cb28a834.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-d0f9cdd82785f846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-c11a76a77811a830.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-9ebc8a6b59b0e4db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-4599f31f9f10e036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-e424d486cd56c88b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-64a8cf60df680cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-639a33035d661488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-f7e731300c5063cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-1fd0c4377291d3e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-3389338ed20f60fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-06T06:50:46.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记——设计模式：MVC模式">
-<meta name="twitter:description" content="前言MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。 MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="hexo+github搭建博客">
+<meta name="twitter:description" content="前言不管简书、掘金或者其他网站，总会感觉不是自己的地盘，所以我就想自己搭建个博客，可以在自己的一亩三分地上耕耘收获。不仅如此，以往我写的博客都会到处乱放，比如一会放到掘金，一会放到简书等等，不利于管理，搭建一个自己的博客也更方便了个人的整理分类。目前来说，hexo还是挺主流的一种搭建博客的方式，主题也很多，可以供各位选择。先给大家看下我的博客吧">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14481291-798f11882f452a8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -60,7 +72,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>学习笔记——设计模式：MVC模式 | Null指针的博客</title>
+<title>hexo+github搭建博客 | Null指针的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +293,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><aricle id="post-study6" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><aricle id="post-study13" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/08/04/study6/" class="article-date">
-      <time datetime="2018-08-03T17:14:43.000Z" itemprop="datePublished">2018-08-04</time>
+      <a href="/2018/11/01/study13/" class="article-date">
+      <time datetime="2018-11-01T08:07:32.000Z" itemprop="datePublished">2018-11-01</time>
 </a>
 
 
@@ -300,7 +312,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      学习笔记——设计模式：MVC模式
+      hexo+github搭建博客
     </h1>
   
 
@@ -310,7 +322,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  博文字数： </span>
-        <span class="post-count">819字</span>
+        <span class="post-count">970字</span>
       </span>
     </span>
 
@@ -329,13 +341,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java基础/">Java基础</a>
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -345,19 +357,81 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>MVC模式全称 Model-View-Controller（模型-视图-控制器） 模式。这种模式用于应用程序的分层开发。</p>
-<p>MVC模式的这三个部分的职责非常明确，而且相互分离，因此每个部分都可以独立地改变而不影响其他部分，从而大大提高应用的灵活性和重用性。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>不管简书、掘金或者其他网站，总会感觉不是自己的地盘，所以我就想自己搭建个博客，可以在自己的一亩三分地上耕耘收获。不仅如此，以往我写的博客都会到处乱放，比如一会放到掘金，一会放到简书等等，不利于管理，搭建一个自己的博客也更方便了个人的整理分类。目前来说，<code>hexo</code>还是挺主流的一种搭建博客的方式，主题也很多，可以供各位选择。先给大家看下<a href="https://nullcxy.github.io/" target="_blank" rel="noopener">我的博客</a>吧</p>
 <a id="more"></a>
-<h1 id="Model（模型）："><a href="#Model（模型）：" class="headerlink" title="Model（模型）："></a>Model（模型）：</h1><p>指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型能为多个视图提供数据，由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。</p>
-<h1 id="View（视角）："><a href="#View（视角）：" class="headerlink" title="View（视角）："></a>View（视角）：</h1><p>指用户看到并与之交互的界面。比如由html元素组成的网页界面，或者软件的客户端界面。MVC的好处之一在于它能为应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，它只是作为一种输出数据并允许用户操纵的方式。</p>
-<h1 id="Controller（控制器）："><a href="#Controller（控制器）：" class="headerlink" title="Controller（控制器）："></a>Controller（控制器）：</h1><p>指控制器接受用户的输入并调用模型和视图去完成用户的需求，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后再确定用哪个视图来显示返回的数据。</p>
-<p>例子：</p>
-<p>步骤一：创建模型StaffModel.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.model;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午2:47</span><br><span class="line"> */</span><br><span class="line">public class StaffModel &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private String sex;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getSex() &#123;</span><br><span class="line">        return sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSex(String sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>步骤二：创建视图StaffView.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.view;</span><br><span class="line"></span><br><span class="line">import java.util.logging.Logger;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午2:52</span><br><span class="line"> */</span><br><span class="line">public class StaffView &#123;</span><br><span class="line">    public void printStaffInfo(String name,String sex,int age)&#123;</span><br><span class="line">        System.out.println(&quot;Name:&quot;+name);</span><br><span class="line">        System.out.println(&quot;sex:&quot;+sex);</span><br><span class="line">        System.out.println(&quot;age:&quot;+age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>步骤三：创建控制器StaffController.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.controller;</span><br><span class="line"></span><br><span class="line">import com.cxy.model.StaffModel;</span><br><span class="line">import com.cxy.view.StaffView;</span><br><span class="line">import jdk.nashorn.internal.objects.annotations.Constructor;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午2:58</span><br><span class="line"> */</span><br><span class="line">public class StaffController &#123;</span><br><span class="line">    private StaffModel staffModel;</span><br><span class="line">    private StaffView staffView;</span><br><span class="line"></span><br><span class="line">    public StaffController(StaffModel staffModel,StaffView staffView)&#123;</span><br><span class="line">        this.staffModel = staffModel;</span><br><span class="line">        this.staffView = staffView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStaffName() &#123;</span><br><span class="line">        return staffModel.getName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStaffName(String name) &#123;</span><br><span class="line">        staffModel.setName(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getStaffSex() &#123;</span><br><span class="line">        return staffModel.getSex();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void setStaffSex(String sex) &#123;</span><br><span class="line">        staffModel.setSex(sex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStaffAge(int age) &#123;</span><br><span class="line">        staffModel.setAge(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getStaffAge() &#123;</span><br><span class="line">        return staffModel.getAge();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void printInfo()&#123;</span><br><span class="line">        staffView.printStaffInfo(staffModel.getName(),staffModel.getSex(), 47        staffModel.getAge());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>步骤四：创建测试类来演示MVC模式的用法StaffTest.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.test;</span><br><span class="line"></span><br><span class="line">import com.cxy.controller.StaffController;</span><br><span class="line">import com.cxy.model.StaffModel;</span><br><span class="line">import com.cxy.view.StaffView;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author cxy</span><br><span class="line"> * @Description</span><br><span class="line"> * @Date 2018/9/28 下午3:03</span><br><span class="line"> */</span><br><span class="line">public class StaffTest &#123;</span><br><span class="line">    public static void main(String[] argc)&#123;</span><br><span class="line">        //获取角色数据</span><br><span class="line">        StaffModel staffModel = createRole();</span><br><span class="line">        //创建视图，展示角色信息到控制台</span><br><span class="line">        StaffView staffView = new StaffView();</span><br><span class="line"></span><br><span class="line">        StaffController staffController = new StaffController(staffModel,staffView);</span><br><span class="line"></span><br><span class="line">        staffController.printInfo();</span><br><span class="line">        </span><br><span class="line">        //修改角色</span><br><span class="line">        staffController.setStaffName(&quot;lyj&quot;);</span><br><span class="line">        staffController.setStaffSex(&quot;女&quot;);</span><br><span class="line">        staffController.setStaffAge(18);</span><br><span class="line">        staffController.printInfo();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static StaffModel createRole()&#123;</span><br><span class="line">        StaffModel staffModel = new StaffModel();</span><br><span class="line"></span><br><span class="line">        staffModel.setName(&quot;cxy&quot;);</span><br><span class="line">        staffModel.setSex(&quot;男&quot;);</span><br><span class="line">        staffModel.setAge(25);</span><br><span class="line">        return staffModel;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行结果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/14481291-8f9c79e9fe494edd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-798f11882f452a8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="myblog"></p>
+<h1 id="Hexo介绍"><a href="#Hexo介绍" class="headerlink" title="Hexo介绍"></a>Hexo介绍</h1><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a> 是一个快速、简洁且高效的博客框架。<code>Hexo</code> 使用 <code>Markdown</code>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><p>我之前有写过安装Git的教程，可点击<a href="https://www.jianshu.com/p/9f13b0b634e0" target="_blank" rel="noopener">查看</a>，在这里我就不再赘述了。</p>
+<h1 id="安装NodeJs"><a href="#安装NodeJs" class="headerlink" title="安装NodeJs"></a>安装NodeJs</h1><p>Hexo是基于nodeJS环境的静态博客，里面的npm工具真的很有用啊，不管之后的安装hexo、统计阅读时长、博文字数或者添加小萌妹都需要使用到npm工具，所以还是老老实实的装上吧~</p>
+<ol>
+<li>基本上都是64位的，直接给上64位Windows的下载地址：<a href="https://nodejs.org/dist/v10.13.0/node-v10.13.0-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v10.13.0/node-v10.13.0-x64.msi</a><br>或者自己自行到官网下载：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+<li>下载好msi文件后，双击打开安装，反正一路next，安装路径可以根据自己需要更改。</li>
+<li>安装完之后打开cmd窗口（win+r），查看nodejs安装的版本。<br>输入以下命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-9514dc84d5a4d5f3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="node版本"><br>安装成功！</p>
+<h1 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1><p>Hexo安装就只需要npm工具就行了<br><code>npm</code>可以设置<a href="https://npm.taobao.org/" target="_blank" rel="noopener">淘宝NPM镜像</a>，来提高下载速度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>创建一个空的文件夹</li>
+<li>打开Git Bash（安装完Git随处右击就有“Git Bash here”），cd到文件夹，也可以直接在文件夹内右击“Git Bash here”</li>
+<li>安装Hexo<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-437de310cb28a834.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hexo安装"></p>
+<ol start="3">
+<li>查看hexo版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-d0f9cdd82785f846.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看版本"></p>
+<ol start="4">
+<li>初始化<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-c11a76a77811a830.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初始化"><br>看一下文件夹初始化后内容<br><img src="https://upload-images.jianshu.io/upload_images/14481291-9ebc8a6b59b0e4db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件夹"><br>解析一下各文件：</p>
+<ul>
+<li>node_modules：是依赖包</li>
+<li>public：存放的是生成的页面</li>
+<li>scaffolds：命令生成文章等的模板</li>
+<li>source：用命令创建的各种文章</li>
+<li>themes：主题</li>
+<li>_config.yml：整个博客的配置</li>
+<li>db.json：source解析所得到的</li>
+<li>package.json：项目所需模块项目的配置信息</li>
+</ul>
+<ol start="5">
+<li>查看本地博客<br>启动本地服务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>访问本地浏览器：<code>http://localhost:4000</code><br><img src="https://upload-images.jianshu.io/upload_images/14481291-4599f31f9f10e036.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地博客"></p>
+<h1 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h1><ol>
+<li>创建.md文件，目录：/source/_posts<br><img src="https://upload-images.jianshu.io/upload_images/14481291-e424d486cd56c88b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一篇博客"></li>
+<li>博文的属性<br><img src="https://upload-images.jianshu.io/upload_images/14481291-64a8cf60df680cff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="属性"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hexo-blog</span><br><span class="line">date: 2018-11-03 16:07:32</span><br><span class="line">tags: </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这里要说一下 tags 这个属性，如果需要配置多个有两种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: [tag1, tag2, tag3]</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - tag1</span><br><span class="line">  - tag2</span><br><span class="line">  - tag3</span><br></pre></td></tr></table></figure></p>
+<p>注：Hexo 是支持 Markdown 的所有功能的，所以，最好去学习一下 <a href="https://www.jianshu.com/p/05cc479f603e" target="_blank" rel="noopener">Markdown</a> 的语法规范。</p>
+<h1 id="搭桥到GitHub"><a href="#搭桥到GitHub" class="headerlink" title="搭桥到GitHub"></a>搭桥到GitHub</h1><ol>
+<li>没有GitHub账号创建账号，有的话就看下一步</li>
+<li>创建新的仓库repository<br><img src="https://upload-images.jianshu.io/upload_images/14481291-639a33035d661488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新仓库"><br>其中Repository name必须是你的github名称，不然后续会报404错误。<br><img src="https://upload-images.jianshu.io/upload_images/14481291-f7e731300c5063cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="create"></li>
+<li>回到gitbash中，配置github账户信息（YourName和YourEail都替换成你自己的）</li>
+<li>创建SSH<br>第3，4步我之前的<a href="https://www.jianshu.com/p/9157928c7e17" target="_blank" rel="noopener">博文</a>有教程，这里就不再详细描述操作过程了，你也可以找度娘搜索。</li>
+<li>修改_config.yml文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/yourGitHubName/yourGitHubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：冒号之后都是有一个半角空格的，没有的话会出错！</p>
+<ol start="6">
+<li><p>安装hexo-deployer-git自动部署发布工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git  --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布到Github，命令如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>第一次上传是需要验证GitHub账号的<br><img src="https://upload-images.jianshu.io/upload_images/14481291-1fd0c4377291d3e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="验证"><br>当出现下图字样表示发布成功<br><img src="https://upload-images.jianshu.io/upload_images/14481291-3389338ed20f60fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="成功"></p>
+<ol start="8">
+<li>访问：<a href="http://yourGitHubName.github.io" target="_blank" rel="noopener">http://yourGitHubName.github.io</a><br>注：感觉GitBash中东西太多的时候可以输入clear来清空命令。</li>
+</ol>
 
       
     </div>
@@ -366,13 +440,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></p>
+        <p><span>本文标题:</span><a href="/2018/11/01/study13/">hexo+github搭建博客</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
-        <p><span>发布时间:</span>2018-08-04, 01:14:43</p>
+        <p><span>发布时间:</span>2018-11-01, 16:07:32</p>
         <p><span>最后更新:</span>2018-11-06, 14:50:46</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/08/04/study6/" title="学习笔记——设计模式：MVC模式">http://yoursite.com/2018/08/04/study6/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/04/study6/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/01/study13/" title="hexo+github搭建博客">http://yoursite.com/2018/11/01/study13/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/01/study13/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -385,15 +459,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/15/problem2/">
-                    打开Navicat for mysql，显示Missing required libmysql_e.dll, 126
+                <a href="/2018/11/05/study14/">
+                    Hexo主题更改以及小功能的添加
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/30/study8/">
-                    学习笔记——MyBatis入门
+                <a href="/2018/10/31/study10/">
+                    String，StringBuilder，StringBuffer的区别
                 </a>
             </div>
         
@@ -417,7 +491,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Model（模型）："><span class="toc-number">2.</span> <span class="toc-text">Model（模型）：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View（视角）："><span class="toc-number">3.</span> <span class="toc-text">View（视角）：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Controller（控制器）："><span class="toc-number">4.</span> <span class="toc-text">Controller（控制器）：</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo介绍"><span class="toc-number">2.</span> <span class="toc-text">Hexo介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Git"><span class="toc-number">3.</span> <span class="toc-text">安装Git</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装NodeJs"><span class="toc-number">4.</span> <span class="toc-text">安装NodeJs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装Hexo"><span class="toc-number">5.</span> <span class="toc-text">安装Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#写博客"><span class="toc-number">6.</span> <span class="toc-text">写博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭桥到GitHub"><span class="toc-number">7.</span> <span class="toc-text">搭桥到GitHub</span></a></li></ol>
         
     </div>
     <style>
@@ -453,7 +527,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"学习笔记——设计模式：MVC模式　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"hexo+github搭建博客　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -492,7 +566,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/15/problem2/" title="上一篇: 打开Navicat for mysql，显示Missing required libmysql_e.dll, 126">
+            <a href="/2018/11/05/study14/" title="上一篇: Hexo主题更改以及小功能的添加">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -500,7 +574,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/30/study8/" title="下一篇: 学习笔记——MyBatis入门">
+            <a href="/2018/10/31/study10/" title="下一篇: String，StringBuilder，StringBuffer的区别">
                 <i class="fa fa-angle-right"></i>
             </a>
         

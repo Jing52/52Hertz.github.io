@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-4720360d19268187.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-773d907958105cc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-91bfaa6cf1e1b7fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14481291-959a0c651b8b3ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://moxfive.coding.me/yelee/src/birdhouse.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-c505f102fffea468.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-dca002236b3c0e98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-c7c732b9cc13d03f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-e212e13126f1ba0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-db32a29337cd3ae3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-2f364afb8d132507.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-06T06:24:59.639Z">
+<meta property="og:updated_time" content="2018-11-06T06:50:46.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo主题更改以及小功能的添加">
 <meta name="twitter:description" content="前言之前搭建的博客基本功能已经实现了，现在就折腾着好好维护一下我的博客了，于是参考着别人的博客添加一些小功能，并且整理了下来。">
@@ -411,11 +411,13 @@
 <h1 id="个人头像"><a href="#个人头像" class="headerlink" title="个人头像"></a>个人头像</h1><p>默认头像存储于 <code>yelee/source/img/avatar.png</code></p>
 <p>配置中对应填写 <code>/img/avatar.png</code>，可替换图片或指定新地址</p>
 <p><code>themes/yelee/_config.yml</code> 背景参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avatar: /img/avatar.png</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">avatar:</span> <span class="string">/img/avatar.png</span></span><br></pre></td></tr></table></figure>
 <h1 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h1><p>目前主题可使用两种方式在首页显示文章摘要而不是全文。</p>
-<h2 id="方法一-lt-more-gt"><a href="#方法一-lt-more-gt" class="headerlink" title="方法一: &lt;!-- more --&gt;"></a>方法一: <code>&lt;!-- more --&gt;</code></h2><p>注：之前最好不要有空格等字符；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2017-12-03 00:00:00</span><br><span class="line">---</span><br><span class="line">&lt;Excerpt in index | 首页摘要&gt; </span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">&lt;The rest of contents | 余下全文&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="方法二-description-in-Front-matter"><a href="#方法二-description-in-Front-matter" class="headerlink" title="方法二: description in Front-matter"></a>方法二: <code>description</code> in <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">Front-matter</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2015-12-03 00:00:00</span><br><span class="line">description: &quot;Welcome to Hexo! This is your very first post.&quot;</span><br><span class="line">---</span><br><span class="line">&lt;Contents&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="方法一-lt-more-gt"><a href="#方法一-lt-more-gt" class="headerlink" title="方法一: &lt;!-- more --&gt;"></a>方法一: <code>&lt;!-- more --&gt;</code></h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2015-12-03 00:00:00</span><br><span class="line"><span class="comment">---</span></span><br><span class="line">&lt;Excerpt in index | 首页摘要&gt; </span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">&lt;The rest of contents | 余下全文&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <code>&lt;!-- more --&gt;</code> 之前最好不要有空格等字符；</p>
+</blockquote>
+<h2 id="方法二-description-in-Front-matter"><a href="#方法二-description-in-Front-matter" class="headerlink" title="方法二: description in Front-matter"></a>方法二: <code>description</code> in <a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="noopener">Front-matter</a></h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2015-12-03 00:00:00</span><br><span class="line">description: "Welcome to Hexo! This is your very first post."</span><br><span class="line"><span class="comment">---</span></span><br><span class="line">&lt;Contents&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>通过 <code>description</code> 添加的摘要只能为纯文本；</p>
 </blockquote>
@@ -425,7 +427,7 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/14481291-f9c5ce9f0e47e1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="摘要"></p>
 <h1 id="主菜单"><a href="#主菜单" class="headerlink" title="主菜单"></a>主菜单</h1><p>按下面格式添加边栏菜单，菜单前的 <code>#</code> 表示注释掉该行，即隐藏掉该条目</p>
 <p><code>themes/yelee/_config.yml</code> 背景参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  主页: /</span><br><span class="line">  所有文章: /archives/</span><br><span class="line">  #随笔: /tags/随笔</span><br><span class="line">  标签云: /tags/</span><br><span class="line">  关于我: /about/</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">主页:</span> <span class="string">/</span></span><br><span class="line">  <span class="string">所有文章:</span> <span class="string">/archives/</span></span><br><span class="line">  <span class="comment">#随笔: /tags/随笔</span></span><br><span class="line">  <span class="string">标签云:</span> <span class="string">/tags/</span></span><br><span class="line">  <span class="string">关于我:</span> <span class="string">/about/</span></span><br></pre></td></tr></table></figure>
 <h1 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h1><p>使用 Hexo 命令新建一个名为 <code>tags</code> 的页面即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -448,9 +450,9 @@
 <blockquote>
 <p><code>#on: true</code> 改为 <code>on: true</code>即为启用搜索</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search: </span><br><span class="line">  on: true</span><br><span class="line">  onload: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span> </span><br><span class="line">  <span class="comment">#on: true</span></span><br><span class="line"><span class="attr">  onload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p><code>onload: true</code> : 索引数据 <code>search.xml</code> 随页面一起加载 <code>[效率优先]</code></p>
-<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 <code>[按需加载]</code></p>
+<p><code>onload: false</code> : 当激活搜索框时再下载索引数据 `[按需加载]</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14481291-97173f269807d0ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="搜索"></p>
 <h1 id="站点小图标"><a href="#站点小图标" class="headerlink" title="站点小图标"></a>站点小图标</h1><p>若将图标存储于 <code>yelee/source/favicon.png</code></p>
 <p>则配置中对应填写 <code>/favicon.png</code>，另外填网络图片的地址也可</p>
@@ -470,13 +472,13 @@
 <h1 id="网站成立年份"><a href="#网站成立年份" class="headerlink" title="网站成立年份"></a>网站成立年份</h1><p><code>themes/yelee/_config.yml</code> 背景参数:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">since: 2016</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>默认为 <code>2016</code>，若填入年份小于当前年份，则显示为 <code>2016-2018</code> 类似的格式</p>
+<p>默认为 <code>2016</code>，若填入年份小于当前年份，则显示为 <code>2015-2016</code> 类似的格式</p>
 </blockquote>
 <p><img src="https://upload-images.jianshu.io/upload_images/14481291-45ba910c95cac806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="年份"></p>
 <h1 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h1><p>背景图文件所在路径:</p>
-<p><code>/yelee/source/background/</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/yelee/source/background/</span><br></pre></td></tr></table></figure>
 <p><code>themes/yelee/_config.yml</code> 背景参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background_image: 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">background_image:</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>默认值为5，可按需修改</li>
 <li>“5”: 设置<code>/yelee/source/background/</code>文件夹中 <code>bg-1.jpg</code> 到 <code>bg-5.jpg</code> 这5张图片为背景</li>
@@ -485,23 +487,23 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/14481291-4720360d19268187.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="背景"></p>
 <h1 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h1><p>配置中启用目录</p>
 <p><code>themes/yelee/_config.yml</code> 背景参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toc:</span><br><span class="line">  on: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line"><span class="attr">  on:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>指定文章中关闭目录 <code>toc: false</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2015-08-19 00:00:00</span><br><span class="line">toc: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/14481291-773d907958105cc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="目录"></p>
 <h1 id="版权"><a href="#版权" class="headerlink" title="版权"></a>版权</h1><p>配置中启用目录</p>
 <p><code>themes/yelee/_config.yml</code> 背景参数:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copyright: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>指定文章中关闭目录 <code>original: false</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2017-08-19 00:00:00</span><br><span class="line">original: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">Hello</span> <span class="string">World</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2015</span><span class="bullet">-08</span><span class="bullet">-19</span> <span class="number">00</span><span class="string">:00:00</span></span><br><span class="line"><span class="attr">original:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 <p>原始链接设置</p>
 <p>修改 <a href="https://hexo.io/zh-cn/docs/configuration.html#%E7%BD%91%E5%9D%80" target="_blank" rel="noopener">站点配置</a> 文件中 <code>url</code> 的值为你的网站域名</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: http://MOxFIVE.xyz</span><br></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/14481291-91bfaa6cf1e1b7fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="版权"></p>
 <h1 id="左边主菜单鸟屋"><a href="#左边主菜单鸟屋" class="headerlink" title="左边主菜单鸟屋"></a>左边主菜单鸟屋</h1><p><code>themes/yelee/_config.yml</code> 背景参数:</p>
-<h2 id="左边栏鸟屋"><a href="#左边栏鸟屋" class="headerlink" title="左边栏鸟屋"></a>左边栏鸟屋</h2><p><img src="http://upload-images.jianshu.io/upload_images/14481291-959a0c651b8b3ca3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="边栏鸟屋"></p>
-<h2 id="关闭鸟屋"><a href="#关闭鸟屋" class="headerlink" title="关闭鸟屋"></a>关闭鸟屋</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 边栏多标签切换</span><br><span class="line">tagcloud: false</span><br></pre></td></tr></table></figure>
-<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## 编辑友链</span><br><span class="line">friends:</span><br><span class="line">  Hexo: https://hexo.io</span><br><span class="line">  GitHub: https://pages.github.com/</span><br><span class="line">  MOxFIVE: http://moxfive.xyz/</span><br><span class="line"></span><br><span class="line">## 关闭友链</span><br><span class="line">friends: false</span><br></pre></td></tr></table></figure>
+<h2 id="左边栏鸟屋"><a href="#左边栏鸟屋" class="headerlink" title="左边栏鸟屋"></a>左边栏鸟屋</h2><p><img src="http://moxfive.coding.me/yelee/src/birdhouse.png" alt="边栏鸟屋"></p>
+<h2 id="关闭鸟屋"><a href="#关闭鸟屋" class="headerlink" title="关闭鸟屋"></a>关闭鸟屋</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 边栏多标签切换</span></span><br><span class="line"><span class="attr">tagcloud:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑友链</span></span><br><span class="line"><span class="attr">friends:</span></span><br><span class="line"><span class="attr">  Hexo:</span> <span class="attr">https://hexo.io</span></span><br><span class="line"><span class="attr">  GitHub:</span> <span class="attr">https://pages.github.com/</span></span><br><span class="line"><span class="attr">  MOxFIVE:</span> <span class="attr">http://moxfive.xyz/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 关闭友链</span></span><br><span class="line"><span class="attr">friends:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 是否开启“关于我”。</span><br><span class="line">aboutme: 专注于前端</span><br><span class="line"></span><br><span class="line"># 关闭“关于我”</span><br><span class="line">aboutme: false</span><br></pre></td></tr></table></figure>
 <h1 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h1><h2 id="来必力评论"><a href="#来必力评论" class="headerlink" title="来必力评论"></a>来必力评论</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>yelee原生是支持Disqus、多说和有言的，可以参考<a href="http://moxfive.coding.me/yelee/2.Basic-Usage/comment.html" target="_blank" rel="noopener">官网-评论系统</a></p>
 <p>但是多说已经关闭，有言支持又不友好，又发现Disqus在手机上展示不出来，发现还需要翻墙，那实在对用户太不友好了，于是我选择使用<a href="https://www.livere.com/" target="_blank" rel="noopener">来必力</a>评论系统</p>
@@ -570,7 +572,7 @@
         <p><span>本文标题:</span><a href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
         <p><span>发布时间:</span>2018-11-05, 16:07:32</p>
-        <p><span>最后更新:</span>2018-11-06, 14:24:59</p>
+        <p><span>最后更新:</span>2018-11-06, 14:50:46</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/11/05/study14/" title="Hexo主题更改以及小功能的添加">http://yoursite.com/2018/11/05/study14/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/11/05/study14/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -587,8 +589,8 @@
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/10/31/study10/">
-                    String，StringBuilder，StringBuffer的区别
+                <a href="/2018/11/01/study13/">
+                    hexo+github搭建博客
                 </a>
             </div>
         
@@ -693,13 +695,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/10/31/study10/" title="下一篇: String，StringBuilder，StringBuffer的区别">
+            <a href="/2018/11/01/study13/" title="下一篇: hexo+github搭建博客">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
 
 
 
