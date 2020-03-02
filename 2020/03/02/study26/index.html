@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Null指针">
+
+
+
+<meta name="description" content="title: CMS垃圾收集器date: 2019-12-29 18:58:30tags:   Javacategories: JVM   Concurrent mark sweep(CMS)收集器是一种年老代垃圾收集器，其最主要目标是获取最短垃圾 回收停顿时间，和其他年老代使用标记-整理算法不同，它使用多线程的标记-清除算法。 最短的垃圾收集停顿时间可以为交互比较高的程序提高用户体验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Null指针的博客">
+<meta property="og:url" content="http://yoursite.com/2020/03/02/study26/index.html">
+<meta property="og:site_name" content="Null指针的博客">
+<meta property="og:description" content="title: CMS垃圾收集器date: 2019-12-29 18:58:30tags:   Javacategories: JVM   Concurrent mark sweep(CMS)收集器是一种年老代垃圾收集器，其最主要目标是获取最短垃圾 回收停顿时间，和其他年老代使用标记-整理算法不同，它使用多线程的标记-清除算法。 最短的垃圾收集停顿时间可以为交互比较高的程序提高用户体验。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-02T12:50:05.708Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Null指针的博客">
+<meta name="twitter:description" content="title: CMS垃圾收集器date: 2019-12-29 18:58:30tags:   Javacategories: JVM   Concurrent mark sweep(CMS)收集器是一种年老代垃圾收集器，其最主要目标是获取最短垃圾 回收停顿时间，和其他年老代使用标记-整理算法不同，它使用多线程的标记-清除算法。 最短的垃圾收集停顿时间可以为交互比较高的程序提高用户体验。">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/head/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Null指针的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Null指针</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Null指针</p>
+        
+
+        
+            <form id="search-form">
+	            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+	            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Null指针</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Null指针</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Null指针</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><aricle id="post-study26" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/02/study26/" class="article-date">
+      <time datetime="2020-03-02T12:48:51.245Z" itemprop="datePublished">2020-03-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>title: CMS垃圾收集器<br>date: 2019-12-29 18:58:30<br>tags: </p>
+<ul>
+<li>Java<br>categories: JVM</li>
+</ul>
+<blockquote>
+<p>Concurrent mark sweep(CMS)收集器是一种年老代垃圾收集器，其最主要目标是获取最短垃圾 回收停顿时间，和其他年老代使用标记-整理算法不同，它使用多线程的标记-清除算法。</p>
+<p>最短的垃圾收集停顿时间可以为交互比较高的程序提高用户体验。</p>
+</blockquote>
+<a id="more"></a>
+<p>CMS 工作机制相比其他的垃圾收集器来说更复杂，整个过程分为以下 4 个阶段:</p>
+<ul>
+<li>初始标记<blockquote>
+<p>只是标记一下 GC Roots 能直接关联的对象，速度很快，仍然需要暂停所有的工作线程。</p>
+</blockquote>
+</li>
+<li>并发标记<blockquote>
+<p>进行 GC Roots 跟踪的过程，和用户线程一起工作，不需要暂停工作线程。</p>
+</blockquote>
+</li>
+<li>重新标记<blockquote>
+<p> 为了修正在并发标记期间，因用户程序继续运行而导致标记产生变动的那一部分对象的标记 记录，仍然需要暂停所有的工作线程。</p>
+</blockquote>
+</li>
+<li>并发清除</li>
+</ul>
+<blockquote>
+<p>清除 GC Roots 不可达对象，和用户线程一起工作，不需要暂停工作线程。由于耗时最长的并 发标记和并发清除过程中，垃圾收集线程可以和用户现在一起并发工作，所以总体上来看 CMS 收集器的内存回收和用户线程是一起并发地执行。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/03/02/study26/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
+        <p><span>发布时间:</span>2020-03-02, 20:48:51</p>
+        <p><span>最后更新:</span>2020-03-02, 20:50:05</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/02/study26/" title="">http://yoursite.com/2020/03/02/study26/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/03/02/study26/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/03/02/study27/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/03/02/study25/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	
+	    <!--打赏-->
+<div class="reward">
+	<div class="reward-button">赏 <span class="reward-code">
+	  <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/Alipay.jpg"><b>支付宝打赏</b> </span> 
+	  <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/WeChatpay.jpg"><b>微信打赏</b> </span> 
+ 	</span></div>
+	<p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+</div>
+<!--打赏-->
+	
+
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/03/02/study27/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/03/02/study25/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study29/">study29</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study28/">study28</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study27/">study27</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study26/">study26</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study25/">study25</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study24/">study24</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study23/">study23</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study22/">study22</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study21/">study21</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study20/">study20</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study19/">study19</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study18/">study18</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study17/">study17</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study16/">study16</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study15/">study15</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</aricle></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 Null指针
+            </div>
+            <div class="footer-right">
+                
+            </div>
+        </div>
+        
+        <div>
+					<span id="busuanzi_container_site_uv" style="margin-left: -100px;">
+					  	您是第<span id="busuanzi_value_site_uv"></span>位访客 | 
+					</span>
+					
+	        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	        <span id="busuanzi_container_site_pv">
+					    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+					</span>
+				</div>
+				
+				
+				<div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				</div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

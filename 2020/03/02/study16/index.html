@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Null指针">
+
+
+
+<meta name="description" content="title:kafka流处理平台date: 2019-10-08 22:38:30tags:   Javacategories: 其他  Apache Kafka起源于LinkedIn，后来于2011年成为开源Apache项目，然后于2012年成为First-class Apache项目。Kafka是用Scala和Java编写的。 Apache Kafka是基于发布订阅的容错消息系统。 它是快速，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Null指针的博客">
+<meta property="og:url" content="http://yoursite.com/2020/03/02/study16/index.html">
+<meta property="og:site_name" content="Null指针的博客">
+<meta property="og:description" content="title:kafka流处理平台date: 2019-10-08 22:38:30tags:   Javacategories: 其他  Apache Kafka起源于LinkedIn，后来于2011年成为开源Apache项目，然后于2012年成为First-class Apache项目。Kafka是用Scala和Java编写的。 Apache Kafka是基于发布订阅的容错消息系统。 它是快速，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-e1295f1367533f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-7e10f04a7d8c7675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-aded29d894cf6e21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-c692a936c1f1dc8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-a9de232b3e40d659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-db8c74589b3b15c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-592b958069790315.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-4948f7c4ee8d758b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-4589209e64c2837c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-83da8ee4d338b801.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-69e302d01c8bea76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-0dfd76c38774abb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-5aa06fd2b38f2bde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-02T12:36:33.534Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Null指针的博客">
+<meta name="twitter:description" content="title:kafka流处理平台date: 2019-10-08 22:38:30tags:   Javacategories: 其他  Apache Kafka起源于LinkedIn，后来于2011年成为开源Apache项目，然后于2012年成为First-class Apache项目。Kafka是用Scala和Java编写的。 Apache Kafka是基于发布订阅的容错消息系统。 它是快速，">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14481291-e1295f1367533f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/head/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Null指针的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Null指针</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Null指针</p>
+        
+
+        
+            <form id="search-form">
+	            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+	            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Null指针</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Null指针</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Null指针</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><aricle id="post-study16" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/02/study16/" class="article-date">
+      <time datetime="2020-03-02T12:34:28.411Z" itemprop="datePublished">2020-03-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>title:kafka流处理平台<br>date: 2019-10-08 22:38:30<br>tags: </p>
+<ul>
+<li>Java<br>categories: 其他</li>
+</ul>
+<p>Apache Kafka起源于LinkedIn，后来于2011年成为开源Apache项目，然后于2012年成为First-class Apache项目。Kafka是用Scala和Java编写的。 Apache Kafka是基于发布订阅的容错消息系统。 它是快速，可扩展和设计分布。</p>
+<a id="more"></a>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-e1295f1367533f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Kafka"></p>
+<h1 id="kafka介绍"><a href="#kafka介绍" class="headerlink" title="kafka介绍"></a>kafka介绍</h1><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p>根据官网的介绍，ApacheKafka®是一个分布式流媒体平台，它主要有3种功能：</p>
+<ol>
+<li><p>发布和订阅消息流，这个功能类似于消息队列，这也是kafka归类为消息队列框架的原因</p>
+</li>
+<li><p>以容错的方式记录消息流，kafka以文件的方式来存储消息流</p>
+</li>
+<li><p>可以再消息发布的时候进行处理</p>
+</li>
+</ol>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>在系统或应用程序之间构建可靠的用于传输实时数据的管道，消息队列功能</li>
+<li>构建实时的流数据处理程序来变换或处理数据流，数据处理功能<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><code>Producer</code>: 消息和数据的生产者，向kafka的一个Topic发布消息的进程/代码/服务</li>
+</ul>
+<p><code>Consumer</code>:消息和数据的消费者，订阅数据（topic）并且处理其发布的消息的进程/代码/服务</p>
+<p><code>Consumer Group</code>:逻辑概念，对于同一个topic，会广播给不同的group，一个group中，只有一个consumer可以消费该消息</p>
+<p><code>Broker</code>:物理概念，kafka集群中的每个kafka节点</p>
+<p><code>Topic</code>:逻辑概念，kafka消息的类别，对数据进行区分、隔离</p>
+<p><code>Partition</code>:物理概念，kafka下数据存储的基本单元。一个topic数据，会被分散存储到多个Partition，每一个Partition是有序的</p>
+<p><code>Replication</code>:同一个Partition可能会多个Replica，多个Replica之间数据是一样的</p>
+<p><code>Replication Leader</code>:一个Partition的多个Replica上，需要一个Leader负责该Partition上与Producer和Consumer交互</p>
+<p><code>ReplicaManager</code>:负责管理当前broker所有分区和副本的信息，处理KafkaController发起的一些请求，副本状态的切换、添加/读取消息等</p>
+<h2 id="基本概念延伸"><a href="#基本概念延伸" class="headerlink" title="基本概念延伸"></a>基本概念延伸</h2><h3 id="Partition"><a href="#Partition" class="headerlink" title="Partition"></a>Partition</h3><ul>
+<li>每一个Topic被切分为多个Partitions</li>
+<li>消费者数目少于或等于Partition的数目</li>
+<li>Broker Group中的每一个Broker保存Topic的一个或多个Partitions</li>
+<li>Consumer Group中的仅有一个Consumer读取Topic的一个或多个Partitions，并且是唯一的Consumer<h3 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h3></li>
+<li>当集群中有Broker挂掉的情况，系统可以主动地使Replicas提供服务</li>
+<li>系统默认设置每一个Topic的Replication系数为1，可以在创建Topic时单独设置<h4 id="Replication特点"><a href="#Replication特点" class="headerlink" title="Replication特点"></a>Replication特点</h4></li>
+<li>Replication的基本单位是Topic的Partition</li>
+<li>所有的读和写都从Leader进，Followers只是作为备份</li>
+<li>Follower必须能够及时复制Leader的数据</li>
+<li>增加容错性和可扩展性<h2 id="kafka基本结构"><a href="#kafka基本结构" class="headerlink" title="kafka基本结构"></a>kafka基本结构</h2><h3 id="消息传输流程"><a href="#消息传输流程" class="headerlink" title="消息传输流程"></a>消息传输流程</h3><img src="https://upload-images.jianshu.io/upload_images/14481291-7e10f04a7d8c7675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息传输流程"></li>
+<li>Producers API</li>
+<li>Consumers API</li>
+<li>Streams API</li>
+<li>Connectors API<br>下图更好的展示了kafka消息队列模式的运作<br><img src="https://upload-images.jianshu.io/upload_images/14481291-aded29d894cf6e21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="kafka消息队列模式"><h3 id="kafka的消息结构"><a href="#kafka的消息结构" class="headerlink" title="kafka的消息结构"></a>kafka的消息结构</h3></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-c692a936c1f1dc8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息结构"></p>
+<h2 id="kafka特点"><a href="#kafka特点" class="headerlink" title="kafka特点"></a>kafka特点</h2><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><ul>
+<li>多分区</li>
+<li>多副本</li>
+<li>多订阅者</li>
+<li>基于ZooKeeper调度<h3 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h3></li>
+<li>高吞吐量</li>
+<li>低延迟</li>
+<li>高并发</li>
+<li>时间复杂度为O(1)<h3 id="持久性和扩展性"><a href="#持久性和扩展性" class="headerlink" title="持久性和扩展性"></a>持久性和扩展性</h3></li>
+<li>数据可持久化</li>
+<li>容错性</li>
+<li>支持水平在线扩展</li>
+<li>消息自动平衡<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2></li>
+<li>消息队列</li>
+<li>行为跟踪</li>
+<li>元信息监控</li>
+<li>日志收集</li>
+<li>流处理</li>
+<li>事件源</li>
+<li>持久性日志（commit log）</li>
+<li>等<h2 id="kafka简单案例"><a href="#kafka简单案例" class="headerlink" title="kafka简单案例"></a>kafka简单案例</h2><h3 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h3><h4 id="ZooKeeper下载"><a href="#ZooKeeper下载" class="headerlink" title="ZooKeeper下载"></a>ZooKeeper下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://zookeeper.apache.org/releases.html#download</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Kafka下载"><a href="#Kafka下载" class="headerlink" title="Kafka下载"></a>Kafka下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://kafka.apache.org/downloads</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>解压、配置环境变量<br>PS：如果是Mac的话，有一个便捷安装方法，<code>brew install kafka</code></p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><h4 id="运行Zookeeper"><a href="#运行Zookeeper" class="headerlink" title="运行Zookeeper"></a>运行Zookeeper</h4><p>运行cmd命令窗口，输入zkServer回车，出现下图的就表示zookeeper启动成功，也表明安装成功了。<br><img src="https://upload-images.jianshu.io/upload_images/14481291-a9de232b3e40d659.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Zookeeper"></p>
+<h4 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h4><p>在新的cmd命令行用cd命令切换到kafka根目录<code>..\kafka_2.11-2.2.0</code>，输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\bin\windows\kafka-server-start.bat .\config\server.properties</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-db8c74589b3b15c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="kafka"><br>出现started (kafka.server.KafkaServer)字样表示启动成功</p>
+<h4 id="创建一个Topic"><a href="#创建一个Topic" class="headerlink" title="创建一个Topic"></a>创建一个Topic</h4><p>运行新的cmd命令行，进入<code>..\kafka_2.11-2.2.0\bin\windows</code>，创建主题：<code>test</code>，输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br></pre></td></tr></table></figure></p>
+<h4 id="创建一个Producer"><a href="#创建一个Producer" class="headerlink" title="创建一个Producer"></a>创建一个Producer</h4><p>运行新的cmd命令行，进入<code>..\kafka_2.11-2.2.0\bin\windows</code>，输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer.bat --broker-list localhost:9092 --topic test</span><br></pre></td></tr></table></figure></p>
+<h4 id="创建一个Consumer"><a href="#创建一个Consumer" class="headerlink" title="创建一个Consumer"></a>创建一个Consumer</h4><p>运行新的cmd命令行，进入<code>..\kafka_2.11-2.2.0\bin\windows</code>，输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>在Producer窗口下输入信息进行测试 ，输入的消息立马就会出现在Consumer中，表明kafka已经安装测试成功<br><img src="https://upload-images.jianshu.io/upload_images/14481291-592b958069790315.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="success"></p>
+<h2 id="kafka代码案例"><a href="#kafka代码案例" class="headerlink" title="kafka代码案例"></a>kafka代码案例</h2><p><code>项目结构</code><br><img src="https://upload-images.jianshu.io/upload_images/14481291-4948f7c4ee8d758b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="结构"></p>
+<p><code>pom.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.1.4.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">    &lt;/parent&gt;</span><br><span class="line">    &lt;groupId&gt;com.cxy&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;kafka&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;name&gt;kafka&lt;/name&gt;</span><br><span class="line">    &lt;description&gt;kafka_learning&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-kafka&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">            &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.kafka&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-kafka-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.google.code.gson&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;gson&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;2.8.5&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-log4j&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.3.5.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>application.properties</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">kafka.consumer.zookeeper.connect=127.0.0.1:2181</span><br><span class="line">kafka.consumer.servers=127.0.0.1:9092</span><br><span class="line">kafka.consumer.enable.auto.commit=true</span><br><span class="line">kafka.consumer.session.timeout=6000</span><br><span class="line">kafka.consumer.auto.commit.interval=100</span><br><span class="line">kafka.consumer.auto.offset.reset=latest</span><br><span class="line">kafka.consumer.topic=kafkaTestTopic</span><br><span class="line">kafka.consumer.group.id=kafkaTest</span><br><span class="line">kafka.consumer.concurrency=10</span><br><span class="line"></span><br><span class="line">kafka.producer.servers=127.0.0.1:9092</span><br><span class="line">kafka.producer.retries=0</span><br><span class="line">kafka.producer.batch.size=4096</span><br><span class="line">kafka.producer.linger=1</span><br><span class="line">kafka.producer.buffer.memory=40960</span><br><span class="line"></span><br><span class="line">kafka.topic.default=kafkaTestTopic</span><br></pre></td></tr></table></figure></p>
+<p><code>log4j.properties</code><br><figure class="highlight plain"><figcaption><span>Global logging configuration 开发时候建议使用 debug</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger=DEBUG, stdout</span><br><span class="line"># Console output...</span><br><span class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n</span><br></pre></td></tr></table></figure></p>
+<p><code>ErrorCode.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.common;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public class ErrorCode &#123;</span><br><span class="line">    public final static int SUCCESS = 200;</span><br><span class="line">    public final static int EXCEPTION = 500;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>MessageEntity.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.common;</span><br><span class="line"></span><br><span class="line">import lombok.EqualsAndHashCode;</span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Getter</span><br><span class="line">@Setter</span><br><span class="line">@EqualsAndHashCode</span><br><span class="line">public class MessageEntity &#123;</span><br><span class="line">    private String title;</span><br><span class="line">    private String body;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return &quot;MessageEntity&#123;&quot; +</span><br><span class="line">                &quot;title=&apos;&quot; + title + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;,body=&apos;&quot; + body + &apos;\&apos;&apos; +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Response.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.common;</span><br><span class="line"></span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Getter</span><br><span class="line">@Setter</span><br><span class="line">public class Response &#123;</span><br><span class="line">    private int code;</span><br><span class="line">    private String message;</span><br><span class="line"></span><br><span class="line">    public Response(int code, String message)&#123;</span><br><span class="line">        this.code = code;</span><br><span class="line">        this.message = message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>KafkaProducerConfig.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.config;</span><br><span class="line"></span><br><span class="line">import com.cxy.kafka.common.MessageEntity;</span><br><span class="line">import org.apache.kafka.clients.producer.ProducerConfig;</span><br><span class="line">import org.apache.kafka.common.serialization.StringSerializer;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.kafka.annotation.EnableKafka;</span><br><span class="line">import org.springframework.kafka.core.DefaultKafkaProducerFactory;</span><br><span class="line">import org.springframework.kafka.core.KafkaTemplate;</span><br><span class="line">import org.springframework.kafka.core.ProducerFactory;</span><br><span class="line">import org.springframework.kafka.support.serializer.JsonSerializer;</span><br><span class="line"></span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Configuration</span><br><span class="line">@EnableKafka</span><br><span class="line">public class KafkaProducerConfig &#123;</span><br><span class="line">    @Value(&quot;$&#123;kafka.producer.servers&#125;&quot;)</span><br><span class="line">    private String servers;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;kafka.producer.retries&#125;&quot;)</span><br><span class="line">    private int retries;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;kafka.producer.batch.size&#125;&quot;)</span><br><span class="line">    private int batchSize;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;kafka.producer.linger&#125;&quot;)</span><br><span class="line">    private int linger;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;kafka.producer.buffer.memory&#125;&quot;)</span><br><span class="line">    private int bufferMemory;</span><br><span class="line"></span><br><span class="line">    public Map&lt;String,Object&gt; producerConfigs() &#123;</span><br><span class="line">        Map&lt;String,Object&gt; props = new HashMap&lt;String, Object&gt;(16);</span><br><span class="line">        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, servers);</span><br><span class="line">        props.put(ProducerConfig.RETRIES_CONFIG, retries);</span><br><span class="line">        props.put(ProducerConfig.BATCH_SIZE_CONFIG, batchSize);</span><br><span class="line">        props.put(ProducerConfig.LINGER_MS_CONFIG, linger);</span><br><span class="line">        props.put(ProducerConfig.BUFFER_MEMORY_CONFIG, bufferMemory);</span><br><span class="line">        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);</span><br><span class="line">        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);</span><br><span class="line">        return props;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ProducerFactory&lt;String, MessageEntity&gt; producerFactory()&#123;</span><br><span class="line">        return new DefaultKafkaProducerFactory&lt;String, MessageEntity&gt;(</span><br><span class="line">                producerConfigs(),</span><br><span class="line">                new StringSerializer(),</span><br><span class="line">                new JsonSerializer&lt;MessageEntity&gt;());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public KafkaTemplate&lt;String, MessageEntity&gt; kafkaTemplate()&#123;</span><br><span class="line">        return new KafkaTemplate&lt;String, MessageEntity&gt;(producerFactory());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>KafkaConsumerConfig.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.config;</span><br><span class="line"></span><br><span class="line">import com.cxy.kafka.common.MessageEntity;</span><br><span class="line">import org.apache.kafka.clients.consumer.ConsumerConfig;</span><br><span class="line">import org.apache.kafka.common.serialization.StringDeserializer;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.context.annotation.Bean;</span><br><span class="line">import org.springframework.context.annotation.Configuration;</span><br><span class="line">import org.springframework.kafka.annotation.EnableKafka;</span><br><span class="line">import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;</span><br><span class="line">import org.springframework.kafka.config.KafkaListenerContainerFactory;</span><br><span class="line">import org.springframework.kafka.core.ConsumerFactory;</span><br><span class="line">import org.springframework.kafka.core.DefaultKafkaConsumerFactory;</span><br><span class="line">import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;</span><br><span class="line">import org.springframework.kafka.support.serializer.JsonDeserializer;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Configuration</span><br><span class="line">@EnableKafka</span><br><span class="line">public class KafkaConsumerConfig &#123;</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.servers&#125;&quot;)</span><br><span class="line">    private String servers;</span><br><span class="line"></span><br><span class="line">    //服务是否自动提交</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.enable.auto.commit&#125;&quot;)</span><br><span class="line">    private boolean enableAutoCommit;</span><br><span class="line"></span><br><span class="line">    //session超时时间</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.session.timeout&#125;&quot;)</span><br><span class="line">    private String sessionTimeout;</span><br><span class="line"></span><br><span class="line">    //提交的间隔</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.auto.commit.interval&#125;&quot;)</span><br><span class="line">    private String autoCommitInterval;</span><br><span class="line"></span><br><span class="line">    //生产者groupId</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.group.id&#125;&quot;)</span><br><span class="line">    private String groupId;</span><br><span class="line"></span><br><span class="line">    //自动将offset重置到某位置</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.auto.offset.reset&#125;&quot;)</span><br><span class="line">    private String autoOffsetReset;</span><br><span class="line"></span><br><span class="line">    //并发数目</span><br><span class="line">    @Value(&quot;$&#123;kafka.consumer.concurrency&#125;&quot;)</span><br><span class="line">    private int concurrency;</span><br><span class="line"></span><br><span class="line">    private Map&lt;String,Object&gt; consumerConfigs() &#123;</span><br><span class="line">        Map&lt;String,Object&gt; props = new HashMap&lt;String, Object&gt;(16);</span><br><span class="line">        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, servers);</span><br><span class="line">        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, enableAutoCommit);</span><br><span class="line">        props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, sessionTimeout);</span><br><span class="line">        props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, autoCommitInterval);</span><br><span class="line">        props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);</span><br><span class="line">        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, autoOffsetReset);</span><br><span class="line">        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);</span><br><span class="line">        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);</span><br><span class="line">        return props;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private ConsumerFactory&lt;String, MessageEntity&gt; consumerFactory() &#123;</span><br><span class="line">        return new DefaultKafkaConsumerFactory&lt;String, MessageEntity&gt;(</span><br><span class="line">                consumerConfigs(),</span><br><span class="line">                new StringDeserializer(),</span><br><span class="line">                new JsonDeserializer&lt;MessageEntity&gt;(MessageEntity.class));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public KafkaListenerContainerFactory&lt;ConcurrentMessageListenerContainer&lt;String, MessageEntity&gt;&gt; kafkaListenerContainerFactory()&#123;</span><br><span class="line">        ConcurrentKafkaListenerContainerFactory&lt;String, MessageEntity&gt; factory = new ConcurrentKafkaListenerContainerFactory&lt;String, MessageEntity&gt;();</span><br><span class="line">        factory.setConsumerFactory(consumerFactory());</span><br><span class="line">        factory.setConcurrency(concurrency);</span><br><span class="line">        factory.getContainerProperties().setPollTimeout(1500);</span><br><span class="line">        return factory;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ProducerCallback.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.producer;</span><br><span class="line"></span><br><span class="line">import com.cxy.kafka.common.MessageEntity;</span><br><span class="line">import com.google.gson.Gson;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.apache.kafka.clients.producer.RecordMetadata;</span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.springframework.kafka.support.SendResult;</span><br><span class="line">import org.springframework.lang.Nullable;</span><br><span class="line">import org.springframework.util.concurrent.ListenableFutureCallback;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">public class ProducerCallback implements ListenableFutureCallback&lt;SendResult&lt;String, MessageEntity&gt;&gt; &#123;</span><br><span class="line">    public static final Logger logger = Logger.getLogger(ProducerCallback.class);</span><br><span class="line"></span><br><span class="line">    private final long startTime;</span><br><span class="line"></span><br><span class="line">    private final String key;</span><br><span class="line"></span><br><span class="line">    private final MessageEntity messageEntity;</span><br><span class="line"></span><br><span class="line">    private final Gson gson = new Gson();</span><br><span class="line"></span><br><span class="line">    public ProducerCallback(long startTime, String key, MessageEntity messageEntity)&#123;</span><br><span class="line">        this.startTime = startTime;</span><br><span class="line">        this.key = key;</span><br><span class="line">        this.messageEntity = messageEntity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onFailure(Throwable throwable) &#123;</span><br><span class="line">        throwable.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onSuccess(@Nullable SendResult&lt;String, MessageEntity&gt; stringMessageEntitySendResult) &#123;</span><br><span class="line">        if(stringMessageEntitySendResult == null)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        long elapsedTime = System.currentTimeMillis() - startTime;</span><br><span class="line"></span><br><span class="line">        RecordMetadata metadata = stringMessageEntitySendResult.getRecordMetadata();</span><br><span class="line">        if(metadata!=null)&#123;</span><br><span class="line">            StringBuilder stringBuilder = new StringBuilder();</span><br><span class="line">            stringBuilder.append(&quot;message(&quot;)</span><br><span class="line">                    .append(&quot;key= &quot;).append(key).append(&quot;,&quot;)</span><br><span class="line">                    .append(&quot;message= &quot;).append(gson.toJson(messageEntity)).append(&quot;)&quot;)</span><br><span class="line">                    .append(&quot;sent to partition(&quot;).append(metadata.partition()).append(&quot;)&quot;)</span><br><span class="line">                    .append(&quot;with offset(&quot;).append(metadata.offset()).append(&quot;)&quot;)</span><br><span class="line">                    .append(&quot;in &quot;).append(elapsedTime).append(&quot; ms&quot;);</span><br><span class="line">            logger.info(stringBuilder.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>SimpleProducer.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.producer;</span><br><span class="line"></span><br><span class="line">import com.cxy.kafka.common.MessageEntity;</span><br><span class="line">import org.apache.kafka.clients.producer.ProducerRecord;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line">import org.springframework.kafka.core.KafkaTemplate;</span><br><span class="line">import org.springframework.kafka.support.SendResult;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line">import org.springframework.util.concurrent.ListenableFuture;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class SimpleProducer &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    @Qualifier(&quot;kafkaTemplate&quot;)</span><br><span class="line">    private KafkaTemplate&lt;String, MessageEntity&gt; kafkaTemplate;</span><br><span class="line"></span><br><span class="line">    public void send(String topic, MessageEntity messageEntity)&#123;</span><br><span class="line">        kafkaTemplate.send(topic,messageEntity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void send(String topic, String key, MessageEntity messageEntity)&#123;</span><br><span class="line">        ProducerRecord&lt;String, MessageEntity&gt; record = new ProducerRecord&lt;String, MessageEntity&gt;(topic,key,messageEntity);</span><br><span class="line">        long startTime = System.currentTimeMillis();</span><br><span class="line">        ListenableFuture&lt;SendResult&lt;String, MessageEntity&gt;&gt; future = kafkaTemplate.send(record);</span><br><span class="line">        future.addCallback(new ProducerCallback(startTime,key,messageEntity));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>SimpleConsumer.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.consumer;</span><br><span class="line"></span><br><span class="line">import com.cxy.kafka.common.MessageEntity;</span><br><span class="line">import com.google.gson.Gson;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.springframework.kafka.annotation.KafkaListener;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@Component</span><br><span class="line">public class SimpleConsumer &#123;</span><br><span class="line">    public static final Logger logger = Logger.getLogger(SimpleConsumer.class);</span><br><span class="line"></span><br><span class="line">    private final Gson gson = new Gson();</span><br><span class="line"></span><br><span class="line">    @KafkaListener(topics = &quot;$&#123;kafka.topic.default&#125;&quot;,containerFactory = &quot;kafkaListenerContainerFactory&quot;)</span><br><span class="line">    public void receive(MessageEntity messageEntity)&#123;</span><br><span class="line">        logger.info(gson.toJson(messageEntity));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ProducerController.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.kafka.controller;</span><br><span class="line"></span><br><span class="line">import com.cxy.kafka.common.ErrorCode;</span><br><span class="line">import com.cxy.kafka.common.MessageEntity;</span><br><span class="line">import com.cxy.kafka.common.Response;</span><br><span class="line">import com.cxy.kafka.producer.SimpleProducer;</span><br><span class="line">import com.google.gson.Gson;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMethod;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/4/9</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/kafka&quot;)</span><br><span class="line">public class ProducerController &#123;</span><br><span class="line">    public static final Logger logger = Logger.getLogger(ProducerController.class);</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private SimpleProducer simpleProducer;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;kafka.topic.default&#125;&quot;)</span><br><span class="line">    private String topic;</span><br><span class="line"></span><br><span class="line">    private Gson gson = new Gson();</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value=&quot;/hello&quot;,method = RequestMethod.GET, produces = &#123;&quot;application/json&quot;&#125;)</span><br><span class="line">    public Response sendKafka()&#123;</span><br><span class="line">        return new Response(ErrorCode.SUCCESS,&quot;SUCCESS&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value=&quot;/send&quot;,method = RequestMethod.POST, produces = &#123;&quot;application/json&quot;&#125;)</span><br><span class="line">    public Response sendKafka(@RequestBody MessageEntity messageEntity)&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            logger.info(&quot;kafka消息:&#123;&#125;&quot;+gson.toJson(messageEntity));</span><br><span class="line">            simpleProducer.send(topic,&quot;key&quot;,messageEntity);</span><br><span class="line">            logger.info(&quot;发送kafka成功！&quot;);</span><br><span class="line">            return new Response(ErrorCode.SUCCESS,&quot;发送kafka成功！&quot;);</span><br><span class="line">        &#125;catch(Exception e)&#123;</span><br><span class="line">            logger.error(&quot;发送kafka失败！&quot;,e);</span><br><span class="line">            return new Response(ErrorCode.EXCEPTION,&quot;发送kafka失败！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>启动</code><br>启动<code>KafkaApplication.java</code>。(必须打开zookeeper和kafka)<br><code>测试</code><br>我这边用的是<code>Restlet Client</code>插件，你们也可以根据自己喜好选择测试工具</p>
+<ul>
+<li>先测试下<code>http://localhost:8080/kafka/hello</code><br><img src="https://upload-images.jianshu.io/upload_images/14481291-4589209e64c2837c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hello"></li>
+<li>测试<code>http://localhost:8080/kafka/send</code><br><img src="https://upload-images.jianshu.io/upload_images/14481291-83da8ee4d338b801.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="send"><br>发送kafka消息成功，去看下控制台，成功接收到kafka消息<br><img src="https://upload-images.jianshu.io/upload_images/14481291-69e302d01c8bea76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="success"><h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><a href="https://github.com/nullcxy/kafka_learning" target="_blank" rel="noopener">源代码</a><h2 id="Kafka高级特性——消息事物"><a href="#Kafka高级特性——消息事物" class="headerlink" title="Kafka高级特性——消息事物"></a>Kafka高级特性——消息事物</h2><h3 id="为什么要支持事物"><a href="#为什么要支持事物" class="headerlink" title="为什么要支持事物"></a>为什么要支持事物</h3></li>
+<li>满足“读取-处理-写入”模式</li>
+<li>流处理需求不断增强</li>
+<li>不准确的数据处理的容忍度<h3 id="数据传输的事物定义"><a href="#数据传输的事物定义" class="headerlink" title="数据传输的事物定义"></a>数据传输的事物定义</h3></li>
+<li>最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次都不传输</li>
+<li>最少一次：消息不会被漏发送，最少被传输一次，但也有可能被重复传输</li>
+<li>精确的一次（Exactly once）：不会被漏发送也不会被重复发送，每个消息都被传输一次而且仅仅被传输一次，这是大家所期望的<h3 id="事物保证"><a href="#事物保证" class="headerlink" title="事物保证"></a>事物保证</h3></li>
+<li>内部重试问题：Procedure幂等处理</li>
+<li>多分区原子写入<br><img src="https://upload-images.jianshu.io/upload_images/14481291-0dfd76c38774abb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多分区原子写入"><h3 id="事物保证-避免僵尸实例"><a href="#事物保证-避免僵尸实例" class="headerlink" title="事物保证-避免僵尸实例"></a>事物保证-避免僵尸实例</h3></li>
+<li>每个事物Producer分配一个transactional.id，在进程重新启动时能识别相同的Producer实例</li>
+<li>Kafka增加了一个与transactional.id相关的epoch，存储每个transactional.id元数据</li>
+<li>一旦epoch被触发，任何具有相同transactional.id和更旧的epoch的Producer被视为僵尸，Kafka会拒绝来自这些Procedure的后续事务性写入<h2 id="Kafka高级特性——零拷贝"><a href="#Kafka高级特性——零拷贝" class="headerlink" title="Kafka高级特性——零拷贝"></a>Kafka高级特性——零拷贝</h2><h3 id="零拷贝简介"><a href="#零拷贝简介" class="headerlink" title="零拷贝简介"></a>零拷贝简介</h3></li>
+<li>网络传输持久性日志块</li>
+<li>Java Nio channel.transforTo()方法</li>
+<li>Linux sendfile系统调用<h3 id="文件传输到网络的公共数据路径"><a href="#文件传输到网络的公共数据路径" class="headerlink" title="文件传输到网络的公共数据路径"></a>文件传输到网络的公共数据路径</h3></li>
+<li>操作系统将数据从磁盘读入到内核空间的页缓存</li>
+<li>应用程序将数据从内核空间读入到用户空间缓存中</li>
+<li>应用程序将数据写回到内核空间到socket缓存中</li>
+<li>操作系统将数据从socket缓存中复制到网卡缓冲区，以便将数据经网络发出<h3 id="零拷贝路径"><a href="#零拷贝路径" class="headerlink" title="零拷贝路径"></a>零拷贝路径</h3></li>
+<li>操作系统将数据从磁盘读入到内核空间的页缓存</li>
+<li>将数据的位置和长度的信息的描述符增加至内核空间（socket缓冲区）</li>
+<li>操作系统将数据从内核复制到网卡缓冲区，以便将数据经网络发出<br>零拷贝是指内核空间和用户空间的交互的拷贝次数为零<br><img src="https://upload-images.jianshu.io/upload_images/14481291-5aa06fd2b38f2bde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件传输到网络的公共数据路径演变"></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/03/02/study16/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
+        <p><span>发布时间:</span>2020-03-02, 20:34:28</p>
+        <p><span>最后更新:</span>2020-03-02, 20:36:33</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/02/study16/" title="">http://yoursite.com/2020/03/02/study16/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/03/02/study16/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/03/02/study17/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/03/02/study15/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	
+	    <!--打赏-->
+<div class="reward">
+	<div class="reward-button">赏 <span class="reward-code">
+	  <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/Alipay.jpg"><b>支付宝打赏</b> </span> 
+	  <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/WeChatpay.jpg"><b>微信打赏</b> </span> 
+ 	</span></div>
+	<p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+</div>
+<!--打赏-->
+	
+
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kafka介绍"><span class="toc-number">1.</span> <span class="toc-text">kafka介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#主要功能"><span class="toc-number">1.1.</span> <span class="toc-text">主要功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用场景"><span class="toc-number">1.2.</span> <span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.3.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念延伸"><span class="toc-number">1.4.</span> <span class="toc-text">基本概念延伸</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Partition"><span class="toc-number">1.4.1.</span> <span class="toc-text">Partition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Replication"><span class="toc-number">1.4.2.</span> <span class="toc-text">Replication</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Replication特点"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">Replication特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka基本结构"><span class="toc-number">1.5.</span> <span class="toc-text">kafka基本结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#消息传输流程"><span class="toc-number">1.5.1.</span> <span class="toc-text">消息传输流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kafka的消息结构"><span class="toc-number">1.5.2.</span> <span class="toc-text">kafka的消息结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka特点"><span class="toc-number">1.6.</span> <span class="toc-text">kafka特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分布式"><span class="toc-number">1.6.1.</span> <span class="toc-text">分布式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高性能"><span class="toc-number">1.6.2.</span> <span class="toc-text">高性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持久性和扩展性"><span class="toc-number">1.6.3.</span> <span class="toc-text">持久性和扩展性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景"><span class="toc-number">1.7.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka简单案例"><span class="toc-number">1.8.</span> <span class="toc-text">kafka简单案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载与安装"><span class="toc-number">1.8.1.</span> <span class="toc-text">下载与安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ZooKeeper下载"><span class="toc-number">1.8.1.1.</span> <span class="toc-text">ZooKeeper下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka下载"><span class="toc-number">1.8.1.2.</span> <span class="toc-text">Kafka下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.8.1.3.</span> <span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动"><span class="toc-number">1.8.2.</span> <span class="toc-text">启动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#运行Zookeeper"><span class="toc-number">1.8.2.1.</span> <span class="toc-text">运行Zookeeper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动kafka"><span class="toc-number">1.8.2.2.</span> <span class="toc-text">启动kafka</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建一个Topic"><span class="toc-number">1.8.2.3.</span> <span class="toc-text">创建一个Topic</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建一个Producer"><span class="toc-number">1.8.2.4.</span> <span class="toc-text">创建一个Producer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建一个Consumer"><span class="toc-number">1.8.2.5.</span> <span class="toc-text">创建一个Consumer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-number">1.8.2.6.</span> <span class="toc-text">测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka代码案例"><span class="toc-number">1.9.</span> <span class="toc-text">kafka代码案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#源代码"><span class="toc-number">1.9.1.</span> <span class="toc-text">源代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka高级特性——消息事物"><span class="toc-number">1.10.</span> <span class="toc-text">Kafka高级特性——消息事物</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要支持事物"><span class="toc-number">1.10.1.</span> <span class="toc-text">为什么要支持事物</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据传输的事物定义"><span class="toc-number">1.10.2.</span> <span class="toc-text">数据传输的事物定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事物保证"><span class="toc-number">1.10.3.</span> <span class="toc-text">事物保证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事物保证-避免僵尸实例"><span class="toc-number">1.10.4.</span> <span class="toc-text">事物保证-避免僵尸实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka高级特性——零拷贝"><span class="toc-number">1.11.</span> <span class="toc-text">Kafka高级特性——零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#零拷贝简介"><span class="toc-number">1.11.1.</span> <span class="toc-text">零拷贝简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件传输到网络的公共数据路径"><span class="toc-number">1.11.2.</span> <span class="toc-text">文件传输到网络的公共数据路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#零拷贝路径"><span class="toc-number">1.11.3.</span> <span class="toc-text">零拷贝路径</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/03/02/study17/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/03/02/study15/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study29/">study29</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study28/">study28</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study27/">study27</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study26/">study26</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study25/">study25</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study24/">study24</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study23/">study23</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study22/">study22</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study21/">study21</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study20/">study20</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study19/">study19</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study18/">study18</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study17/">study17</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study16/">study16</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study15/">study15</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</aricle></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 Null指针
+            </div>
+            <div class="footer-right">
+                
+            </div>
+        </div>
+        
+        <div>
+					<span id="busuanzi_container_site_uv" style="margin-left: -100px;">
+					  	您是第<span id="busuanzi_value_site_uv"></span>位访客 | 
+					</span>
+					
+	        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	        <span id="busuanzi_container_site_pv">
+					    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+					</span>
+				</div>
+				
+				
+				<div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				</div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Null指针">
+
+
+
+<meta name="description" content="title: 常用注解date: 2019-11-02 00:00:30tags:   Javacategories: 注解  拷贝自 链接1 链接2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Null指针的博客">
+<meta property="og:url" content="http://yoursite.com/2020/03/02/study20/index.html">
+<meta property="og:site_name" content="Null指针的博客">
+<meta property="og:description" content="title: 常用注解date: 2019-11-02 00:00:30tags:   Javacategories: 注解  拷贝自 链接1 链接2">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-02T12:42:36.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Null指针的博客">
+<meta name="twitter:description" content="title: 常用注解date: 2019-11-02 00:00:30tags:   Javacategories: 注解  拷贝自 链接1 链接2">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/head/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Null指针的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Null指针</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Null指针</p>
+        
+
+        
+            <form id="search-form">
+	            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+	            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Null指针</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Null指针</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Null指针</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><aricle id="post-study20" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/02/study20/" class="article-date">
+      <time datetime="2020-03-02T12:41:24.414Z" itemprop="datePublished">2020-03-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>title: 常用注解<br>date: 2019-11-02 00:00:30<br>tags: </p>
+<ul>
+<li>Java<br>categories: 注解</li>
+</ul>
+<p>拷贝自</p>
+<p><a href="https://blog.csdn.net/qq920447939/article/details/80198438" target="_blank" rel="noopener">链接1</a></p>
+<p><a href="https://baijiahao.baidu.com/s?id=1610074580703216570&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">链接2</a></p>
+<a id="more"></a>
+<blockquote>
+<p>@Null  被注释的元素必须为null<br>@NotNull  被注释的元素不能为null<br>@AssertTrue  被注释的元素必须为true<br>@AssertFalse  被注释的元素必须为false<br>@Min(value)  被注释的元素必须是一个数字，其值必须大于等于指定的最小值<br>@Max(value)  被注释的元素必须是一个数字，其值必须小于等于指定的最大值<br>@DecimalMin(value)  被注释的元素必须是一个数字，其值必须大于等于指定的最小值<br>@DecimalMax(value)  被注释的元素必须是一个数字，其值必须小于等于指定的最大值<br>@Size(max,min)  被注释的元素的大小必须在指定的范围内。<br>@Digits(integer,fraction)  被注释的元素必须是一个数字，其值必须在可接受的范围内<br>@Past  被注释的元素必须是一个过去的日期<br>@Future  被注释的元素必须是一个将来的日期<br>@Pattern(value) 被注释的元素必须符合指定的正则表达式。<br>@Email 被注释的元素必须是电子邮件地址<br>@Length 被注释的字符串的大小必须在指定的范围内<br>@NotEmpty  被注释的字符串必须非空<br>@Range  被注释的元素必须在合适的范围</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line">Spring部分</span><br><span class="line"></span><br><span class="line">1.声明bean的注解</span><br><span class="line"></span><br><span class="line">@Component 组件，没有明确的角色</span><br><span class="line"></span><br><span class="line">@Service 在业务逻辑层使用（service层）</span><br><span class="line"></span><br><span class="line">@Repository 在数据访问层使用（dao层）</span><br><span class="line"></span><br><span class="line">@Controller 在展现层使用，控制器的声明（C）</span><br><span class="line"></span><br><span class="line">2.注入bean的注解</span><br><span class="line"></span><br><span class="line">@Autowired：由Spring提供</span><br><span class="line"></span><br><span class="line">@Inject：由JSR-330提供</span><br><span class="line"></span><br><span class="line">@Resource：由JSR-250提供</span><br><span class="line"></span><br><span class="line">都可以注解在set方法和属性上，推荐注解在属性上（一目了然，少写代码）。</span><br><span class="line"></span><br><span class="line">3.java配置类相关注解</span><br><span class="line"></span><br><span class="line">@Configuration 声明当前类为配置类，相当于xml形式的Spring配置（类上）</span><br><span class="line"></span><br><span class="line">@Bean 注解在方法上，声明当前方法的返回值为一个bean，替代xml中的方式（方法上）</span><br><span class="line"></span><br><span class="line">@Configuration 声明当前类为配置类，其中内部组合了@Component注解，表明这个类是一个bean（类上）</span><br><span class="line"></span><br><span class="line">@ComponentScan 用于对Component进行扫描，相当于xml中的（类上）</span><br><span class="line"></span><br><span class="line">@WishlyConfiguration 为@Configuration与@ComponentScan的组合注解，可以替代这两个注解</span><br><span class="line"></span><br><span class="line">4.切面（AOP）相关注解</span><br><span class="line"></span><br><span class="line">Spring支持AspectJ的注解式切面编程。</span><br><span class="line"></span><br><span class="line">@Aspect 声明一个切面（类上） 使用@After、@Before、@Around定义建言（advice），可直接将拦截规则（切点）作为参数。</span><br><span class="line"></span><br><span class="line">@After 在方法执行之后执行（方法上） @Before 在方法执行之前执行（方法上） @Around 在方法执行之前与之后执行（方法上）</span><br><span class="line"></span><br><span class="line">@PointCut 声明切点 在java配置类中使用@EnableAspectJAutoProxy注解开启Spring对AspectJ代理的支持（类上）</span><br><span class="line"></span><br><span class="line">5.@Bean的属性支持</span><br><span class="line"></span><br><span class="line">@Scope 设置Spring容器如何新建Bean实例（方法上，得有@Bean） 其设置类型包括：</span><br><span class="line"></span><br><span class="line">Singleton （单例,一个Spring容器中只有一个bean实例，默认模式）, Protetype （每次调用新建一个bean）, Request （web项目中，给每个http request新建一个bean）, Session （web项目中，给每个http session新建一个bean）, GlobalSession（给每一个 global http session新建一个Bean实例）</span><br><span class="line"></span><br><span class="line">@StepScope 在Spring Batch中还有涉及</span><br><span class="line"></span><br><span class="line">@PostConstruct 由JSR-250提供，在构造函数执行完之后执行，等价于xml配置文件中bean的initMethod</span><br><span class="line"></span><br><span class="line">@PreDestory 由JSR-250提供，在Bean销毁之前执行，等价于xml配置文件中bean的destroyMethod</span><br><span class="line"></span><br><span class="line">6.@Value注解</span><br><span class="line"></span><br><span class="line">@Value 为属性注入值（属性上） 支持如下方式的注入： 》注入普通字符</span><br><span class="line"></span><br><span class="line">@Value(&quot;Michael Jackson&quot;)String name;</span><br><span class="line"></span><br><span class="line">》注入操作系统属性</span><br><span class="line"></span><br><span class="line">@Value(&quot;#&#123;systemProperties[&apos;os.name&apos;]&#125;&quot;)String osName;</span><br><span class="line"></span><br><span class="line">》注入表达式结果</span><br><span class="line"></span><br><span class="line">@Value(&quot;#&#123; T(java.lang.Math).random() * 100 &#125;&quot;) String randomNumber;</span><br><span class="line"></span><br><span class="line">》注入其它bean属性</span><br><span class="line"></span><br><span class="line">@Value(&quot;#&#123;domeClass.name&#125;&quot;)String name;</span><br><span class="line"></span><br><span class="line">》注入文件资源</span><br><span class="line"></span><br><span class="line">@Value(&quot;classpath:com/hgs/hello/test.txt&quot;)String Resource file;</span><br><span class="line"></span><br><span class="line">》注入网站资源</span><br><span class="line"></span><br><span class="line">@Value(&quot;http://www.cznovel.com&quot;)Resource url;</span><br><span class="line"></span><br><span class="line">》注入配置文件</span><br><span class="line"></span><br><span class="line">Value(&quot;$&#123;book.name&#125;&quot;)String bookName;</span><br><span class="line"></span><br><span class="line">注入配置使用方法： ① 编写配置文件（test.properties）</span><br><span class="line"></span><br><span class="line">book.name=《三体》</span><br><span class="line"></span><br><span class="line">② @PropertySource 加载配置文件(类上)</span><br><span class="line"></span><br><span class="line">@PropertySource(&quot;classpath:com/hgs/hello/test/test.propertie&quot;)</span><br><span class="line"></span><br><span class="line">③ 还需配置一个PropertySourcesPlaceholderConfigurer的bean。</span><br><span class="line"></span><br><span class="line">7.环境切换</span><br><span class="line"></span><br><span class="line">@Profile 通过设定Environment的ActiveProfiles来设定当前context需要使用的配置环境。（类或方法上）</span><br><span class="line"></span><br><span class="line">@Conditional Spring4中可以使用此注解定义条件话的bean，通过实现Condition接口，并重写matches方法，从而决定该bean是否被实例化。（方法上）</span><br><span class="line"></span><br><span class="line">8.异步相关</span><br><span class="line"></span><br><span class="line">@EnableAsync 配置类中，通过此注解开启对异步任务的支持，叙事性AsyncConfigurer接口（类上）</span><br><span class="line"></span><br><span class="line">@Async 在实际执行的bean方法使用该注解来申明其是一个异步任务（方法上或类上所有的方法都将异步，需要@EnableAsync开启异步任务）</span><br><span class="line"></span><br><span class="line">9.定时任务相关</span><br><span class="line"></span><br><span class="line">@EnableScheduling 在配置类上使用，开启计划任务的支持（类上）</span><br><span class="line"></span><br><span class="line">@Scheduled 来申明这是一个任务，包括cron,fixDelay,fixRate等类型（方法上，需先开启计划任务的支持）</span><br><span class="line"></span><br><span class="line">10.@Enable*注解说明</span><br><span class="line"></span><br><span class="line">这些注解主要用来开启对xxx的支持。 @EnableAspectJAutoProxy 开启对AspectJ自动代理的支持</span><br><span class="line"></span><br><span class="line">@EnableAsync 开启异步方法的支持</span><br><span class="line"></span><br><span class="line">@EnableScheduling 开启计划任务的支持</span><br><span class="line"></span><br><span class="line">@EnableWebMvc 开启Web MVC的配置支持</span><br><span class="line"></span><br><span class="line">@EnableConfigurationProperties 开启对@ConfigurationProperties注解配置Bean的支持</span><br><span class="line"></span><br><span class="line">@EnableJpaRepositories 开启对SpringData JPA Repository的支持</span><br><span class="line"></span><br><span class="line">@EnableTransactionManagement 开启注解式事务的支持</span><br><span class="line"></span><br><span class="line">@EnableTransactionManagement 开启注解式事务的支持</span><br><span class="line"></span><br><span class="line">@EnableCaching 开启注解式的缓存支持</span><br><span class="line"></span><br><span class="line">11.测试相关注解</span><br><span class="line"></span><br><span class="line">@RunWith 运行器，Spring中通常用于对JUnit的支持</span><br><span class="line"></span><br><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line"></span><br><span class="line">@ContextConfiguration 用来加载配置ApplicationContext，其中classes属性用来加载配置类</span><br><span class="line"></span><br><span class="line">@ContextConfiguration(classes=&#123;TestConfig.class&#125;)</span><br><span class="line"></span><br><span class="line">SpringMVC部分</span><br><span class="line"></span><br><span class="line">@EnableWebMvc 在配置类中开启Web MVC的配置支持，如一些ViewResolver或者MessageConverter等，若无此句，重写WebMvcConfigurerAdapter方法（用于对SpringMVC的配置）。</span><br><span class="line"></span><br><span class="line">@Controller 声明该类为SpringMVC中的Controller</span><br><span class="line"></span><br><span class="line">@RequestMapping 用于映射Web请求，包括访问路径和参数（类或方法上）</span><br><span class="line"></span><br><span class="line">@ResponseBody 支持将返回值放在response内，而不是一个页面，通常用户返回json数据（返回值旁或方法上）</span><br><span class="line"></span><br><span class="line">@RequestBody 允许request的参数在request体中，而不是在直接连接在地址后面。（放在参数前）</span><br><span class="line"></span><br><span class="line">@PathVariable 用于接收路径参数，比如@RequestMapping(“/hello/&#123;name&#125;”)申明的路径，将注解放在参数中前，即可获取该值，通常作为Restful的接口实现方法。</span><br><span class="line"></span><br><span class="line">@RestController 该注解为一个组合注解，相当于@Controller和@ResponseBody的组合，注解在类上，意味着，该Controller的所有方法都默认加上了@ResponseBody。</span><br><span class="line"></span><br><span class="line">@ControllerAdvice 通过该注解，我们可以将对于控制器的全局配置放置在同一个位置，注解了@Controller的类的方法可使用@ExceptionHandler、@InitBinder、@ModelAttribute注解到方法上， 这对所有注解了 @RequestMapping的控制器内的方法有效。</span><br><span class="line"></span><br><span class="line">@ExceptionHandler 用于全局处理控制器里的异常</span><br><span class="line"></span><br><span class="line">@InitBinder 用来设置WebDataBinder，WebDataBinder用来自动绑定前台请求参数到Model中。</span><br><span class="line"></span><br><span class="line">@ModelAttribute 本来的作用是绑定键值对到Model里，在@ControllerAdvice中是让全局的@RequestMapping都能获得在此处设置的键值对。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/03/02/study20/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
+        <p><span>发布时间:</span>2020-03-02, 20:41:24</p>
+        <p><span>最后更新:</span>2020-03-02, 20:42:36</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/03/02/study20/" title="">http://yoursite.com/2020/03/02/study20/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/03/02/study20/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/03/02/study21/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/03/02/study19/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	
+	    <!--打赏-->
+<div class="reward">
+	<div class="reward-button">赏 <span class="reward-code">
+	  <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/Alipay.jpg"><b>支付宝打赏</b> </span> 
+	  <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/WeChatpay.jpg"><b>微信打赏</b> </span> 
+ 	</span></div>
+	<p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+</div>
+<!--打赏-->
+	
+
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/03/02/study21/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/03/02/study19/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study29/">study29</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study28/">study28</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study27/">study27</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study26/">study26</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study25/">study25</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study24/">study24</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study23/">study23</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study22/">study22</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study21/">study21</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study20/">study20</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study19/">study19</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study18/">study18</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study17/">study17</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study16/">study16</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/02/study15/">study15</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</aricle></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 Null指针
+            </div>
+            <div class="footer-right">
+                
+            </div>
+        </div>
+        
+        <div>
+					<span id="busuanzi_container_site_uv" style="margin-left: -100px;">
+					  	您是第<span id="busuanzi_value_site_uv"></span>位访客 | 
+					</span>
+					
+	        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	        <span id="busuanzi_container_site_pv">
+					    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+					</span>
+				</div>
+				
+				
+				<div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				</div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
