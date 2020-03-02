@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Null指针">
+
+
+
+<meta name="description" content="观察者模式(概念摘自菜鸟教程) 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式-观察者模式">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/study24/index.html">
+<meta property="og:site_name" content="Null指针的博客">
+<meta property="og:description" content="观察者模式(概念摘自菜鸟教程) 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-795a2ff177469d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-02T13:23:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式-观察者模式">
+<meta name="twitter:description" content="观察者模式(概念摘自菜鸟教程) 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14481291-795a2ff177469d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/head/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>设计模式-观察者模式 | Null指针的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Null指针</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Null指针</p>
+        
+
+        
+            <form id="search-form">
+	            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+	            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Null指针</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Null指针</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Null指针</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><aricle id="post-study24" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/25/study24/" class="article-date">
+      <time datetime="2019-11-25T15:45:30.000Z" itemprop="datePublished">2019-11-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式-观察者模式
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">776字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="观察者模式-概念摘自菜鸟教程"><a href="#观察者模式-概念摘自菜鸟教程" class="headerlink" title="观察者模式(概念摘自菜鸟教程)"></a>观察者模式(概念摘自菜鸟教程)</h4><blockquote>
+<p>当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>优点： 1、观察者和被观察者是抽象耦合的。 2、建立一套触发机制。<br>缺点： 1、如果一个被观察者对象有很多的直接和间接的观察者的话，将所有的观察者都通知到会花费很多时间。 2、如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃。 3、观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化。<br>使用场景：<br>一个抽象模型有两个方面，其中一个方面依赖于另一个方面。将这些方面封装在独立的对象中使它们可以各自独立地改变和复用。<br>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变，可以降低对象之间的耦合度。<br>一个对象必须通知其他对象，而并不知道这些对象是谁。<br>需要在系统中创建一个触发链，A对象的行为将影响B对象，B对象的行为将影响C对象……，可以使用观察者模式创建一种链式触发机制。<br>我这边以天气站为被依赖的对象Subject</p>
+</blockquote>
+<p><code>Subject</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public interface Subject &#123;</span><br><span class="line">    //登记观察者</span><br><span class="line">    public void registerObserver(ObserverOne observer);</span><br><span class="line">    </span><br><span class="line">    //移除观察者</span><br><span class="line">    public void removeObserver(ObserverOne observer);</span><br><span class="line"></span><br><span class="line">    //唤醒观察者</span><br><span class="line">    public void notifyObserver();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Weater</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public class Weater implements Subject &#123;</span><br><span class="line"></span><br><span class="line">    private static float temperature;//温度</span><br><span class="line"></span><br><span class="line">    private static float pressure;//气压</span><br><span class="line"></span><br><span class="line">    private static float humidity;//湿度</span><br><span class="line"></span><br><span class="line">    private ArrayList&lt;ObserverOne&gt; observers;</span><br><span class="line"></span><br><span class="line">    public Weater()&#123;</span><br><span class="line">        observers = new ArrayList&lt;ObserverOne&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setData(float temperature, float pressure, float humidity)&#123;</span><br><span class="line">        this.temperature = temperature;</span><br><span class="line">        this.pressure = pressure;</span><br><span class="line">        this.humidity = humidity;</span><br><span class="line">        dataChange();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void dataChange() &#123;</span><br><span class="line">        notifyObserver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void registerObserver(ObserverOne observer) &#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void removeObserver(ObserverOne observer) &#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void notifyObserver() &#123;</span><br><span class="line">        for (ObserverOne observerOne : observers) &#123;</span><br><span class="line">            observerOne.update(this.temperature,this.pressure,this.humidity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ObserverOne</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public interface ObserverOne &#123;</span><br><span class="line">    public void update(float temperature,float pressure,float humidity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Baidu</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description: 创建实体观察者类。</span><br><span class="line"> */</span><br><span class="line">public class Baidu implements ObserverOne &#123;</span><br><span class="line">    private static float temperature;</span><br><span class="line"></span><br><span class="line">    private static float pressure;</span><br><span class="line"></span><br><span class="line">    private static float humidity;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void update(float temperature, float pressure, float humidity) &#123;</span><br><span class="line">        this.temperature = temperature;</span><br><span class="line">        this.pressure = pressure;</span><br><span class="line">        this.humidity = humidity;</span><br><span class="line">        System.out.println(&quot;1:&quot;+temperature+&quot;2:&quot;+pressure+&quot;3:&quot;+humidity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Client</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description: 使用 Subject 和实体观察者对象。</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Weater weater = new Weater();</span><br><span class="line"></span><br><span class="line">        Baidu baidu = new Baidu();</span><br><span class="line">        weater.registerObserver(baidu);</span><br><span class="line"></span><br><span class="line">        weater.setData(30f,300f,3000f);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h5><p><img src="https://upload-images.jianshu.io/upload_images/14481291-795a2ff177469d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/11/25/study24/">设计模式-观察者模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
+        <p><span>发布时间:</span>2019-11-25, 23:45:30</p>
+        <p><span>最后更新:</span>2020-03-02, 21:23:09</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/11/25/study24/" title="设计模式-观察者模式">http://yoursite.com/2019/11/25/study24/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/11/25/study24/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/12/15/study25/">
+                    数据库的事务隔离级别
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/11/15/study23/">
+                    Redis笔记———自用
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	
+	    <!--打赏-->
+<div class="reward">
+	<div class="reward-button">赏 <span class="reward-code">
+	  <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/Alipay.jpg"><b>支付宝打赏</b> </span> 
+	  <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/WeChatpay.jpg"><b>微信打赏</b> </span> 
+ 	</span></div>
+	<p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+</div>
+<!--打赏-->
+	
+
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#观察者模式-概念摘自菜鸟教程"><span class="toc-number">1.</span> <span class="toc-text">观察者模式(概念摘自菜鸟教程)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#测试结果"><span class="toc-number">1.1.</span> <span class="toc-text">测试结果</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"设计模式-观察者模式　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/12/15/study25/" title="上一篇: 数据库的事务隔离级别">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/11/15/study23/" title="下一篇: Redis笔记———自用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/20/study29/">如何保持Redis和db的数据一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/study28/">缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/study27/">Spring Boot的自动装配</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/29/study26/">CMS垃圾收集器</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/15/study25/">数据库的事务隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/study24/">设计模式-观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/15/study23/">Redis笔记———自用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/10/study22/">安装Redis时make报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/03/study21/">Jmeter压测</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/study20/">常用注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/study19/">Spring Boot配置Dubbo</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/study18/">Java:图片验证码产生和验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/study17/">消息中间件ActiveMQ</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/05/study16/">kafka流处理平台</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/study15/">Linux下如何查看哪些进程占用的CPU内存资源最多</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</aricle></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 Null指针
+            </div>
+            <div class="footer-right">
+                
+            </div>
+        </div>
+        
+        <div>
+					<span id="busuanzi_container_site_uv" style="margin-left: -100px;">
+					  	您是第<span id="busuanzi_value_site_uv"></span>位访客 | 
+					</span>
+					
+	        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	        <span id="busuanzi_container_site_pv">
+					    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+					</span>
+				</div>
+				
+				
+				<div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				</div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

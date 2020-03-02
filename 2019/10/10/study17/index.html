@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Null指针">
+
+
+
+<meta name="description" content="消息中间件概述中间件介绍###什么是中间件？非底层操作系统软件，非业务应用软件，不是直接给最终用户使用的，不能直接给用户带来价值的软件统称中间件。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消息中间件ActiveMQ">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/study17/index.html">
+<meta property="og:site_name" content="Null指针的博客">
+<meta property="og:description" content="消息中间件概述中间件介绍###什么是中间件？非底层操作系统软件，非业务应用软件，不是直接给最终用户使用的，不能直接给用户带来价值的软件统称中间件。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-e3dc5c03f7a90f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-7e5d75444a23e970.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-38ced69006bf2557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-7572bfb7737aba2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-a8ade2f0f803f64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-f116a19b98206435.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-02T13:17:37.346Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="消息中间件ActiveMQ">
+<meta name="twitter:description" content="消息中间件概述中间件介绍###什么是中间件？非底层操作系统软件，非业务应用软件，不是直接给最终用户使用的，不能直接给用户带来价值的软件统称中间件。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14481291-e3dc5c03f7a90f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/head/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>消息中间件ActiveMQ | Null指针的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Null指针</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Null指针</p>
+        
+
+        
+            <form id="search-form">
+	            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+	            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Null指针</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Null指针</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Null指针</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><aricle id="post-study17" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/10/study17/" class="article-date">
+      <time datetime="2019-10-10T11:10:34.000Z" itemprop="datePublished">2019-10-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      消息中间件ActiveMQ
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">1.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/ActiveMQ/">ActiveMQ</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="消息中间件概述"><a href="#消息中间件概述" class="headerlink" title="消息中间件概述"></a>消息中间件概述</h1><h2 id="中间件介绍"><a href="#中间件介绍" class="headerlink" title="中间件介绍"></a>中间件介绍</h2><p>###什么是中间件？<br>非底层操作系统软件，非业务应用软件，不是直接给最终用户使用的，不能直接给用户带来价值的软件统称中间件。</p>
+<a id="more"></a>
+<p>###什么是消息中间件<br>关注于数据的发送与接收，利用高效可靠的异步消息传递机制集成分布式系统。</p>
+<p>###消息中间件图示<br><img src="https://upload-images.jianshu.io/upload_images/14481291-e3dc5c03f7a90f5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>应用A通过应用程序接口向消息中间件发送消息，应用B通过应用程序接口向消息中间件接收消息。</p>
+<p>###什么是JMS<br>Java消息服务（Java Message Service）即JMS，是一个Java平台中关于面向消息中间件的API，用于在两个应用程序之间，或分布式系统中发送/接收消息，进行异步通信。</p>
+<p>###什么是AMQ<br>AMQP，即Advanced Message Queuing Protocol,一个提供统一消息服务的应用层标准协议,基于此协议的客户端与消息中间件可传递消息，并不受客户端中间件不同产品，不同的开发语言等条件的限制。</p>
+<h3 id="JMS和AMQP对比"><a href="#JMS和AMQP对比" class="headerlink" title="JMS和AMQP对比"></a>JMS和AMQP对比</h3><p><img src="https://upload-images.jianshu.io/upload_images/14481291-7e5d75444a23e970.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="常见消息中间件对比"><a href="#常见消息中间件对比" class="headerlink" title="常见消息中间件对比"></a>常见消息中间件对比</h3><h4 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h4><ul>
+<li>多种语言和协议编写客户端，语言：Java、C语言、C++、C#、Ruby、Perl、Python、PHP。应用协议：OpenWire、Stomp REST、WS Notification、XMPP、AMQP。</li>
+<li>完全支持JMS1.1和J2EE1.4规范（持久化、XA消息、事务）</li>
+<li>虚拟主题、组合目的、镜像队列<h4 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h4></li>
+<li>支持多种客户端，如Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript等</li>
+<li>AMQP的完整实现</li>
+<li>事务支持/发布确认</li>
+<li>消息持久化<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h4>Kafka是一种高吞吐量的分布式发布订阅消息系统，是一个分布式的、分区的、可靠的分布式日志存储服务。它通过一种独一无二的设计提供了消息系统的功能。<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5></li>
+<li>消息的持久化</li>
+<li>高吞吐量</li>
+<li>Partition、Consumer Group</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-38ced69006bf2557.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="综合对比"></p>
+<h2 id="JMS规范"><a href="#JMS规范" class="headerlink" title="JMS规范"></a>JMS规范</h2><h3 id="Java消息服务定义"><a href="#Java消息服务定义" class="headerlink" title="Java消息服务定义"></a>Java消息服务定义</h3><p>Java消息服务（Java Message Service）即JMS，是一个Java平台中关于面向消息中间件的API，用于在两个应用程序之间，或分布式系统中发送/接收消息，进行异步通信。</p>
+<h3 id="JMS概念"><a href="#JMS概念" class="headerlink" title="JMS概念"></a>JMS概念</h3><ul>
+<li>提供者：实现JMS规范的消息中间件服务器</li>
+<li>客户端：发送或接收消息额应用程序</li>
+<li>生产者/发布者：创建并发送消息的客户端</li>
+<li>消费者/订阅者：接收并处理消息的客户端</li>
+<li>消息： 应用程序间传递的数据内容</li>
+<li>消息模式：在客户端间传递消息的方式，JMS中定义了主题和队列两种模式<h3 id="消息模式"><a href="#消息模式" class="headerlink" title="消息模式"></a>消息模式</h3><h4 id="队列模型"><a href="#队列模型" class="headerlink" title="队列模型"></a>队列模型</h4></li>
+<li>客户端包括生产者和消费者</li>
+<li>队列中的消息只能被一个消费者消费</li>
+<li>消费者可以随时消费队列中的消息<h5 id="队列模型示意图"><a href="#队列模型示意图" class="headerlink" title="队列模型示意图"></a>队列模型示意图</h5><img src="https://upload-images.jianshu.io/upload_images/14481291-7572bfb7737aba2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><h4 id="主题模型"><a href="#主题模型" class="headerlink" title="主题模型"></a>主题模型</h4></li>
+<li>客户端包括生产者和消费者</li>
+<li>主题中的消息被所有订阅者消费</li>
+<li>消费者不能消费订阅之前就发送到主题中的消息<h5 id="队列模型示意图-1"><a href="#队列模型示意图-1" class="headerlink" title="队列模型示意图"></a>队列模型示意图</h5><img src="https://upload-images.jianshu.io/upload_images/14481291-a8ade2f0f803f64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><h4 id="JMS编码规范"><a href="#JMS编码规范" class="headerlink" title="JMS编码规范"></a>JMS编码规范</h4></li>
+<li>ConnectionFactory：用于创建连接到消息中间件的连接工厂</li>
+<li>Connection：“链接”,代表了应用程序和消息服务器之间的通信链路</li>
+<li>Destination：“目的地”,指消息发布和接收的地点，包括队列或主题</li>
+<li>Session：“会话”,表示一个单线程的上下文，用于发送和接收消息</li>
+<li>MessageConsumer：“消费者”,一种可以向JMS提供获取消息的客户端类型</li>
+<li>MessageProducer：“生产者”,消费者和生产者间传送的对象，消息头，一组消息属性，一个消息体<h4 id="JMS编码接口之间的关系"><a href="#JMS编码接口之间的关系" class="headerlink" title="JMS编码接口之间的关系"></a>JMS编码接口之间的关系</h4><img src="https://upload-images.jianshu.io/upload_images/14481291-f116a19b98206435.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><h2 id="windows下安装ActiveMQ"><a href="#windows下安装ActiveMQ" class="headerlink" title="windows下安装ActiveMQ"></a>windows下安装ActiveMQ</h2><h2 id="Linux下安装ActiveMQ"><a href="#Linux下安装ActiveMQ" class="headerlink" title="Linux下安装ActiveMQ"></a>Linux下安装ActiveMQ</h2><h2 id="队列模式的消息演示"><a href="#队列模式的消息演示" class="headerlink" title="队列模式的消息演示"></a>队列模式的消息演示</h2><code>pom.xml</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   &lt;dependencies&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;org.apache.activemq&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;activemq-all&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;5.13.0&lt;/version&gt;</span><br><span class="line">	&lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>ActiveMqProducer.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.jms.queue;</span><br><span class="line"></span><br><span class="line">import org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line">import javax.jms.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/7/4</span><br><span class="line"> * @Description: 生产者</span><br><span class="line"> */</span><br><span class="line">public class ActiveMqProducer &#123;</span><br><span class="line">    private static final String url = &quot;tcp://192:168.31.10:61616&quot;;</span><br><span class="line">    private static final String queueName = &quot;queue-test&quot;;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws JMSException &#123;</span><br><span class="line">        //1.创建ConnectionFactory</span><br><span class="line">        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);</span><br><span class="line"></span><br><span class="line">        //2.创建Connection</span><br><span class="line">        Connection connection = connectionFactory.createConnection();</span><br><span class="line"></span><br><span class="line">        //3.启动连接</span><br><span class="line">        connection.start();</span><br><span class="line"></span><br><span class="line">        //4.创建会话</span><br><span class="line">        Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);</span><br><span class="line"></span><br><span class="line">        //5.创建一个目标</span><br><span class="line">        Destination destination = session.createQueue(queueName);</span><br><span class="line"></span><br><span class="line">        //6.创建一个生产者</span><br><span class="line">        MessageProducer producer = session.createProducer(destination);</span><br><span class="line"></span><br><span class="line">        for(int i=0;i&lt;100;i++)&#123;</span><br><span class="line">            //7.创建消息</span><br><span class="line">            TextMessage textMessage = session.createTextMessage(&quot;test&quot; + i);</span><br><span class="line"></span><br><span class="line">            //8.发布消息</span><br><span class="line">            producer.send(textMessage);</span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;发送消息：&quot;+textMessage.getText());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //9.关闭连接</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ActiveMqConsumer.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.jms.queue;</span><br><span class="line"></span><br><span class="line">import org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line">import javax.jms.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/7/4</span><br><span class="line"> * @Description: 消费者</span><br><span class="line"> */</span><br><span class="line">public class ActiveMqConsumer &#123;</span><br><span class="line">    private static final String url = &quot;tcp://192:168.31.10:61616&quot;;</span><br><span class="line">    private static final String queueName = &quot;queue-test&quot;;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws JMSException &#123;</span><br><span class="line">        //1.创建ConnectionFactory</span><br><span class="line">        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);</span><br><span class="line"></span><br><span class="line">        //2.创建Connection</span><br><span class="line">        Connection connection = connectionFactory.createConnection();</span><br><span class="line"></span><br><span class="line">        //3.启动连接</span><br><span class="line">        connection.start();</span><br><span class="line"></span><br><span class="line">        //4.创建会话</span><br><span class="line">        Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);</span><br><span class="line"></span><br><span class="line">        //5.创建一个目标</span><br><span class="line">        Destination destination = session.createQueue(queueName);</span><br><span class="line"></span><br><span class="line">        //6.创建消费者</span><br><span class="line">        MessageConsumer consumer = session.createConsumer(destination);</span><br><span class="line"></span><br><span class="line">        //7.创建一个监听器</span><br><span class="line">        consumer.setMessageListener(new MessageListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onMessage(Message message) &#123;</span><br><span class="line">                TextMessage textMessage = (TextMessage) message;</span><br><span class="line">                try &#123;</span><br><span class="line">                    System.out.println(&quot;接收消息：&quot;+textMessage.getText());</span><br><span class="line">                &#125;catch (JMSException e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="主题模式的消息演示"><a href="#主题模式的消息演示" class="headerlink" title="主题模式的消息演示"></a>主题模式的消息演示</h2><p><code>ActiveMqProducer.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.jms.topic;</span><br><span class="line"></span><br><span class="line">import org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line">import javax.jms.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/7/4</span><br><span class="line"> * @Description: 生产者</span><br><span class="line"> */</span><br><span class="line">public class ActiveMqProducer &#123;</span><br><span class="line">    private static final String url = &quot;tcp://192:168.31.10:61616&quot;;</span><br><span class="line">    private static final String topicName = &quot;topic-test&quot;;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws JMSException &#123;</span><br><span class="line">        //1.创建ConnectionFactory</span><br><span class="line">        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);</span><br><span class="line"></span><br><span class="line">        //2.创建Connection</span><br><span class="line">        Connection connection = connectionFactory.createConnection();</span><br><span class="line"></span><br><span class="line">        //3.启动连接</span><br><span class="line">        connection.start();</span><br><span class="line"></span><br><span class="line">        //4.创建会话</span><br><span class="line">        Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);</span><br><span class="line"></span><br><span class="line">        //5.创建一个目标</span><br><span class="line">        Destination destination = session.createTopic(topicName);</span><br><span class="line"></span><br><span class="line">        //6.创建一个生产者</span><br><span class="line">        MessageProducer producer = session.createProducer(destination);</span><br><span class="line"></span><br><span class="line">        for(int i=0;i&lt;100;i++)&#123;</span><br><span class="line">            //7.创建消息</span><br><span class="line">            TextMessage textMessage = session.createTextMessage(&quot;test&quot; + i);</span><br><span class="line"></span><br><span class="line">            //8.发布消息</span><br><span class="line">            producer.send(textMessage);</span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;发送消息：&quot;+textMessage.getText());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //9.关闭连接</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ActiveMqConsumer.java</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">package com.cxy.jms.topic;</span><br><span class="line"></span><br><span class="line">import org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line">import javax.jms.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Auther: cxy</span><br><span class="line"> * @Date: 2019/7/4</span><br><span class="line"> * @Description: 消费者</span><br><span class="line"> */</span><br><span class="line">public class ActiveMqConsumer &#123;</span><br><span class="line">    private static final String url = &quot;tcp://192:168.31.10:61616&quot;;</span><br><span class="line">    private static final String topicName = &quot;topic-test&quot;;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws JMSException &#123;</span><br><span class="line">        //1.创建ConnectionFactory</span><br><span class="line">        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);</span><br><span class="line"></span><br><span class="line">        //2.创建Connection</span><br><span class="line">        Connection connection = connectionFactory.createConnection();</span><br><span class="line"></span><br><span class="line">        //3.启动连接</span><br><span class="line">        connection.start();</span><br><span class="line"></span><br><span class="line">        //4.创建会话</span><br><span class="line">        Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);</span><br><span class="line"></span><br><span class="line">        //5.创建一个目标</span><br><span class="line">        Destination destination = session.createTopic(topicName);</span><br><span class="line"></span><br><span class="line">        //6.创建消费者</span><br><span class="line">        MessageConsumer consumer = session.createConsumer(destination);</span><br><span class="line"></span><br><span class="line">        //7.创建一个监听器</span><br><span class="line">        consumer.setMessageListener(new MessageListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onMessage(Message message) &#123;</span><br><span class="line">                TextMessage textMessage = (TextMessage) message;</span><br><span class="line">                try &#123;</span><br><span class="line">                    System.out.println(&quot;接收消息：&quot;+textMessage.getText());</span><br><span class="line">                &#125;catch (JMSException e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="activemq模式区分"><a href="#activemq模式区分" class="headerlink" title="activemq模式区分"></a>activemq模式区分</h4><p>队列模式：生产者发送消息，所有消费者对消息进行平分，已消费的消息不能重新消费<br>主题模式：生产者发送消息，所有已订阅主题的消费者都能收到消息。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/10/10/study17/">消息中间件ActiveMQ</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
+        <p><span>发布时间:</span>2019-10-10, 19:10:34</p>
+        <p><span>最后更新:</span>2020-03-02, 21:17:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/10/study17/" title="消息中间件ActiveMQ">http://yoursite.com/2019/10/10/study17/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/10/study17/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/10/20/study18/">
+                    Java:图片验证码产生和验证
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/10/05/study16/">
+                    kafka流处理平台
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	
+	    <!--打赏-->
+<div class="reward">
+	<div class="reward-button">赏 <span class="reward-code">
+	  <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/Alipay.jpg"><b>支付宝打赏</b> </span> 
+	  <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/WeChatpay.jpg"><b>微信打赏</b> </span> 
+ 	</span></div>
+	<p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+</div>
+<!--打赏-->
+	
+
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#消息中间件概述"><span class="toc-number">1.</span> <span class="toc-text">消息中间件概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中间件介绍"><span class="toc-number">1.1.</span> <span class="toc-text">中间件介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JMS和AMQP对比"><span class="toc-number">1.1.1.</span> <span class="toc-text">JMS和AMQP对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见消息中间件对比"><span class="toc-number">1.1.2.</span> <span class="toc-text">常见消息中间件对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ActiveMQ"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">ActiveMQ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">RabbitMQ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kafka"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#特性"><span class="toc-number">1.1.2.3.1.</span> <span class="toc-text">特性</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JMS规范"><span class="toc-number">1.2.</span> <span class="toc-text">JMS规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java消息服务定义"><span class="toc-number">1.2.1.</span> <span class="toc-text">Java消息服务定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JMS概念"><span class="toc-number">1.2.2.</span> <span class="toc-text">JMS概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息模式"><span class="toc-number">1.2.3.</span> <span class="toc-text">消息模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#队列模型"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">队列模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#队列模型示意图"><span class="toc-number">1.2.3.1.1.</span> <span class="toc-text">队列模型示意图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题模型"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">主题模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#队列模型示意图-1"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">队列模型示意图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JMS编码规范"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">JMS编码规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JMS编码接口之间的关系"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">JMS编码接口之间的关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows下安装ActiveMQ"><span class="toc-number">1.3.</span> <span class="toc-text">windows下安装ActiveMQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux下安装ActiveMQ"><span class="toc-number">1.4.</span> <span class="toc-text">Linux下安装ActiveMQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列模式的消息演示"><span class="toc-number">1.5.</span> <span class="toc-text">队列模式的消息演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题模式的消息演示"><span class="toc-number">1.6.</span> <span class="toc-text">主题模式的消息演示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#activemq模式区分"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">activemq模式区分</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"消息中间件ActiveMQ　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/10/20/study18/" title="上一篇: Java:图片验证码产生和验证">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/10/05/study16/" title="下一篇: kafka流处理平台">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/20/study29/">如何保持Redis和db的数据一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/study28/">缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/study27/">Spring Boot的自动装配</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/29/study26/">CMS垃圾收集器</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/15/study25/">数据库的事务隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/study24/">设计模式-观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/15/study23/">Redis笔记———自用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/10/study22/">安装Redis时make报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/03/study21/">Jmeter压测</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/study20/">常用注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/study19/">Spring Boot配置Dubbo</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/study18/">Java:图片验证码产生和验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/study17/">消息中间件ActiveMQ</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/05/study16/">kafka流处理平台</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/study15/">Linux下如何查看哪些进程占用的CPU内存资源最多</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</aricle></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 Null指针
+            </div>
+            <div class="footer-right">
+                
+            </div>
+        </div>
+        
+        <div>
+					<span id="busuanzi_container_site_uv" style="margin-left: -100px;">
+					  	您是第<span id="busuanzi_value_site_uv"></span>位访客 | 
+					</span>
+					
+	        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	        <span id="busuanzi_container_site_pv">
+					    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+					</span>
+				</div>
+				
+				
+				<div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				</div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

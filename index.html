@@ -287,8 +287,8 @@
     <aricle id="post-study29" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study29/" class="article-date">
-      <time datetime="2020-03-02T12:53:26.194Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2020/02/20/study29/" class="article-date">
+      <time datetime="2020-02-20T11:54:30.000Z" itemprop="datePublished">2020-02-20</time>
 </a>
 
 
@@ -299,14 +299,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/20/study29/">如何保持Redis和db的数据一致性</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">666字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: 如何保持Redis和db的数据一致性<br>date: 2020-02-20 19:54:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: Redis</li>
-</ul>
-<h3 id="导致数据不一致性的场景："><a href="#导致数据不一致性的场景：" class="headerlink" title="导致数据不一致性的场景："></a>导致数据不一致性的场景：</h3><h4 id="场景一（查询）："><a href="#场景一（查询）：" class="headerlink" title="场景一（查询）："></a>场景一（查询）：</h4>
+              <h3 id="导致数据不一致性的场景："><a href="#导致数据不一致性的场景：" class="headerlink" title="导致数据不一致性的场景："></a>导致数据不一致性的场景：</h3><h4 id="场景一（查询）："><a href="#场景一（查询）：" class="headerlink" title="场景一（查询）："></a>场景一（查询）：</h4>
           
       
     </div>
@@ -314,11 +341,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study29/#more">more >></a>
+          <a href="/2020/02/20/study29/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -343,8 +378,8 @@
     <aricle id="post-study28" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study28/" class="article-date">
-      <time datetime="2020-03-02T12:51:30.151Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2020/02/10/study28/" class="article-date">
+      <time datetime="2020-02-10T11:34:30.000Z" itemprop="datePublished">2020-02-10</time>
 </a>
 
 
@@ -355,14 +390,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/study28/">缓存笔记</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">2.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: 缓存笔记<br>date: 2020-02-10 19:34:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: Redis</li>
-</ul>
-<h1 id="redis优点"><a href="#redis优点" class="headerlink" title="redis优点"></a>redis优点</h1><p>数据库的数据是存放在瓷盘中的，虽然数据库层也做了对应的缓存，但是只针对查询的内容，一般只有表中的数据不发生变动的情况下，数据库对应的cache才会起作用，但这并不能减少业务系统对数据库的操作的IO压力</p>
+              <h1 id="redis优点"><a href="#redis优点" class="headerlink" title="redis优点"></a>redis优点</h1><p>数据库的数据是存放在瓷盘中的，虽然数据库层也做了对应的缓存，但是只针对查询的内容，一般只有表中的数据不发生变动的情况下，数据库对应的cache才会起作用，但这并不能减少业务系统对数据库的操作的IO压力</p>
           
       
     </div>
@@ -370,11 +432,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study28/#more">more >></a>
+          <a href="/2020/02/10/study28/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -399,8 +469,8 @@
     <aricle id="post-study27" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study27/" class="article-date">
-      <time datetime="2020-03-02T12:50:12.358Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2020/01/15/study27/" class="article-date">
+      <time datetime="2020-01-15T11:44:30.000Z" itemprop="datePublished">2020-01-15</time>
 </a>
 
 
@@ -411,14 +481,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/15/study27/">Spring Boot的自动装配</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">534字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: Spring Boot的自动装配<br>date: 2020-01-15 19:44:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: Spring Boot</li>
-</ul>
-<h4 id="Spring-Boot的自动装配的结构图："><a href="#Spring-Boot的自动装配的结构图：" class="headerlink" title="Spring Boot的自动装配的结构图："></a>Spring Boot的自动装配的结构图：</h4>
+              <h4 id="Spring-Boot的自动装配的结构图："><a href="#Spring-Boot的自动装配的结构图：" class="headerlink" title="Spring Boot的自动装配的结构图："></a>Spring Boot的自动装配的结构图：</h4>
           
       
     </div>
@@ -426,11 +523,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Spring-Boot/">Spring Boot</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study27/#more">more >></a>
+          <a href="/2020/01/15/study27/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -455,8 +560,8 @@
     <aricle id="post-study26" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study26/" class="article-date">
-      <time datetime="2020-03-02T12:48:51.245Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/12/29/study26/" class="article-date">
+      <time datetime="2019-12-29T10:58:30.000Z" itemprop="datePublished">2019-12-29</time>
 </a>
 
 
@@ -467,14 +572,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/study26/">CMS垃圾收集器</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">350字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: CMS垃圾收集器<br>date: 2019-12-29 18:58:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: JVM</li>
-</ul>
-<blockquote>
+              <blockquote>
 <p>Concurrent mark sweep(CMS)收集器是一种年老代垃圾收集器，其最主要目标是获取最短垃圾 回收停顿时间，和其他年老代使用标记-整理算法不同，它使用多线程的标记-清除算法。</p>
 <p>最短的垃圾收集停顿时间可以为交互比较高的程序提高用户体验。</p>
 </blockquote>
@@ -485,11 +617,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JVM/">JVM</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study26/#more">more >></a>
+          <a href="/2019/12/29/study26/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -514,8 +654,8 @@
     <aricle id="post-study25" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study25/" class="article-date">
-      <time datetime="2020-03-02T12:47:43.423Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/12/15/study25/" class="article-date">
+      <time datetime="2019-12-15T11:55:30.000Z" itemprop="datePublished">2019-12-15</time>
 </a>
 
 
@@ -526,14 +666,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/15/study25/">数据库的事务隔离级别</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">1.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: 数据库的事务隔离级别<br>date: 2019-12-15 19:55:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: 数据库</li>
-</ul>
-<h4 id="事物的特性-ACID"><a href="#事物的特性-ACID" class="headerlink" title="事物的特性-ACID"></a>事物的特性-ACID</h4><ol>
+              <h4 id="事物的特性-ACID"><a href="#事物的特性-ACID" class="headerlink" title="事物的特性-ACID"></a>事物的特性-ACID</h4><ol>
 <li>A-原子性（Atomicity）</li>
 </ol>
 <blockquote>
@@ -546,11 +713,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study25/#more">more >></a>
+          <a href="/2019/12/15/study25/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -575,8 +750,8 @@
     <aricle id="post-study24" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study24/" class="article-date">
-      <time datetime="2020-03-02T12:46:20.235Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/11/25/study24/" class="article-date">
+      <time datetime="2019-11-25T15:45:30.000Z" itemprop="datePublished">2019-11-25</time>
 </a>
 
 
@@ -587,14 +762,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/25/study24/">设计模式-观察者模式</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">776字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: 设计模式-观察者模式<br>date: 2019-11-25 23:45:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: 设计模式</li>
-</ul>
-<h4 id="观察者模式-概念摘自菜鸟教程"><a href="#观察者模式-概念摘自菜鸟教程" class="headerlink" title="观察者模式(概念摘自菜鸟教程)"></a>观察者模式(概念摘自菜鸟教程)</h4><blockquote>
+              <h4 id="观察者模式-概念摘自菜鸟教程"><a href="#观察者模式-概念摘自菜鸟教程" class="headerlink" title="观察者模式(概念摘自菜鸟教程)"></a>观察者模式(概念摘自菜鸟教程)</h4><blockquote>
 <p>当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。</p>
 </blockquote>
           
@@ -604,11 +806,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study24/#more">more >></a>
+          <a href="/2019/11/25/study24/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -633,8 +843,8 @@
     <aricle id="post-study23" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study23/" class="article-date">
-      <time datetime="2020-03-02T12:45:11.226Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/11/15/study23/" class="article-date">
+      <time datetime="2019-11-15T04:12:30.000Z" itemprop="datePublished">2019-11-15</time>
 </a>
 
 
@@ -645,14 +855,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/15/study23/">Redis笔记———自用</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">122字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: Redis笔记———自用<br>date: 2019-11-15 12:12:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: Redis</li>
-</ul>
-<p>Redis笔记</p>
+              <p>Redis笔记</p>
           
       
     </div>
@@ -660,11 +897,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study23/#more">more >></a>
+          <a href="/2019/11/15/study23/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -689,8 +934,8 @@
     <aricle id="post-study22" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study22/" class="article-date">
-      <time datetime="2020-03-02T12:43:51.724Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/11/10/study22/" class="article-date">
+      <time datetime="2019-11-10T13:38:30.000Z" itemprop="datePublished">2019-11-10</time>
 </a>
 
 
@@ -701,14 +946,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/10/study22/">安装Redis时make报错</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">82字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: 安装Redis时make报错<br>date: 2019-11-10 21:38:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: Redis</li>
-</ul>
-<p>报错如下图：</p>
+              <p>报错如下图：</p>
           
       
     </div>
@@ -716,11 +988,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study22/#more">more >></a>
+          <a href="/2019/11/10/study22/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -745,8 +1025,8 @@
     <aricle id="post-study21" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study21/" class="article-date">
-      <time datetime="2020-03-02T12:42:42.598Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/11/03/study21/" class="article-date">
+      <time datetime="2019-11-02T16:18:30.000Z" itemprop="datePublished">2019-11-03</time>
 </a>
 
 
@@ -757,14 +1037,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/03/study21/">Jmeter压测</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">101字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: Jmeter压测<br>date: 2019-11-03 00:18:30<br>tags: </p>
-<ul>
-<li>Java<br>categories:  Jmeter</li>
-</ul>
-<h5 id="压测界面"><a href="#压测界面" class="headerlink" title="压测界面"></a>压测界面</h5>
+              <h5 id="压测界面"><a href="#压测界面" class="headerlink" title="压测界面"></a>压测界面</h5>
           
       
     </div>
@@ -772,11 +1079,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Jmeter/">Jmeter</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study21/#more">more >></a>
+          <a href="/2019/11/03/study21/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -801,8 +1116,8 @@
     <aricle id="post-study20" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study20/" class="article-date">
-      <time datetime="2020-03-02T12:41:24.414Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/11/02/study20/" class="article-date">
+      <time datetime="2019-11-01T16:00:30.000Z" itemprop="datePublished">2019-11-02</time>
 </a>
 
 
@@ -813,14 +1128,41 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/02/study20/">常用注解</a>
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">1.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>title: 常用注解<br>date: 2019-11-02 00:00:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: 注解</li>
-</ul>
-<p>拷贝自</p>
+              <p>拷贝自</p>
 <p><a href="https://blog.csdn.net/qq920447939/article/details/80198438" target="_blank" rel="noopener">链接1</a></p>
 <p><a href="https://baijiahao.baidu.com/s?id=1610074580703216570&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">链接2</a></p>
           
@@ -830,11 +1172,19 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/注解/">注解</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
       
         <p class="article-more-link">
-          <a href="/2020/03/02/study20/#more">more >></a>
+          <a href="/2019/11/02/study20/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

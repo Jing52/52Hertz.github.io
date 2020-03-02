@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="Null指针">
+
+
+
+<meta name="description" content="redis优点数据库的数据是存放在瓷盘中的，虽然数据库层也做了对应的缓存，但是只针对查询的内容，一般只有表中的数据不发生变动的情况下，数据库对应的cache才会起作用，但这并不能减少业务系统对数据库的操作的IO压力">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="缓存笔记">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/study28/index.html">
+<meta property="og:site_name" content="Null指针的博客">
+<meta property="og:description" content="redis优点数据库的数据是存放在瓷盘中的，虽然数据库层也做了对应的缓存，但是只针对查询的内容，一般只有表中的数据不发生变动的情况下，数据库对应的cache才会起作用，但这并不能减少业务系统对数据库的操作的IO压力">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-de46fdffc72eade7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-55952b3d29082325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-b8c48d1dd41cdfc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-6614b7ba33aae216.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-af2224e1b42f864c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-d52afd337c499c01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-96445c1f0ad521ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-ddfa320509ce547a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-84fff9796d624380.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-03-02T13:25:28.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="缓存笔记">
+<meta name="twitter:description" content="redis优点数据库的数据是存放在瓷盘中的，虽然数据库层也做了对应的缓存，但是只针对查询的内容，一般只有表中的数据不发生变动的情况下，数据库对应的cache才会起作用，但这并不能减少业务系统对数据库的操作的IO压力">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14481291-de46fdffc72eade7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Null指针的博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/head/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>缓存笔记 | Null指针的博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Null指针</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">Null指针</p>
+        
+
+        
+            <form id="search-form">
+	            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false">
+	            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EDAS/">EDAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-MVC/">Spring MVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/freemarker/">freemarker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">知世故而不世故才是最善良的成熟</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Null指针</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Null指针</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Null指针</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1287530995@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nullcxy" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/5e0ee1ba74c6" title="简书"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?Menu=yes&uin=1287530995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><aricle id="post-study28" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/10/study28/" class="article-date">
+      <time datetime="2020-02-10T11:34:30.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      缓存笔记
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">2.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Redis/">Redis</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="redis优点"><a href="#redis优点" class="headerlink" title="redis优点"></a>redis优点</h1><p>数据库的数据是存放在瓷盘中的，虽然数据库层也做了对应的缓存，但是只针对查询的内容，一般只有表中的数据不发生变动的情况下，数据库对应的cache才会起作用，但这并不能减少业务系统对数据库的操作的IO压力</p>
+<a id="more"></a>
+<p>热点数据的高速缓存</p>
+<p>提高应用的响应速度</p>
+<p>极大缓解后端数据库的压力</p>
+<h2 id="Memcache和Redis的区别"><a href="#Memcache和Redis的区别" class="headerlink" title="Memcache和Redis的区别"></a>Memcache和Redis的区别</h2><h4 id="Memcache"><a href="#Memcache" class="headerlink" title="Memcache"></a>Memcache</h4><blockquote>
+<p>代码层次类似于Hash</p>
+</blockquote>
+<ul>
+<li>支持简单数据类型</li>
+<li>不支持数据持久化存储</li>
+<li>不支持主从</li>
+<li>不支持分片</li>
+</ul>
+<h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4><ul>
+<li>数据类型丰富</li>
+<li>支持数据磁盘持久化存储</li>
+<li>支持主从</li>
+<li>支持分片</li>
+</ul>
+<h1 id="为什么Redis这么快"><a href="#为什么Redis这么快" class="headerlink" title="为什么Redis这么快"></a>为什么Redis这么快</h1><p>100000+QPS</p>
+<ul>
+<li>完全基于内存的</li>
+<li>数据结构简单，对数据的操作也简单</li>
+<li>采用单线程，单线程也能处理高并发请求，多核可启动多实例</li>
+<li>使用多路I/O复用模型，即非阻塞IO</li>
+</ul>
+<h3 id="传统的阻塞I-O模型"><a href="#传统的阻塞I-O模型" class="headerlink" title="传统的阻塞I/O模型"></a>传统的阻塞I/O模型</h3><p>当使用read或者write对某一个文件fd文件进行读写时，如果当前fd不可读或者不可写，整个Redis服务就不会对其他的操作做出响应，导致整个服务不可用。往往多个客户端进行访问的时候就不可行</p>
+<h1 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h1><p>String：最基本的数据类型，二进制安全</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">set name &quot;redis&quot;</span><br><span class="line">get name    #&quot;redis&quot;</span><br><span class="line">set count 1</span><br><span class="line">incr count</span><br><span class="line">get count   #&quot;2&quot;</span><br><span class="line">## 例如记载访问数量，每用户访问就incr</span><br></pre></td></tr></table></figure>
+<p>Hash:String元素组成的字典，适合用于存储对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hmset info name &quot;Evan&quot; age 25 sex &quot;男&quot;</span><br><span class="line">hget info age #&quot;25&quot;</span><br><span class="line">hset info age 26</span><br><span class="line">hget info age #&quot;26&quot;</span><br></pre></td></tr></table></figure>
+<p>List:列表，按照String元素插入顺序排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lpush list a</span><br><span class="line">lpush list b</span><br><span class="line">lpush list c</span><br><span class="line">lrange list 0 10</span><br><span class="line"># 例子，最新消息排行榜，最新插入的消息，优先展示</span><br></pre></td></tr></table></figure>
+<p>Set: String元素组成的无序集合，通过哈希表实现，不允许重复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sadd myset 111 # 1</span><br><span class="line">sadd myset 222 # 1</span><br><span class="line">sadd myset 333 # 1</span><br><span class="line">sadd myset 111 # 0</span><br><span class="line">smembers myset</span><br><span class="line">## 共同关注，喜好等功能</span><br></pre></td></tr></table></figure>
+<p>Sorted Set:通过分数来为集合中的成员进行从小到大的排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zadd myzset 1 a # 1</span><br><span class="line">zadd myzset 3 b # 1</span><br><span class="line">zadd myzset 2 c # 1</span><br><span class="line">zadd myzset 3 d # 1</span><br><span class="line">zrangebyscore myzset 0 10</span><br><span class="line"># 从小打到排序</span><br></pre></td></tr></table></figure>
+<p>用于计数的HyperLogLog，用于支持存储地理位置信息的Geo</p>
+<h3 id="从海量Key里查询出某一固定前缀的Key"><a href="#从海量Key里查询出某一固定前缀的Key" class="headerlink" title="从海量Key里查询出某一固定前缀的Key"></a>从海量Key里查询出某一固定前缀的Key</h3><ul>
+<li>摸清数据规模，即问清楚边界</li>
+</ul>
+<ol>
+<li>KEYS pattern：查找所有符合给定模式pattern的key</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys k1* #查询出所有k1打头的数据</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>KEYS指令一次性返回所有匹配的key</p>
+<p>键的数量过大会使服务卡顿</p>
+</blockquote>
+<ol start="2">
+<li><p>SCAN cursor [MATCH pattern] [COUNT count]</p>
+<p>无阻塞的提取出指定模式的KEY列表，SCAN执行只会返回少量元素，可用于生产环境</p>
+<blockquote>
+<ul>
+<li>基于游标的迭代器，需要基于上一次的游标延续之前的迭代过程</li>
+<li>以0作为游标开始一次新的迭代，直到命令返回游标0完成一次遍历</li>
+<li>不保证每次执行都返回某个给定数量的元素，支持模糊查询</li>
+<li>一次返回的数量不可控，只能是大概率符合count参数                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SCAN 0 MATCH k1* COUNT 10</span><br><span class="line"># 从0开始，匹配10条k1打头的key</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-de46fdffc72eade7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>返回：一个是游标值，另一个是数据集合</p>
+<h1 id="如何通过Redis实现分布式锁"><a href="#如何通过Redis实现分布式锁" class="headerlink" title="如何通过Redis实现分布式锁"></a>如何通过Redis实现分布式锁</h1><h4 id="分布式锁需要解决的问题"><a href="#分布式锁需要解决的问题" class="headerlink" title="分布式锁需要解决的问题"></a>分布式锁需要解决的问题</h4><ul>
+<li><p>互斥性 任意时刻只能一个客户端获取锁</p>
+</li>
+<li><p>安全性 锁只能被持有的客户端删除，不能被其他客户端删除</p>
+</li>
+<li><p>死锁 获取锁的客户端因为某些原因导致宕机，而未能释放锁</p>
+</li>
+<li>容错 当部分节点，如Redis节点宕机的时候，客户端仍然能够获取释放锁</li>
+</ul>
+<ol>
+<li>SETNX key value：如果不存在，则创建并赋值</li>
+</ol>
+<p>时间复杂度：O(1)</p>
+<p>返回值：设置成功，返回1；设置失败，返回0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SETNX locknx test #1</span><br><span class="line">SETNX locknx task #0</span><br><span class="line">get locknx #test</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>EXPIRE key seconds:解决SETNX长期有效问题</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EXPIRE locknx 2</span><br><span class="line">SETNX locknx task #1</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-55952b3d29082325.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>setnx命令和expire命令本身是原子性，但是如果代码当中放在一起就不能保证原子性了</p>
+<ol start="3">
+<li>SET key value [EX second] [PX millisecond] [NX|XX]</li>
+</ol>
+<p>EX second:设置键的过期时间为second秒</p>
+<p>PX millisecond：设置键的过期时间为millisecond毫秒</p>
+<p>NX：只有键不存在的时候，才对键进行设置操作</p>
+<p>XX:   只在键已经存在时，才对键进行设置操作</p>
+<p>SET操作成功后返回OK，失败返回nil</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set locktarget 12345 ex 10 nx</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-b8c48d1dd41cdfc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="大量key同时过期"><a href="#大量key同时过期" class="headerlink" title="大量key同时过期"></a>大量key同时过期</h4><p>集中过期，由于清除大量key很耗时，会出现卡顿现象</p>
+<p>解决方案：在设置key的过期时间的时候，给每个key加上随机值</p>
+<h1 id="如何使用Redis做异步队列"><a href="#如何使用Redis做异步队列" class="headerlink" title="如何使用Redis做异步队列"></a>如何使用Redis做异步队列</h1><ol>
+<li>使用List作为队列，RPUSH生产消息，LPOP消费消息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rpush testlist aaa</span><br><span class="line">rpush testlist bbb</span><br><span class="line">rpush testlist ccc</span><br><span class="line">lpop testlist</span><br></pre></td></tr></table></figure>
+<p>缺点：没有等待队列里有值就直接消费</p>
+<p>弥补：可以通过应用层引入sleep机制去调用LPOP重试</p>
+<ol start="2">
+<li>BLPOP key[key] timeout:阻塞直到队列有消息或者超时</li>
+</ol>
+<p>客户端1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blpop testlist 20</span><br></pre></td></tr></table></figure>
+<p>客户端2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpush testlist aaa</span><br></pre></td></tr></table></figure>
+<p>此时客户端1就会获取消息aaa</p>
+<ul>
+<li>缺点：只能提供一个消费者消费</li>
+</ul>
+<h4 id="pub-sub主题订阅者模式"><a href="#pub-sub主题订阅者模式" class="headerlink" title="pub/sub主题订阅者模式"></a>pub/sub主题订阅者模式</h4><ul>
+<li>发送者（pub）发送消息，订阅者（sub)接收消息</li>
+<li>订阅者可以订阅任意数量的频道</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-6614b7ba33aae216.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>客户端1订阅频道myTopic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subscribe myTopic</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-af2224e1b42f864c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>客户端2订阅频道myTopic</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-d52afd337c499c01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>客户端3订阅另一个频道anotherTopic</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-96445c1f0ad521ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>客户端4发布消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">publish myTopic &quot;hello&quot; #客户端1，2收到消息，客户端3未收到消息</span><br></pre></td></tr></table></figure>
+<p>pub/sub缺点：消息的发布是无状态的，无法保证可达</p>
+<h1 id="Redis做持久化"><a href="#Redis做持久化" class="headerlink" title="Redis做持久化"></a>Redis做持久化</h1><h3 id="RDB（快照）持久化：保存某个时间点的全量数据快照"><a href="#RDB（快照）持久化：保存某个时间点的全量数据快照" class="headerlink" title="RDB（快照）持久化：保存某个时间点的全量数据快照"></a>RDB（快照）持久化：保存某个时间点的全量数据快照</h3><p>[图片上传失败…(image-be6a56-1583057254875)]</p>
+<p>900秒内，如果有1条是写入指令，就触发产生一次快照</p>
+<p>300秒内，如果有10条是写入指令，就触发产生一次快照</p>
+<p>60秒内，如果有10000条是写入指令，就触发产生一次快照</p>
+<p><code>stop-writes-on-bgsave-error</code></p>
+<p>yes代表当备份进程出错的时候，主进程就会禁止写入操作，保证持久化数据的一致性</p>
+<p><code>rdbcompression</code></p>
+<p>yes代表在备份的时候需要将RDB文件进行压缩后才去做保存，建议no，因为Redis本身就属于CPU密集型服务器，在开启压缩的时候会带来更多的CPU消耗，相比硬盘成本，CPU更值钱，如果你需要禁用RDB配置，只需要在save后加上<code>save &quot;&quot;</code></p>
+<h4 id="自动化触发RDB持久化的方式"><a href="#自动化触发RDB持久化的方式" class="headerlink" title="自动化触发RDB持久化的方式"></a>自动化触发RDB持久化的方式</h4><ul>
+<li>根据redis.conf配置里的<code>SAVE m n</code>定时触发（用的是BGSAVE）</li>
+<li>主从复制时，主节点自动触发</li>
+<li>执行Debug Reload</li>
+<li>执行Shutdown且没有开启AOF持久化</li>
+</ul>
+<h4 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h4><ul>
+<li>内存数据的全量同步，数据量大会由于I/O而严重影响性能</li>
+<li>可能会因为Redis挂掉而丢失从当前至最近一次快照期间的数据</li>
+</ul>
+<h3 id="AOF持久化：保持写状态"><a href="#AOF持久化：保持写状态" class="headerlink" title="AOF持久化：保持写状态"></a>AOF持久化：保持写状态</h3><ul>
+<li>记录下除了查询以外的所有变更数据库状态的指令</li>
+<li>以append的形势追加保存到AOF文件中（增量）</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14481291-ddfa320509ce547a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>日志重写解决AOF文件大小不断增大的问题，原理如下：</p>
+<ul>
+<li>调用fork()，创建一个子进程</li>
+<li>子进程把新的AOF写到一个临时文件里，不依赖原来的AOF文件</li>
+<li>主进程持续将新的变动同时写到内存和原来的AOF里</li>
+<li>主进程获取子进程重写AOF的完成信号，往新AOF同步增量变动</li>
+<li>使用新的AOF文件替代掉旧的AOF文件</li>
+</ul>
+<h4 id="Redis数据的恢复"><a href="#Redis数据的恢复" class="headerlink" title="Redis数据的恢复"></a>Redis数据的恢复</h4><p><img src="https://upload-images.jianshu.io/upload_images/14481291-84fff9796d624380.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="RDB和AOF的优缺点"><a href="#RDB和AOF的优缺点" class="headerlink" title="RDB和AOF的优缺点"></a>RDB和AOF的优缺点</h5><p>RDB优点：全量数据快照，文件小，恢复快</p>
+<p>RDB缺点：无法保存最近一次快照之后的数据</p>
+<p>AOF优点：可读性高，适合保存增量数据，数据不易丢失</p>
+<p>AOF缺点：文件体积大，恢复时间长</p>
+<p>Redis4.0后，RDB-AOF混合持久化方式，作为默认</p>
+<ul>
+<li>BGSAVE做镜像全量持久化，AOF做增量持久化</li>
+</ul>
+<h1 id="Pipeline及主从同步"><a href="#Pipeline及主从同步" class="headerlink" title="Pipeline及主从同步"></a>Pipeline及主从同步</h1><ul>
+<li>Pipeline和Linux的管道类似</li>
+<li>Redis基于请求/响应模型，单个请求处理需要一一作答</li>
+<li>Pipeline批量执行指令，节省多次IO往返的时间</li>
+<li>有顺序依赖的指令建议分批发送</li>
+</ul>
+<h4 id="Redis的同步机制"><a href="#Redis的同步机制" class="headerlink" title="Redis的同步机制"></a>Redis的同步机制</h4><p>主从同步原理</p>
+<ol>
+<li>全同步过程</li>
+</ol>
+<ul>
+<li>Salve发送sync命令到Master</li>
+<li>Master启动一个后台进程，将Redis中的数据快照保存到文件中</li>
+<li>Master将保存数据快照期间接收到的写命令缓存起来</li>
+<li>Master完成写文件操作后，将该文件发送方给Salve</li>
+<li>使用新的AOF文件替代掉旧的AOF文件</li>
+<li>Master将这期间收集的增量写命令发送给Salve</li>
+</ul>
+<ol start="2">
+<li>增量同步过程</li>
+</ol>
+<ul>
+<li>Master接收到用户的操作指令，判断是否需要传播到Salve</li>
+<li>将操作记录追加到AOF文件</li>
+<li>将操作传播到其他Salve：1、对齐主从库；2、往响应缓存写入指令</li>
+<li>将缓存中的数据发送给Salve</li>
+</ul>
+<h4 id="Redis-Sentinel"><a href="#Redis-Sentinel" class="headerlink" title="Redis Sentinel"></a>Redis Sentinel</h4><p>解决主从同步Master宕机后的主从切换问题</p>
+<ul>
+<li>监控：检查主从服务器是否运行正常</li>
+<li>提醒：通过API向管理员或者其他应用程序发送故障通知</li>
+<li>自动故障迁移：主从切换</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/02/10/study28/">缓存笔记</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
+        <p><span>发布时间:</span>2020-02-10, 19:34:30</p>
+        <p><span>最后更新:</span>2020-03-02, 21:25:28</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/02/10/study28/" title="缓存笔记">http://yoursite.com/2020/02/10/study28/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/02/10/study28/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/02/20/study29/">
+                    如何保持Redis和db的数据一致性
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/01/15/study27/">
+                    Spring Boot的自动装配
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	
+	    <!--打赏-->
+<div class="reward">
+	<div class="reward-button">赏 <span class="reward-code">
+	  <span class="alipay-code"> <img class="alipay-img wdp-appear" src="/img/Alipay.jpg"><b>支付宝打赏</b> </span> 
+	  <span class="wechat-code"> <img class="wechat-img wdp-appear" src="/img/WeChatpay.jpg"><b>微信打赏</b> </span> 
+ 	</span></div>
+	<p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+</div>
+<!--打赏-->
+	
+
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redis优点"><span class="toc-number">1.</span> <span class="toc-text">redis优点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Memcache和Redis的区别"><span class="toc-number">1.1.</span> <span class="toc-text">Memcache和Redis的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Memcache"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">Memcache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">Redis</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么Redis这么快"><span class="toc-number">2.</span> <span class="toc-text">为什么Redis这么快</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统的阻塞I-O模型"><span class="toc-number">2.0.1.</span> <span class="toc-text">传统的阻塞I/O模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用数据类型"><span class="toc-number">3.</span> <span class="toc-text">常用数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#从海量Key里查询出某一固定前缀的Key"><span class="toc-number">3.0.1.</span> <span class="toc-text">从海量Key里查询出某一固定前缀的Key</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何通过Redis实现分布式锁"><span class="toc-number">4.</span> <span class="toc-text">如何通过Redis实现分布式锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式锁需要解决的问题"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">分布式锁需要解决的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大量key同时过期"><span class="toc-number">4.0.0.2.</span> <span class="toc-text">大量key同时过期</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何使用Redis做异步队列"><span class="toc-number">5.</span> <span class="toc-text">如何使用Redis做异步队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#pub-sub主题订阅者模式"><span class="toc-number">5.0.0.1.</span> <span class="toc-text">pub/sub主题订阅者模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis做持久化"><span class="toc-number">6.</span> <span class="toc-text">Redis做持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RDB（快照）持久化：保存某个时间点的全量数据快照"><span class="toc-number">6.0.1.</span> <span class="toc-text">RDB（快照）持久化：保存某个时间点的全量数据快照</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自动化触发RDB持久化的方式"><span class="toc-number">6.0.1.1.</span> <span class="toc-text">自动化触发RDB持久化的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RDB持久化"><span class="toc-number">6.0.1.2.</span> <span class="toc-text">RDB持久化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF持久化：保持写状态"><span class="toc-number">6.0.2.</span> <span class="toc-text">AOF持久化：保持写状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis数据的恢复"><span class="toc-number">6.0.2.1.</span> <span class="toc-text">Redis数据的恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#RDB和AOF的优缺点"><span class="toc-number">6.0.2.1.1.</span> <span class="toc-text">RDB和AOF的优缺点</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pipeline及主从同步"><span class="toc-number">7.</span> <span class="toc-text">Pipeline及主从同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的同步机制"><span class="toc-number">7.0.0.1.</span> <span class="toc-text">Redis的同步机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-Sentinel"><span class="toc-number">7.0.0.2.</span> <span class="toc-text">Redis Sentinel</span></a></li></ol></li>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"缓存笔记　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- ������City�氲װ���� -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDY2OC8xNzE5NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> Ϊ����ʹ�����������۹����뼤��JavaScript</noscript>
+</div>
+<!-- City�氲װ��������� -->
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/02/20/study29/" title="上一篇: 如何保持Redis和db的数据一致性">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/01/15/study27/" title="下一篇: Spring Boot的自动装配">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/20/study29/">如何保持Redis和db的数据一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/study28/">缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/study27/">Spring Boot的自动装配</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/29/study26/">CMS垃圾收集器</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/15/study25/">数据库的事务隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/study24/">设计模式-观察者模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/15/study23/">Redis笔记———自用</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/10/study22/">安装Redis时make报错</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/03/study21/">Jmeter压测</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/study20/">常用注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/25/study19/">Spring Boot配置Dubbo</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/20/study18/">Java:图片验证码产生和验证</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/10/study17/">消息中间件ActiveMQ</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/05/study16/">kafka流处理平台</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/03/study15/">Linux下如何查看哪些进程占用的CPU内存资源最多</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/05/study14/">Hexo主题更改以及小功能的添加</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/study13/">hexo+github搭建博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/study10/">String，StringBuilder，StringBuffer的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/27/study7/">学习笔记-EDAS介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/10/problem0/">Method breakpoints may dramatically slow down debugging情况解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/04/study4/">MYSQL limit,offset 区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/01/problem3/">freemarker判断对象是否为空</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/study3/">IDEA搭建和部署Maven项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/study12/">上传文件至GitHub</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/15/study5/">在Windows上安装Maven</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/31/study9/">学习笔记——Spring MVC接收前端入参数据的方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/15/problem2/">打开Navicat for mysql，显示Missing required libmysql_e.dll, 126</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/04/study6/">学习笔记——设计模式：MVC模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/30/study8/">学习笔记——MyBatis入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/14/study0/">学习笔记——Java技术体系</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/02/problem1/">为什么Java中1000==1000为false而100==100为true</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/25/study1/">学习笔记——浏览器对象模型（Window）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/study11/">Git安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/01/study2/">MarkDown</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/03/hello-world/">Hello hexo</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</aricle></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 Null指针
+            </div>
+            <div class="footer-right">
+                
+            </div>
+        </div>
+        
+        <div>
+					<span id="busuanzi_container_site_uv" style="margin-left: -100px;">
+					  	您是第<span id="busuanzi_value_site_uv"></span>位访客 | 
+					</span>
+					
+	        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	        <span id="busuanzi_container_site_pv">
+					    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+					</span>
+				</div>
+				
+				
+				<div>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+				<script>
+				    var now = new Date(); 
+				    function createtime() { 
+				        var grt= new Date("07/01/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+				        now.setTime(now.getTime()+250); 
+				        days = (now - grt ) / 1000 / 60 / 60 / 24; 
+				        dnum = Math.floor(days); 
+				        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); 
+				        hnum = Math.floor(hours); 
+				        if(String(hnum).length ==1 ){
+				        	hnum = "0" + hnum;
+				        } 
+				        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+				        mnum = Math.floor(minutes); 
+				        if(String(mnum).length ==1 ){
+				        	mnum = "0" + mnum;
+				        } 
+				        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+				        snum = Math.round(seconds); 
+				        if(String(snum).length ==1 ){
+				        	snum = "0" + snum;
+				        } 
+				        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+				        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+				    } 
+						setInterval("createtime()",250);
+				</script>
+				</div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script type="text/javascript" src="/resources/float.js"></script>
+<script type="text/javascript" src="/resources/love.js"></script>
+<script type="text/javascript" color="0,104,183" opacity="1" zindex="-1" count="50" src="/resources/particle.js"></script>
+<script type="text/javascript" src="/resources/typewriter.js"></script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","margin":10,"width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
