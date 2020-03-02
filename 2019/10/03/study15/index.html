@@ -15,19 +15,18 @@
 
 
 
-<meta name="description" content="title: 设计模式-观察者模式date: 2019-11-25 23:45:30tags:   Javacategories: 设计模式  观察者模式(概念摘自菜鸟教程) 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。">
+<meta name="description" content="linux下获取占用CPU资源最多的10个进程，可以使用如下命令组合： ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Null指针的博客">
-<meta property="og:url" content="http://yoursite.com/2020/03/02/study24/index.html">
+<meta property="og:title" content="Linux下如何查看哪些进程占用的CPU内存资源最多">
+<meta property="og:url" content="http://yoursite.com/2019/10/03/study15/index.html">
 <meta property="og:site_name" content="Null指针的博客">
-<meta property="og:description" content="title: 设计模式-观察者模式date: 2019-11-25 23:45:30tags:   Javacategories: 设计模式  观察者模式(概念摘自菜鸟教程) 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。">
+<meta property="og:description" content="linux下获取占用CPU资源最多的10个进程，可以使用如下命令组合： ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14481291-795a2ff177469d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2020-03-02T12:47:33.743Z">
+<meta property="og:updated_time" content="2020-03-02T13:10:11.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Null指针的博客">
-<meta name="twitter:description" content="title: 设计模式-观察者模式date: 2019-11-25 23:45:30tags:   Javacategories: 设计模式  观察者模式(概念摘自菜鸟教程) 当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14481291-795a2ff177469d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Linux下如何查看哪些进程占用的CPU内存资源最多">
+<meta name="twitter:description" content="linux下获取占用CPU资源最多的10个进程，可以使用如下命令组合： ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -59,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Null指针的博客</title>
+<title>Linux下如何查看哪些进程占用的CPU内存资源最多 | Null指针的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><aricle id="post-study24" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><aricle id="post-study15" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/03/02/study24/" class="article-date">
-      <time datetime="2020-03-02T12:46:20.235Z" itemprop="datePublished">2020-03-02</time>
+      <a href="/2019/10/03/study15/" class="article-date">
+      <time datetime="2019-10-03T05:05:32.000Z" itemprop="datePublished">2019-10-03</time>
 </a>
 
 
@@ -295,26 +294,60 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux下如何查看哪些进程占用的CPU内存资源最多
+    </h1>
+  
+
+        
+        	<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  博文字数： </span>
+        <span class="post-count">78字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分钟</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>title: 设计模式-观察者模式<br>date: 2019-11-25 23:45:30<br>tags: </p>
-<ul>
-<li>Java<br>categories: 设计模式</li>
-</ul>
-<h4 id="观察者模式-概念摘自菜鸟教程"><a href="#观察者模式-概念摘自菜鸟教程" class="headerlink" title="观察者模式(概念摘自菜鸟教程)"></a>观察者模式(概念摘自菜鸟教程)</h4><blockquote>
-<p>当对象间存在一对多关系时，则使用观察者模式（Observer Pattern）。比如，当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。</p>
-</blockquote>
+        <p>linux下获取占用CPU资源最多的10个进程，可以使用如下命令组合：</p>
+<p>ps aux|head -1;ps aux|grep -v PID|sort -rn -k +3|head</p>
 <a id="more"></a>
-<blockquote>
-<p>优点： 1、观察者和被观察者是抽象耦合的。 2、建立一套触发机制。<br>缺点： 1、如果一个被观察者对象有很多的直接和间接的观察者的话，将所有的观察者都通知到会花费很多时间。 2、如果在观察者和观察目标之间有循环依赖的话，观察目标会触发它们之间进行循环调用，可能导致系统崩溃。 3、观察者模式没有相应的机制让观察者知道所观察的目标对象是怎么发生变化的，而仅仅只是知道观察目标发生了变化。<br>使用场景：<br>一个抽象模型有两个方面，其中一个方面依赖于另一个方面。将这些方面封装在独立的对象中使它们可以各自独立地改变和复用。<br>一个对象的改变将导致其他一个或多个对象也发生改变，而不知道具体有多少对象将发生改变，可以降低对象之间的耦合度。<br>一个对象必须通知其他对象，而并不知道这些对象是谁。<br>需要在系统中创建一个触发链，A对象的行为将影响B对象，B对象的行为将影响C对象……，可以使用观察者模式创建一种链式触发机制。<br>我这边以天气站为被依赖的对象Subject</p>
-</blockquote>
-<p><code>Subject</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public interface Subject &#123;</span><br><span class="line">    //登记观察者</span><br><span class="line">    public void registerObserver(ObserverOne observer);</span><br><span class="line">    </span><br><span class="line">    //移除观察者</span><br><span class="line">    public void removeObserver(ObserverOne observer);</span><br><span class="line"></span><br><span class="line">    //唤醒观察者</span><br><span class="line">    public void notifyObserver();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>Weater</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public class Weater implements Subject &#123;</span><br><span class="line"></span><br><span class="line">    private static float temperature;//温度</span><br><span class="line"></span><br><span class="line">    private static float pressure;//气压</span><br><span class="line"></span><br><span class="line">    private static float humidity;//湿度</span><br><span class="line"></span><br><span class="line">    private ArrayList&lt;ObserverOne&gt; observers;</span><br><span class="line"></span><br><span class="line">    public Weater()&#123;</span><br><span class="line">        observers = new ArrayList&lt;ObserverOne&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setData(float temperature, float pressure, float humidity)&#123;</span><br><span class="line">        this.temperature = temperature;</span><br><span class="line">        this.pressure = pressure;</span><br><span class="line">        this.humidity = humidity;</span><br><span class="line">        dataChange();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void dataChange() &#123;</span><br><span class="line">        notifyObserver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void registerObserver(ObserverOne observer) &#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void removeObserver(ObserverOne observer) &#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void notifyObserver() &#123;</span><br><span class="line">        for (ObserverOne observerOne : observers) &#123;</span><br><span class="line">            observerOne.update(this.temperature,this.pressure,this.humidity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>ObserverOne</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description:</span><br><span class="line"> */</span><br><span class="line">public interface ObserverOne &#123;</span><br><span class="line">    public void update(float temperature,float pressure,float humidity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>Baidu</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">import lombok.Getter;</span><br><span class="line">import lombok.Setter;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description: 创建实体观察者类。</span><br><span class="line"> */</span><br><span class="line">public class Baidu implements ObserverOne &#123;</span><br><span class="line">    private static float temperature;</span><br><span class="line"></span><br><span class="line">    private static float pressure;</span><br><span class="line"></span><br><span class="line">    private static float humidity;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void update(float temperature, float pressure, float humidity) &#123;</span><br><span class="line">        this.temperature = temperature;</span><br><span class="line">        this.pressure = pressure;</span><br><span class="line">        this.humidity = humidity;</span><br><span class="line">        System.out.println(&quot;1:&quot;+temperature+&quot;2:&quot;+pressure+&quot;3:&quot;+humidity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>Client</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.evan.observer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @Author: Evan</span><br><span class="line"> * @CreateTime: 2020-02-23</span><br><span class="line"> * @Description: 使用 Subject 和实体观察者对象。</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Weater weater = new Weater();</span><br><span class="line"></span><br><span class="line">        Baidu baidu = new Baidu();</span><br><span class="line">        weater.registerObserver(baidu);</span><br><span class="line"></span><br><span class="line">        weater.setData(30f,300f,3000f);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h5><p><img src="https://upload-images.jianshu.io/upload_images/14481291-795a2ff177469d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>linux下获取占用内存资源最多的10个进程，可以使用如下命令组合：</p>
+<p>ps aux|head -1;ps aux|grep -v PID|sort -rn -k +4|head</p>
 
       
     </div>
@@ -323,13 +356,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/03/02/study24/"></a></p>
+        <p><span>本文标题:</span><a href="/2019/10/03/study15/">Linux下如何查看哪些进程占用的CPU内存资源最多</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Null指针</a></p>
-        <p><span>发布时间:</span>2020-03-02, 20:46:20</p>
-        <p><span>最后更新:</span>2020-03-02, 20:47:33</p>
+        <p><span>发布时间:</span>2019-10-03, 13:05:32</p>
+        <p><span>最后更新:</span>2020-03-02, 21:10:11</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/03/02/study24/" title="">http://yoursite.com/2020/03/02/study24/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/03/02/study24/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/03/study15/" title="Linux下如何查看哪些进程占用的CPU内存资源最多">http://yoursite.com/2019/10/03/study15/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/03/study15/　　作者: Null指针" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -342,15 +375,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/03/02/study25/">
-                    
+                <a href="/2019/10/05/study16/">
+                    kafka流处理平台
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/03/02/study23/">
-                    
+                <a href="/2018/11/05/study14/">
+                    Hexo主题更改以及小功能的添加
                 </a>
             </div>
         
@@ -374,7 +407,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#观察者模式-概念摘自菜鸟教程"><span class="toc-number">1.</span> <span class="toc-text">观察者模式(概念摘自菜鸟教程)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#测试结果"><span class="toc-number">1.1.</span> <span class="toc-text">测试结果</span></a></li></ol></li></ol>
+            
         
     </div>
     <style>
@@ -410,7 +443,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Linux下如何查看哪些进程占用的CPU内存资源最多　| Null指针的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -449,7 +482,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/03/02/study25/" title="上一篇: ">
+            <a href="/2019/10/05/study16/" title="上一篇: kafka流处理平台">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -457,7 +490,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/03/02/study23/" title="下一篇: ">
+            <a href="/2018/11/05/study14/" title="下一篇: Hexo主题更改以及小功能的添加">
                 <i class="fa fa-angle-right"></i>
             </a>
         
